@@ -24,7 +24,7 @@ class Tree {
         
         /* Tree virtual D'tor */
         ~Tree() = default;
-        void insert (shared_ptr<T> to_add);
+        void insert (shared_ptr<TreeNode<T>> root, shared_ptr<T> to_add);
         void remove(shared_ptr<T> to_remove);
         void deleteTree ();
         void rrRotate (shared_ptr<TreeNode<T>> root); 
@@ -64,26 +64,27 @@ Tree<T>::Tree():
 }
 
 template<class T>
-void Tree<T>::insert(shared_ptr<T> to_add)
+void Tree<T>::insert(shared_ptr<TreeNode<T>> root, shared_ptr<T> to_add)
     {
-        if (primary_root == NULL)
+        shared_ptr<TreeNode<T>> new_node(new TreeNode<T>(to_add));
+        if (root == NULL)
         {
-            TreeNode<T> new_node(to_add);
-            primary_root = shared_ptr<TreeNode<T>>(new_node); 
+            root = new_node;
+            size++;
             return;
         }
         //need to figure how to use insert when root->data == to_add 
-        else if (primary_root->data > to_add)
+        else if (root->data > to_add)
         {
-            insert(primary_root->left_node, to_add);
-            createBalance(primary_root);
+            insert(root->left_node, to_add);
+            createBalance(root);
         }
-        else if (primary_root->data < to_add)
+        else if (root->data < to_add)
         {
-            insert(primary_root->right_node, to_add);
-            createBalance(primary_root);
+            insert(root->right_node, to_add);
+            createBalance(root);
         }
-        return primary_root;
+        return;
     }
 template<class T>
 void Tree<T>::remove(shared_ptr<T> to_remove)
@@ -374,7 +375,6 @@ template <class T>
 void Tree<T>::print2D(shared_ptr<TreeNode<T>> root){
     print2DUtil(root, 0);
 }
-
 #endif /*TREE_H*/
 
 

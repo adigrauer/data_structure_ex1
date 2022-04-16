@@ -1,6 +1,7 @@
 #ifndef TREENODE_H
 #define TREENODE_H
 
+#include "tree.h"
 #include<iostream>
 #include<memory>
 
@@ -12,20 +13,16 @@ class TreeNode {
         shared_ptr<TreeNode<T>> left_node;
         shared_ptr<TreeNode<T>> right_node;
         shared_ptr<T> data;
-        //shared_ptr<TreeNode<T>> father;
-    public:
-    TreeNode (shared_ptr<T> data);
+        TreeNode (shared_ptr<T> data);
+            
+        /* Tree copy C'tor */
+        TreeNode (const TreeNode& tree_node) = default;
+            
+        /* Tree virtual D'tor */
+        ~TreeNode() = default;
+        friend class Tree;
         
-    /* Tree copy C'tor */
-    TreeNode (const TreeNode& tree_node) = default;
-        
-    /* Tree virtual D'tor */
-    ~TreeNode() = default;
 };
-template<class T>
-TreeNode<T>::TreeNode (shared_ptr<T> data){
-
-}
 
 template<class T>
 TreeNode<T>::TreeNode (shared_ptr<T> data): 
