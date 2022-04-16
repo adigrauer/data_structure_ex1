@@ -20,6 +20,7 @@ class TreeNode {
             
         /* Tree virtual D'tor */
         ~TreeNode() = default;
+    public:
         friend class Tree;
         
 };
@@ -31,6 +32,5 @@ TreeNode<T>::TreeNode (shared_ptr<T> data):
     right_node(NULL)
 {
 }
-
 
 #endif /*TREENODE_H*/
