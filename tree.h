@@ -13,6 +13,8 @@ using std::iostream;
 
 template<class T>
 class Tree {
+    private:
+        shared_ptr<T>* root;
     public:
         Tree ();
         
@@ -47,6 +49,11 @@ class Tree {
         void print2D(TreeNode<T>* root);
 };
 
+template<class T>
+Tree<T>::Tree():
+    root(NULL)
+{
+}
 
 template<class T>
 TreeNode<T>* Tree<T>::insert (TreeNode<T>* root, shared_ptr<T> to_add)
@@ -359,3 +366,5 @@ void Tree<T>::print2D(TreeNode<T>* root){
 }
 
 #endif /*TREE_H*/
+
+
