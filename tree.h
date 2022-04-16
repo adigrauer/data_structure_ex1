@@ -58,6 +58,7 @@ class Tree {
 
 template<class T>
 Tree<T>::Tree():
+    size(0),
     primary_root(NULL)
 {
 }
@@ -85,9 +86,9 @@ void Tree<T>::insert(shared_ptr<T> to_add)
         return primary_root;
     }
 template<class T>
-TreeNode<T>* Tree<T>::remove(TreeNode<T>* root, shared_ptr<T> to_remove)
+void Tree<T>::remove(shared_ptr<T> to_remove)
 {
-    if (root == NULL)
+    if (primary_root == NULL)
     {
         return;
     }
