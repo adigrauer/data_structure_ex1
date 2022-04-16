@@ -22,6 +22,10 @@ class TreeNode {
     /* Tree virtual D'tor */
     ~TreeNode() = default;
 };
+template<class T>
+TreeNode<T>::TreeNode (shared_ptr<T> data){
+
+}
 
 template<class T>
 TreeNode<T>::TreeNode (shared_ptr<T> data): 
