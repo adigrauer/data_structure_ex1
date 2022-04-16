@@ -16,7 +16,7 @@ class TreeNode {
         //shared_ptr<TreeNode<T>> father;
     public:
 
-}
+};
 
 
 
