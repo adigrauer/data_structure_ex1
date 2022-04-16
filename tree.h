@@ -14,7 +14,8 @@ using std::iostream;
 template<class T>
 class Tree {
     private:
-        shared_ptr<T>* root;
+        shared_ptr<TreeNode<T>> primary_root;
+        int size;
     public:
         Tree ();
         
@@ -23,60 +24,66 @@ class Tree {
         
         /* Tree virtual D'tor */
         ~Tree() = default;
-        TreeNode<T>* insert (TreeNode<T>* root, shared_ptr<T> to_add);
-        TreeNode<T>* remove(TreeNode<T>* root, shared_ptr<T> to_remove);
-        void deleteTree (TreeNode<T>* root);
-        TreeNode<T> *rrRotate (TreeNode<T>* root); 
-        TreeNode<T> *lrRotate (TreeNode<T>* root);
-        TreeNode<T> *rlRotate (TreeNode<T>* root);
-        TreeNode<T> *llRotate (TreeNode<T>* root);
-        int height (TreeNode<T>* node);
+        void insert (shared_ptr<T> to_add);
+        void remove(shared_ptr<T> to_remove);
+        void deleteTree ();
+        void rrRotate (shared_ptr<TreeNode<T>> root); 
+        void lrRotate (shared_ptr<TreeNode<T>> root);
+        void rlRotate (shared_ptr<TreeNode<T>> root);
+        void llRotate (shared_ptr<TreeNode<T>> root);
+        int height (shared_ptr<TreeNode<T>> node);
         int max(int height_a, int height_b);
-        void inOrder (TreeNode<T>* root);
-        void reverseInOrder (TreeNode<T>* root);
-        void inOrderToArray (TreeNode<T>* root, TreeNode<T>* array, int* index);
-        Tree<T> *merge(Tree<T>* root_a, Tree<T>* root_b);
-        TreeNode<T> *find (TreeNode<T>* root, shared_ptr<T> to_find);
-        TreeNode<T> *findMinimalNode (TreeNode<T>* root);
-        TreeNode<T> *findFather (TreeNode<T>* root, shared_ptr<T> to_find);
-        int checkBalance (TreeNode<T>* root);
-        TreeNode<T> *createBalance (TreeNode<T>* root);
-        TreeNode<T>* TreeToArray(TreeNode<T> tree, int tree_size);
-        TreeNode<T>* mergeArrays(TreeNode<T>* array_a, TreeNode<T>* array_b, int size_a, int size_b);
-        TreeNode<T>* mergeArrayToTree(TreeNode<T>* merge_array, int start, int end);
-        TreeNode<T>* mergeTrees(TreeNode<T>* root_a, TreeNode<T>* root_b);
-        void print2DUtil(TreeNode<T>* root, int space);
-        void print2D(TreeNode<T>* root);
+        void inOrder (shared_ptr<TreeNode<T>> root);
+        void reverseInOrder (shared_ptr<TreeNode<T>> root);
+        void inOrderToArray (shared_ptr<TreeNode<T>> root, shared_ptr<TreeNode<T>> array, int* index);
+        shared_ptr<Tree<T>> merge(shared_ptr<Tree<T>> root_a, shared_ptr<Tree<T>> root_b);
+        shared_ptr<TreeNode<T>> find (shared_ptr<T> to_find);
+        shared_ptr<TreeNode<T>> findMinimalNode (shared_ptr<TreeNode<T>> root);
+        shared_ptr<TreeNode<T>> findFather (shared_ptr<T> to_find);
+        int checkBalance (shared_ptr<TreeNode<T>> root);
+        void createBalance (shared_ptr<TreeNode<T>> root);
+        shared_ptr<TreeNode<T>> TreeToArray(int tree_size);
+        shared_ptr<TreeNode<T>> mergeArrays(shared_ptr<TreeNode<T>> array_a, shared_ptr<TreeNode<T>> array_b, int size_a, int size_b);
+        shared_ptr<TreeNode<T>> mergeArrayToTree(shared_ptr<TreeNode<T>> merge_array, int start, int end);
+        shared_ptr<TreeNode<T>> mergeTrees(shared_ptr<Tree<T>> root_a, shared_ptr<Tree<T>> root_b);
+        void print2DUtil(shared_ptr<TreeNode<T>> root, int space);
+        void print2D(shared_ptr<TreeNode<T>> root);
+
+
+
+
+
+
 };
 
 template<class T>
 Tree<T>::Tree():
-    root(NULL)
+    primary_root(NULL)
 {
 }
 
 template<class T>
-TreeNode<T>* Tree<T>::insert (TreeNode<T>* root, shared_ptr<T> to_add)
-{
-    if (root == NULL)
+void Tree<T>::insert(shared_ptr<T> to_add)
     {
-        root = TreeNode<T> new_node(to_add);
-        return root;
+        if (primary_root == NULL)
+        {
+            TreeNode<T> new_node(to_add);
+            primary_root = shared_ptr<TreeNode<T>>(new_node); 
+            return;
+        }
+        //need to figure how to use insert when root->data == to_add 
+        else if (primary_root->data > to_add)
+        {
+            insert(primary_root->left_node, to_add);
+            createBalance(primary_root);
+        }
+        else if (primary_root->data < to_add)
+        {
+            insert(primary_root->right_node, to_add);
+            createBalance(primary_root);
+        }
+        return primary_root;
     }
-    //need to figure how to use insert when root->data == to_add 
-    else if (root->data > to_add)
-    {
-        root->left = insert(root->left_node, to_add);
-        root = createBalance(root);
-    }
-    else if (root->data < to_add)
-    {
-        root->right = insert(root->right_node, to_add);
-        root = createBalance(root);
-    }
-    return root;
-}
-
 template<class T>
 TreeNode<T>* Tree<T>::remove(TreeNode<T>* root, shared_ptr<T> to_remove)
 {
