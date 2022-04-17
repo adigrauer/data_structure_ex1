@@ -136,7 +136,7 @@ void Tree<T>::insert(shared_ptr<T> to_add)
 }
 
 template<class T>
-void Tree<T>::llRotate (shared_ptr<TreeNode<T>> node)
+void Tree<T>::rrRotate (shared_ptr<TreeNode<T>> node)
 {
     shared_ptr<TreeNode<T>> temp = node->getRight();
     node->changeRight(temp->getLeft());
@@ -160,7 +160,7 @@ void Tree<T>::llRotate (shared_ptr<TreeNode<T>> node)
 }
 
 template<class T>
-void Tree<T>::rrRotate (shared_ptr<TreeNode<T>> node)
+void Tree<T>::llRotate (shared_ptr<TreeNode<T>> node)
 {
     shared_ptr<TreeNode<T>> temp = node->getLeft();
     node->changeLeft(temp->getRight());

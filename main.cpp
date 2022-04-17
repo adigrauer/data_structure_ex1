@@ -4,26 +4,25 @@
 int main()  
 {  
     Tree<int> tree;
-    int x1 = 1;
+    int x1 = 20;
     shared_ptr<int> x1_tree(&x1);
     tree.insert(x1_tree);
-    int x2 = 2; 
+    int x2 = 4; 
     shared_ptr<int>x2_tree(&x2);
     tree.insert(x2_tree);
-    int x3 = 3;
+    int x3 = 26;
     shared_ptr<int>x3_tree(&x3);
     tree.insert(x3_tree);
-    /*
-    int x4 = 20;
+    int x4 = 3;
     shared_ptr<int>x4_tree(&x4);
     tree.insert(x4_tree);
-    int x5 = 21;
+    int x5 = 9;
     shared_ptr<int>x5_tree(&x5);
     tree.insert(x5_tree);
-    int x6 = 10;
+    int x6 = 15;
     shared_ptr<int>x6_tree(&x6);
     tree.insert(x6_tree);
-    */
+
     tree.print2D(tree.getRoot());
     /*
     //Inorder traversal for above tree : 4 5 8 11 12 17 18 
