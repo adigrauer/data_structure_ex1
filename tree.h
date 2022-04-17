@@ -225,12 +225,12 @@ bool Tree<T>::createBalance (shared_ptr<TreeNode<T>> node)
     }
     else if (balance_factor == -2) 
     {
-        if (checkBalance(node->getRight()) == 1) {
-            rlRotate(node);
+        if(checkBalance(node->getRight()) <= 0)  {
+            rrRotate(node);
             return true;
         }
-        else if(checkBalance(node->getRight()) <= 0)  {
-            rrRotate(node);
+        else if (checkBalance(node->getRight()) == 1) {
+            rlRotate(node);
             return true;
         }
     }
@@ -408,7 +408,7 @@ void Tree<T>::print2DUtil(shared_ptr<TreeNode<T>> root, int space){
     cout<<endl;
     for (int i = COUNT; i < space; i++)
         cout<<" ";
-    cout<<*(root->getData()) /*<< "height =" << root->getHeight()*/<<"\n";
+    cout<<*(root->getData()) <<"\n";
     print2DUtil(root->getLeft(), space);
 }
  
