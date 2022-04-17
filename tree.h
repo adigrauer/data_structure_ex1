@@ -37,7 +37,14 @@ class Tree {
         void reverseInOrder (shared_ptr<TreeNode<T>> root);
         void inOrderToArray (shared_ptr<TreeNode<T>> root, shared_ptr<TreeNode<T>> array, int* index);
         
-        
+        int getSize();
+
+        shared_ptr<TreeNode<T>> getRoot();
+
+        //////////////////////////////////////////
+        //////////////////////////////////////////
+        //////////////////////////////////////////
+
         shared_ptr<Tree<T>> merge(shared_ptr<Tree<T>> root_a, shared_ptr<Tree<T>> root_b);
         shared_ptr<TreeNode<T>> find (shared_ptr<T> to_find);
         shared_ptr<TreeNode<T>> findMinimalNode (shared_ptr<TreeNode<T>> root);
@@ -48,16 +55,16 @@ class Tree {
         shared_ptr<Tree<T>> mergeTrees(shared_ptr<Tree<T>> root_a, shared_ptr<Tree<T>> root_b);
         void print2DUtil(shared_ptr<TreeNode<T>> root, int space);
         void print2D(shared_ptr<TreeNode<T>> root);
-        shared_ptr<TreeNode<T>> getRoot();
-        int getSize();
+        
+        
 };
 
 template <class T>
 Tree<T>::Tree() :
     size(0)
 {
-    //primary_root(nullptr), 
 }
+
 
 template <class T>
 shared_ptr<TreeNode<T>> Tree<T>::getRoot(){
@@ -102,6 +109,7 @@ void Tree<T>::insert(shared_ptr<T> to_add)
             temp = temp->getRight();
         }
     }
+    //adi
     //update new node to be the sun of his father
     new_node->changeFather(temp_update);        //new node is the root
     if (temp_update == nullptr){
@@ -125,59 +133,6 @@ void Tree<T>::insert(shared_ptr<T> to_add)
         }
         temp_update = temp_update->getFather();
     }
-}
-
-template<class T>
-void Tree<T>::remove(shared_ptr<T> to_remove)
-{
-    if (primary_root == NULL)
-    {
-        return;
-    }
-    shared_ptr<TreeNode<T>> father_node = findFather(to_remove);
-    shared_ptr<TreeNode<T>> node_to_remove;
-    if (father_node->left_node->data == to_remove)
-    {
-        node_to_remove = father_node->left_node;
-        //if the node to delete has no children
-        if (node_to_remove->left_node == NULL && node_to_remove->right_node == NULL)
-        {
-            father_node->left_node = NULL;
-            return;
-        }
-    }
-    else
-    {
-        node_to_remove = father_node->right_node;
-        //if the node to delete has no children
-        if (node_to_remove->left_node == NULL && node_to_remove->right_node == NULL)
-        {
-            father_node->right_node = NULL;
-            return;
-        }
-    }
-    //if the node to delete has only one child on the right
-    if (node_to_remove->left_node == NULL)
-    {
-        node_to_remove->data = node_to_remove->right_node->data;
-        node_to_remove->right_node = NULL;
-    }
-    //if the node to delete has only one child on the left
-    else if (node_to_remove->right_node == NULL)
-    {
-        node_to_remove->data = node_to_remove->left_node->data;
-        node_to_remove->left_node = NULL;
-    }
-    //if reached this point than the node has two children
-    else 
-    {
-        shared_ptr<TreeNode<T>> current_minimal = findMinimalNode(node_to_remove->right_node);
-        shared_ptr<T> copy_data = current_minimal->data;
-        remove(current_minimal->data);
-        node_to_remove->data = current_minimal->data;
-        
-    }
-    // need to add balance!!!!!!!!!!
 }
 
 template<class T>
@@ -285,8 +240,7 @@ bool Tree<T>::createBalance (shared_ptr<TreeNode<T>> node)
 template<class T>
 int Tree<T>::checkBalance (shared_ptr<TreeNode<T>> node)
 {
-    //BF for leaf is zero
-    int left_height = 0, right_height = 0;
+    int left_height = -1, right_height = -1;
     if(node->getLeft() != nullptr){
         left_height = node->getLeft()->getHeight();
     }
@@ -296,6 +250,10 @@ int Tree<T>::checkBalance (shared_ptr<TreeNode<T>> node)
     return left_height - right_height;
 }
 
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+//////////////////////////////////////////////////////
+
 template<class T>
 void Tree<T>::inOrder (shared_ptr<TreeNode<T>> root){
     if(root == NULL){
@@ -304,6 +262,59 @@ void Tree<T>::inOrder (shared_ptr<TreeNode<T>> root){
     inOrder(root->left_node);
     //function
     inOrder(root->right_node);
+}
+
+template<class T>
+void Tree<T>::remove(shared_ptr<T> to_remove)
+{
+    if (primary_root == NULL)
+    {
+        return;
+    }
+    shared_ptr<TreeNode<T>> father_node = findFather(to_remove);
+    shared_ptr<TreeNode<T>> node_to_remove;
+    if (father_node->left_node->data == to_remove)
+    {
+        node_to_remove = father_node->left_node;
+        //if the node to delete has no children
+        if (node_to_remove->left_node == NULL && node_to_remove->right_node == NULL)
+        {
+            father_node->left_node = NULL;
+            return;
+        }
+    }
+    else
+    {
+        node_to_remove = father_node->right_node;
+        //if the node to delete has no children
+        if (node_to_remove->left_node == NULL && node_to_remove->right_node == NULL)
+        {
+            father_node->right_node = NULL;
+            return;
+        }
+    }
+    //if the node to delete has only one child on the right
+    if (node_to_remove->left_node == NULL)
+    {
+        node_to_remove->data = node_to_remove->right_node->data;
+        node_to_remove->right_node = NULL;
+    }
+    //if the node to delete has only one child on the left
+    else if (node_to_remove->right_node == NULL)
+    {
+        node_to_remove->data = node_to_remove->left_node->data;
+        node_to_remove->left_node = NULL;
+    }
+    //if reached this point than the node has two children
+    else 
+    {
+        shared_ptr<TreeNode<T>> current_minimal = findMinimalNode(node_to_remove->right_node);
+        shared_ptr<T> copy_data = current_minimal->data;
+        remove(current_minimal->data);
+        node_to_remove->data = current_minimal->data;
+        
+    }
+    // need to add balance!!!!!!!!!!
 }
 
 template <class T>
@@ -397,7 +408,7 @@ void Tree<T>::print2DUtil(shared_ptr<TreeNode<T>> root, int space){
     cout<<endl;
     for (int i = COUNT; i < space; i++)
         cout<<" ";
-    cout<<*(root->getData())<<"\n";
+    cout<<*(root->getData()) /*<< "height =" << root->getHeight()*/<<"\n";
     print2DUtil(root->getLeft(), space);
 }
  

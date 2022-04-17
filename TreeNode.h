@@ -95,7 +95,7 @@ int TreeNode<T>::max(int hight_a, int hight_b){
 
 template<class T>
 void TreeNode<T>::updateHeight(){
-    int left_height = 0, right_height = 0;
+    int left_height = -1, right_height = -1;
     if(this->getLeft() != nullptr){
         left_height = this->getLeft()->getHeight();
     }
@@ -106,6 +106,7 @@ void TreeNode<T>::updateHeight(){
     this->changeHeight(new_height);
 }
 
+//adi
 template<class T>
 bool TreeNode<T>::operator <(shared_ptr<T> to_compare){
     return *(this->data) < (*to_compare);
