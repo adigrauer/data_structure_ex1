@@ -19,7 +19,8 @@ class Tree {
         Tree ();
         Tree (const Tree<T>& Tree) = default;
         ~Tree() = default;
-        
+        void destroyTree(shared_ptr<TreeNode<T>> root);
+
         void rrRotate (shared_ptr<TreeNode<T>> node); 
         void llRotate (shared_ptr<TreeNode<T>> node);
         void lrRotate (shared_ptr<TreeNode<T>> node);
@@ -69,6 +70,16 @@ Tree<T>::Tree() :
 {
 }
 
+template <class T>
+void Tree<T>::destroyTree(shared_ptr<TreeNode<T>> root){
+    if(root == nullptr) {
+        return;
+    }
+    destroyTree(root->getLeft());
+    destroyTree(root->getRight());
+    root->clearNode();
+}
+    
 template <class T>
 shared_ptr<TreeNode<T>> Tree<T>::getRoot(){
     return this->primary_root;
