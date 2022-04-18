@@ -1,8 +1,22 @@
 #include "tree.h"
 #include "treeNode.h"
 
-int main()  
-{  
+void general_test1();
+void insert_test2();
+void insert_test3();
+void insert_test4();
+void merge_test5();
+
+int main(){  
+    //general_test1();
+    //insert_test2();
+    //insert_test3();
+    //insert_test4();
+    merge_test5();
+    return 0;  
+}
+
+void general_test1(){
     //create tree1//
     ///////////////
     Tree<int> tree1;
@@ -50,6 +64,18 @@ int main()
     shared_ptr<Tree<int>> mergefinal = mergeTrees(tree1, tree2);
     mergefinal->print2D(mergefinal->getRoot());
    
+    //tree delete nodes//
+    /////////////////////
+    mergefinal->remove(x6_tree); 
+    cout << "print Tree1 after delete=6" << endl;
+    tree1.print2D(mergefinal->getRoot());
+    cout << endl;
+ 
+    mergefinal->remove(x4_tree); 
+    cout << "print Tree1 after delete=6" << endl;
+    tree1.print2D(mergefinal->getRoot());
+    cout << endl;
+
     //destroy merge tree//
     //////////////////////
     mergefinal->destroyTree(mergefinal->getRoot());
@@ -59,38 +85,186 @@ int main()
     //destroy tree2//
     ////////////////
     tree2.destroyTree(tree2.getRoot());
+}
 
+void insert_test2(){
+    Tree<double> tree;
+    double x30 = 30;
+    shared_ptr<double>x30_tree(new double(x30));
+    tree.insert(x30_tree);
+    double x5 = 5;
+    shared_ptr<double>x5_tree(new double(x5));
+    tree.insert(x5_tree);
+    double x35 = 35;
+    shared_ptr<double>x35_tree(new double(x35));
+    tree.insert(x35_tree);
+    double x32 = 32;
+    shared_ptr<double>x32_tree(new double(x32));
+    tree.insert(x32_tree);
+    double x40 = 40;
+    shared_ptr<double>x40_tree(new double(x40));
+    tree.insert(x40_tree);
+    cout << "print Tree" << endl;
+    tree.print2D(tree.getRoot());
+    cout << endl;
+    double x45 = 45;
+    shared_ptr<double>x45_tree(new double(x45));
+    tree.insert(x45_tree);
+    cout << "print cheack insert x=45" << endl;
+    tree.print2D(tree.getRoot());
+    cout << endl;
+    tree.destroyTree(tree.getRoot());
+}
+
+void insert_test3(){
+    Tree<double> tree;
+    double x13 = 13;
+    shared_ptr<double>x13_tree(new double(x13));
+    tree.insert(x13_tree);
+    double x10 = 10;
+    shared_ptr<double>x10_tree(new double(x10));
+    tree.insert(x10_tree);
+    double x15 = 15;
+    shared_ptr<double>x15_tree(new double(x15));
+    tree.insert(x15_tree);
+    double x5 = 5;
+    shared_ptr<double>x5_tree(new double(x5));
+    tree.insert(x5_tree);
+    double x11 = 11;
+    shared_ptr<double>x11_tree(new double(x11));
+    tree.insert(x11_tree);
+    double x16 = 16.00;
+    shared_ptr<double>x16_tree(new double(x16));
+    tree.insert(x16_tree);
+    double x4 = 4;
+    shared_ptr<double>x4_tree(new double(x4));
+    tree.insert(x4_tree);
+    double x6 = 6;
+    shared_ptr<double>x6_tree(new double(x6));
+    tree.insert(x6_tree);
+
+    cout << "print Tree" << endl;
+    tree.print2D(tree.getRoot());
+    cout << endl;
     
-/*
+    double x7 = 7;
+    shared_ptr<double>x7_tree(new double(x7));
+    tree.insert(x7_tree);
+    cout << "print cheack insert x=7" << endl;
+    tree.print2D(tree.getRoot());
+    cout << endl;
+    
+    tree.destroyTree(tree.getRoot());
+}
 
-    //Inorder traversal//
-    /////////////////////
-    cout << "Inorder traversal for the AVL tree is: \n";  
-    tree1.inOrder(tree1.getRoot()); 
-    cout << "\n"; 
-    //ReverseInorder traversal//
-    ////////////////////////////
-    cout << "ReverseInorder traversal for the AVL tree is: \n";  
-    tree1.reverseInOrder(tree1.getRoot());
-    cout << "\n";
+void insert_test4(){
+    Tree<double> tree;
+    double x5 = 5;
+    shared_ptr<double>x5_tree(new double(x5));
+    tree.insert(x5_tree);
+    double x2 = 2;
+    shared_ptr<double>x2_tree(new double(x2));
+    tree.insert(x2_tree);
+    double x7 = 7;
+    shared_ptr<double>x7_tree(new double(x7));
+    tree.insert(x7_tree);
+    double x1 = 1;
+    shared_ptr<double>x1_tree(new double(x1));
+    tree.insert(x1_tree);
+    double x4 = 4;
+    shared_ptr<double>x4_tree(new double(x4));
+    tree.insert(x4_tree);
+    double x6 = 6;
+    shared_ptr<double>x6_tree(new double(x6));
+    tree.insert(x6_tree);
+    double x9 = 9;
+    shared_ptr<double>x9_tree(new double(x9));
+    tree.insert(x9_tree);
+    double x16 = 16;
+    shared_ptr<double>x16_tree(new double(x16));
+    tree.insert(x16_tree);
+    double x3 = 3;
+    shared_ptr<double>x3_tree(new double(x3));
+    tree.insert(x3_tree);
 
-    //tree delete nodes//
-    /////////////////////
-    tree1.remove(x6_tree); 
-    cout << "print Tree1 after delete=6" << endl;
+    cout << "print Tree" << endl;
+    tree.print2D(tree.getRoot());
+    cout << endl;
+    
+    double x15 = 15;
+    shared_ptr<double>x15_tree(new double(x15));
+    tree.insert(x15_tree);
+    cout << "print cheack insert x=15" << endl;
+    tree.print2D(tree.getRoot());
+    cout << endl;
+    
+    tree.destroyTree(tree.getRoot());
+}
+
+void merge_test5(){
+    Tree<double> tree1;
+    double x5 = 5;
+    shared_ptr<double>x5_tree(new double(x5));
+    tree1.insert(x5_tree);
+    double x2 = 2;
+    shared_ptr<double>x2_tree(new double(x2));
+    tree1.insert(x2_tree);
+    double x7 = 7;
+    shared_ptr<double>x7_tree(new double(x7));
+    tree1.insert(x7_tree);
+    double x1 = 1;
+    shared_ptr<double>x1_tree(new double(x1));
+    tree1.insert(x1_tree);
+    double x15 = 15;
+    shared_ptr<double>x15_tree(new double(x15));
+    tree1.insert(x15_tree);
+
+    Tree<double> tree2;
+    double x4 = 4;
+    shared_ptr<double>x4_tree(new double(x4));
+    tree2.insert(x4_tree);
+    double x6 = 6;
+    shared_ptr<double>x6_tree(new double(x6));
+    tree2.insert(x6_tree);
+    double x9 = 9;
+    shared_ptr<double>x9_tree(new double(x9));
+    tree2.insert(x9_tree);
+    double x16 = 16;
+    shared_ptr<double>x16_tree(new double(x16));
+    tree2.insert(x16_tree);
+    double x3 = 3;
+    shared_ptr<double>x3_tree(new double(x3));
+    tree2.insert(x3_tree);
+
+    cout << "print Tree1" << endl;
     tree1.print2D(tree1.getRoot());
     cout << endl;
- 
-    tree1.remove(x4_tree);
-    cout << "print Tree1 after delete=4" << endl;
-    tree1.print2D(tree1.getRoot());
-    cout << endl;
 
-*/
-    return 0;  
+    cout << "print Tree2" << endl;
+    tree2.print2D(tree2.getRoot());
+    cout << endl;
+    
+    cout << "print merge tree" << endl;
+    shared_ptr<Tree<double>> mergefinal = mergeTrees(tree1, tree2);
+    mergefinal->print2D(mergefinal->getRoot());
+
+    mergefinal->destroyTree(mergefinal->getRoot());
+    tree1.destroyTree(tree1.getRoot());
+    tree2.destroyTree(tree2.getRoot());
 }
 
 /*
+//Inorder traversal//
+/////////////////////
+cout << "Inorder traversal for the AVL tree is: \n";  
+tree1.inOrder(tree1.getRoot()); 
+cout << "\n"; 
+//ReverseInorder traversal//
+////////////////////////////
+cout << "ReverseInorder traversal for the AVL tree is: \n";  
+tree1.reverseInOrder(tree1.getRoot());
+cout << "\n";
+
 //internal prints for debuge merge functions/
 /////////////////////////////////////////////
 shared_ptr<TreeNode<int>>* array1 = tree1.TreeToArray();
@@ -117,4 +291,3 @@ for (int i=0; i<6; i++){
 }
 cout << endl;
 */
-
