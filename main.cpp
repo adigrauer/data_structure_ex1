@@ -14,30 +14,27 @@ int main()
     shared_ptr<int>x3_tree(new int(x3));
     tree1.insert(x3_tree);
 
-    //Tree<int> tree2;
+    Tree<int> tree2;
     int x4 = 4;
     shared_ptr<int>x4_tree(new int(x4));
-    tree1.insert(x4_tree);
+    tree2.insert(x4_tree);
     int x5 = 5;
     shared_ptr<int>x5_tree(new int(x5));
-    tree1.insert(x5_tree);
+    tree2.insert(x5_tree);
     int x6 = 6;
     shared_ptr<int>x6_tree(new int(x6));
-    tree1.insert(x6_tree);
-    /*
+    tree2.insert(x6_tree);
+    
     cout << "Tree1" << endl;
     tree1.print2D(tree1.getRoot());
     cout << endl;
     cout << "Tree2" << endl;
     tree2.print2D(tree2.getRoot());
     cout << endl;
-*/
-    /*
-    Tree<int> merge = mergeTrees(tree1, tree2);
-    cout << "mergeTree" << endl;
-    merge.print2D(merge.getRoot());
-    cout << endl;
-    */
+
+    cout << "mergeTrees- final" << endl;
+    shared_ptr<Tree<int>> mergefinal = mergeTrees(tree1, tree2);
+    mergefinal->print2D(mergefinal->getRoot());
    /*
     shared_ptr<TreeNode<int>>* array1 = tree1.TreeToArray();
     cout << "print array1- checking if inOrderToArray+TreeToArray works" << endl;
@@ -92,6 +89,7 @@ int main()
     //tree.remove(x3_tree);
     //tree.print2D(tree.getRoot());
      cout << "\n";
+     /*
     tree1.remove(x4_tree);
     tree1.print2D(tree1.getRoot()); 
     tree1.remove(x5_tree);  
@@ -102,6 +100,7 @@ int main()
     //tree.inOrder(tree.getRoot()); 
     cout << "\ntree after deletion of node 4: \n"; 
     tree1.print2D(tree1.getRoot());
+    */
     return 0;  
 }
 

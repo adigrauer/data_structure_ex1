@@ -371,6 +371,7 @@ void Tree<T>::inOrderToArray (shared_ptr<TreeNode<T>> root, shared_ptr<TreeNode<
     inOrderToArray(root->getRight(), array, index);
     root->changeRight(nullptr);
     root->changeFather(nullptr);
+    root->changeHeight(0);
 }
 
 template<class T>
@@ -441,6 +442,7 @@ shared_ptr<TreeNode<T>> mergeArrayToTreeAux(shared_ptr<TreeNode<T>>* merge_array
     new_root->changeFather(father);
     new_root->changeLeft(mergeArrayToTreeAux(merge_array, new_root, start, mid-1));
     new_root->changeRight(mergeArrayToTreeAux(merge_array, new_root, mid+1, end));
+    new_root->updateHeight();
     return new_root;
 }
 
