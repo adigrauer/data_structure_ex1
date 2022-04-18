@@ -202,8 +202,8 @@ void Tree<T>::rlRotate (shared_ptr<TreeNode<T>> node)
 template<class T>
 shared_ptr<TreeNode<T>> Tree<T>::findMinimalNode (shared_ptr<TreeNode<T>> root)
 {
-    while (root->left_node != NULL){
-        root = root->left_node;
+    while (root->getLeft() != NULL){
+        root = root->getLeft();
     }
     return root;
 }
@@ -259,9 +259,9 @@ void Tree<T>::inOrder (shared_ptr<TreeNode<T>> root){
     if(root == NULL){
         return;
     }
-    inOrder(root->left_node);
-    //function
-    inOrder(root->right_node);
+    inOrder(root->getLeft());
+    cout<<*(root->getData());
+    inOrder(root->getRight());
 }
 
 template<class T>
@@ -271,47 +271,47 @@ void Tree<T>::remove(shared_ptr<T> to_remove)
     {
         return;
     }
-    shared_ptr<TreeNode<T>> father_node = findFather(to_remove);
-    shared_ptr<TreeNode<T>> node_to_remove;
-    if (father_node->left_node->data == to_remove)
+    shared_ptr<TreeNode<T>> node_to_remove = find(to_remove);
+    shared_ptr<TreeNode<T>> father_node = node_to_remove->getFather();
+    if (*(father_node->getData()) > *to_remove)
     {
-        node_to_remove = father_node->left_node;
+        node_to_remove = father_node->getLeft();
         //if the node to delete has no children
-        if (node_to_remove->left_node == NULL && node_to_remove->right_node == NULL)
+        if (node_to_remove->getLeft() == nullptr && node_to_remove->getRight() == nullptr)
         {
-            father_node->left_node = NULL;
+            father_node->changeLeft(nullptr);
             return;
         }
     }
     else
     {
-        node_to_remove = father_node->right_node;
+        node_to_remove = father_node->getRight();
         //if the node to delete has no children
-        if (node_to_remove->left_node == NULL && node_to_remove->right_node == NULL)
+        if (node_to_remove->getLeft() == nullptr && node_to_remove->getRight() == nullptr)
         {
-            father_node->right_node = NULL;
+            father_node->changeRight(nullptr);
             return;
         }
     }
     //if the node to delete has only one child on the right
-    if (node_to_remove->left_node == NULL)
+    if (node_to_remove->getLeft() == nullptr)
     {
-        node_to_remove->data = node_to_remove->right_node->data;
-        node_to_remove->right_node = NULL;
+        node_to_remove->changeData(node_to_remove->getRight()->getData());
+        node_to_remove->changeRight(nullptr);
     }
     //if the node to delete has only one child on the left
-    else if (node_to_remove->right_node == NULL)
+    else if (node_to_remove->getRight() == nullptr)
     {
-        node_to_remove->data = node_to_remove->left_node->data;
-        node_to_remove->left_node = NULL;
+        node_to_remove->changeData(node_to_remove->getLeft()->getData());
+        node_to_remove->changeLeft(nullptr);
     }
     //if reached this point than the node has two children
     else 
     {
-        shared_ptr<TreeNode<T>> current_minimal = findMinimalNode(node_to_remove->right_node);
-        shared_ptr<T> copy_data = current_minimal->data;
-        remove(current_minimal->data);
-        node_to_remove->data = current_minimal->data;
+        shared_ptr<TreeNode<T>> current_minimal = findMinimalNode(node_to_remove->getRight());
+        shared_ptr<T> copy_data = current_minimal->getData();
+        remove(current_minimal->getData());
+        node_to_remove->changeData(copy_data);
         
     }
     // need to add balance!!!!!!!!!!
@@ -333,9 +333,9 @@ void Tree<T>::reverseInOrder (shared_ptr<TreeNode<T>> root){
     if(root == NULL){
         return;
     }
-    reverseInOrder(root->right_node);
-    //function
-    reverseInOrder(root->left_node);
+    reverseInOrder(root->getRight());
+    cout<<*(root->getData());
+    reverseInOrder(root->getLeft());
 }
 
 

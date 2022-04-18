@@ -26,6 +26,7 @@ class TreeNode {
         shared_ptr<T> getData();
         int getHeight();
 
+        void changeData(shared_ptr<T> new_data);
         void changeLeft(shared_ptr<TreeNode<T>> new_left);
         void changeRight(shared_ptr<TreeNode<T>> new_right);
         void changeFather(shared_ptr<TreeNode<T>> new_father);
@@ -71,6 +72,12 @@ void TreeNode<T>::changeFather(shared_ptr<TreeNode<T>> new_father){
 template<class T>
 shared_ptr<T> TreeNode<T>::getData(){
     return this->data;
+}
+
+template<class T>
+void TreeNode<T>::changeData(shared_ptr<T> new_data)
+{
+    this->data = new_data;
 }
 
 template<class T>
