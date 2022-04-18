@@ -277,59 +277,88 @@ void Tree<T>::inOrder (shared_ptr<TreeNode<T>> root){
     inOrder(root->getRight());
 }
 
+
 template<class T>
 void Tree<T>::remove(shared_ptr<T> to_remove)
 {
-    if (primary_root == NULL)
+    if (primary_root == nullptr)
     {
         return;
     }
     shared_ptr<TreeNode<T>> node_to_remove = find(to_remove);
+    if (node_to_remove == nullptr) {
+        return;
+    }
     shared_ptr<TreeNode<T>> father_node = node_to_remove->getFather();
-    if (*(father_node->getData()) > *to_remove)
-    {
-        node_to_remove = father_node->getLeft();
+
         //if the node to delete has no children
-        if (node_to_remove->getLeft() == nullptr && node_to_remove->getRight() == nullptr)
-        {
-            father_node->changeLeft(nullptr);
-            return;
-        }
-    }
-    else
+    if (node_to_remove->getLeft() == nullptr && node_to_remove->getRight() == nullptr)
     {
-        node_to_remove = father_node->getRight();
-        //if the node to delete has no children
-        if (node_to_remove->getLeft() == nullptr && node_to_remove->getRight() == nullptr)
-        {
-            father_node->changeRight(nullptr);
-            return;
+        if(father_node != nullptr) {
+            if (*(father_node->getData()) > *to_remove){
+                father_node->changeLeft(nullptr);
+                //node_to_remove->clearNode();
+            }
+            else
+            {
+                father_node->changeRight(nullptr);
+            }
         }
+        else 
+        {
+            primary_root = nullptr;
+        }
+        
     }
+
     //if the node to delete has only one child on the right
-    if (node_to_remove->getLeft() == nullptr)
+    else if (node_to_remove->getLeft() == nullptr)
     {
-        node_to_remove->changeData(node_to_remove->getRight()->getData());
-        node_to_remove->changeRight(nullptr);
+        shared_ptr<TreeNode<T>> temp = node_to_remove->getRight();
+        node_to_remove->changeData(temp->getData());
+        node_to_remove->changeLeft(temp->getLeft());
+        node_to_remove->changeRight(temp->getRight());
     }
     //if the node to delete has only one child on the left
     else if (node_to_remove->getRight() == nullptr)
     {
-        node_to_remove->changeData(node_to_remove->getLeft()->getData());
-        node_to_remove->changeLeft(nullptr);
+        shared_ptr<TreeNode<T>> temp = node_to_remove->getLeft();
+        node_to_remove->changeData(temp->getData());
+        node_to_remove->changeRight(temp->getRight());
+        node_to_remove->changeLeft(temp->getLeft());
     }
     //if reached this point than the node has two children
     else 
     {
         shared_ptr<TreeNode<T>> current_minimal = findMinimalNode(node_to_remove->getRight());
-        shared_ptr<T> copy_data = current_minimal->getData();
-        remove(current_minimal->getData());
+        shared_ptr<TreeNode<T>> current_minimal_father = current_minimal->getFather();
+        shared_ptr<T>copy_data = current_minimal->getData();
+        if (*(current_minimal_father->getData()) == *(node_to_remove->getData()))
+        {
+           node_to_remove->changeRight(current_minimal->getRight());
+        }
+        else
+        {
+            current_minimal_father->changeLeft(current_minimal->getRight());
+        }
         node_to_remove->changeData(copy_data);
-        
-    }
-    // need to add balance!!!!!!!!!!
-}
 
+    }
+    //update tree size
+    size--;
+    //touring from the deleated leaf to the root in order to balance the tree
+    while(father_node != nullptr)
+    {
+        father_node->updateHeight();
+        createBalance(father_node);
+        father_node = father_node->getFather();
+    }
+    if (*node_to_remove->getData() == *(primary_root->getData()))
+    {
+        node_to_remove->updateHeight();
+        createBalance(node_to_remove);
+    }
+}
 template <class T>
 void Tree<T>::inOrderToArray (shared_ptr<TreeNode<T>> root, shared_ptr<TreeNode<T>>* array, int* index){
     if(root == nullptr){

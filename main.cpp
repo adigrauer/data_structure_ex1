@@ -14,24 +14,24 @@ int main()
     shared_ptr<int>x3_tree(new int(x3));
     tree1.insert(x3_tree);
 
-    Tree<int> tree2;
+    //Tree<int> tree2;
     int x4 = 4;
     shared_ptr<int>x4_tree(new int(x4));
-    tree2.insert(x4_tree);
+    tree1.insert(x4_tree);
     int x5 = 5;
     shared_ptr<int>x5_tree(new int(x5));
-    tree2.insert(x5_tree);
+    tree1.insert(x5_tree);
     int x6 = 6;
     shared_ptr<int>x6_tree(new int(x6));
-    tree2.insert(x6_tree);
-    
+    tree1.insert(x6_tree);
+    /*
     cout << "Tree1" << endl;
     tree1.print2D(tree1.getRoot());
     cout << endl;
     cout << "Tree2" << endl;
     tree2.print2D(tree2.getRoot());
     cout << endl;
-
+*/
     /*
     Tree<int> merge = mergeTrees(tree1, tree2);
     cout << "mergeTree" << endl;
@@ -67,11 +67,10 @@ int main()
     Tree<int> mergetree = mergeArrayToTree(merge, 0, tree1.getSize()+tree2.getSize()-1);
     cout << "mergeTree- after" << endl;
     mergetree.print2D(mergetree.getRoot());
-    */
+    
     cout << "mergeTrees- final" << endl;
     shared_ptr<Tree<int>> mergefinal = mergeTrees(tree1, tree2);
     mergefinal->print2D(mergefinal->getRoot());
-    /*
     //Inorder traversal for above tree : 4 5 8 11 12 17 18 
     cout << "Inorder traversal for the AVL tree is: \n";  
     tree.inOrder(tree.getRoot()); 
@@ -79,12 +78,30 @@ int main()
     cout << "ReverseInorder traversal for the AVL tree is: \n";  
     tree.reverseInOrder(tree.getRoot());
     cout << "\n";
-*/
+    */
     //tree.remove(x4_tree);  
     //cout << "\nInorder traversal after deletion of node 5: \n";  
     //tree.inOrder(tree.getRoot()); 
     //cout << "\ntree after deletion of node 5: \n"; 
 
+    //Inorder traversal for above tree : 4 5 8 11 12 17 18 
+    cout << "Inorder traversal for the AVL tree is: \n";  
+    //tree.inOrder(tree.getRoot());  
+    cout << "ReverseInorder traversal for the AVL tree is: \n";  
+    //tree.reverseInOrder(tree.getRoot()); 
+    //tree.remove(x3_tree);
+    //tree.print2D(tree.getRoot());
+     cout << "\n";
+    tree1.remove(x4_tree);
+    tree1.print2D(tree1.getRoot()); 
+    tree1.remove(x5_tree);  
+    tree1.print2D(tree1.getRoot());
+     cout << "\n";
+    tree1.remove(x6_tree);   
+    cout << "\nInorder traversal after deletion of node 4: \n";  
+    //tree.inOrder(tree.getRoot()); 
+    cout << "\ntree after deletion of node 4: \n"; 
+    tree1.print2D(tree1.getRoot());
     return 0;  
 }
 
