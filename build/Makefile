@@ -128,6 +128,102 @@ exe_name/fast:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_name.dir\build.make CMakeFiles/exe_name.dir/build
 .PHONY : exe_name/fast
 
+company.obj: company.cpp.obj
+.PHONY : company.obj
+
+# target to build an object file
+company.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_name.dir\build.make CMakeFiles/exe_name.dir/company.cpp.obj
+.PHONY : company.cpp.obj
+
+company.i: company.cpp.i
+.PHONY : company.i
+
+# target to preprocess a source file
+company.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_name.dir\build.make CMakeFiles/exe_name.dir/company.cpp.i
+.PHONY : company.cpp.i
+
+company.s: company.cpp.s
+.PHONY : company.s
+
+# target to generate assembly for a file
+company.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_name.dir\build.make CMakeFiles/exe_name.dir/company.cpp.s
+.PHONY : company.cpp.s
+
+employeeByID.obj: employeeByID.cpp.obj
+.PHONY : employeeByID.obj
+
+# target to build an object file
+employeeByID.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_name.dir\build.make CMakeFiles/exe_name.dir/employeeByID.cpp.obj
+.PHONY : employeeByID.cpp.obj
+
+employeeByID.i: employeeByID.cpp.i
+.PHONY : employeeByID.i
+
+# target to preprocess a source file
+employeeByID.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_name.dir\build.make CMakeFiles/exe_name.dir/employeeByID.cpp.i
+.PHONY : employeeByID.cpp.i
+
+employeeByID.s: employeeByID.cpp.s
+.PHONY : employeeByID.s
+
+# target to generate assembly for a file
+employeeByID.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_name.dir\build.make CMakeFiles/exe_name.dir/employeeByID.cpp.s
+.PHONY : employeeByID.cpp.s
+
+employeeBySalary.obj: employeeBySalary.cpp.obj
+.PHONY : employeeBySalary.obj
+
+# target to build an object file
+employeeBySalary.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_name.dir\build.make CMakeFiles/exe_name.dir/employeeBySalary.cpp.obj
+.PHONY : employeeBySalary.cpp.obj
+
+employeeBySalary.i: employeeBySalary.cpp.i
+.PHONY : employeeBySalary.i
+
+# target to preprocess a source file
+employeeBySalary.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_name.dir\build.make CMakeFiles/exe_name.dir/employeeBySalary.cpp.i
+.PHONY : employeeBySalary.cpp.i
+
+employeeBySalary.s: employeeBySalary.cpp.s
+.PHONY : employeeBySalary.s
+
+# target to generate assembly for a file
+employeeBySalary.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_name.dir\build.make CMakeFiles/exe_name.dir/employeeBySalary.cpp.s
+.PHONY : employeeBySalary.cpp.s
+
+system.obj: system.cpp.obj
+.PHONY : system.obj
+
+# target to build an object file
+system.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_name.dir\build.make CMakeFiles/exe_name.dir/system.cpp.obj
+.PHONY : system.cpp.obj
+
+system.i: system.cpp.i
+.PHONY : system.i
+
+# target to preprocess a source file
+system.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_name.dir\build.make CMakeFiles/exe_name.dir/system.cpp.i
+.PHONY : system.cpp.i
+
+system.s: system.cpp.s
+.PHONY : system.s
+
+# target to generate assembly for a file
+system.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_name.dir\build.make CMakeFiles/exe_name.dir/system.cpp.s
+.PHONY : system.cpp.s
+
 testStruct.obj: testStruct.cpp.obj
 .PHONY : testStruct.obj
 
@@ -161,6 +257,18 @@ help:
 	@echo ... edit_cache
 	@echo ... rebuild_cache
 	@echo ... exe_name
+	@echo ... company.obj
+	@echo ... company.i
+	@echo ... company.s
+	@echo ... employeeByID.obj
+	@echo ... employeeByID.i
+	@echo ... employeeByID.s
+	@echo ... employeeBySalary.obj
+	@echo ... employeeBySalary.i
+	@echo ... employeeBySalary.s
+	@echo ... system.obj
+	@echo ... system.i
+	@echo ... system.s
 	@echo ... testStruct.obj
 	@echo ... testStruct.i
 	@echo ... testStruct.s

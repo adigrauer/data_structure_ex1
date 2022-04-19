@@ -1,15 +1,17 @@
 #ifndef EMPLOYEE_BY_ID_H
 #define EMPLOYEE_BY_ID_H
 
-#include "EmployeeBySalary.h"
-#include "Company.h"
+#include "employeeBySalary.h"
+#include "company.h"
 #include <memory>
 
 using std::shared_ptr;
 
+class Company;
+
 class EmployeeByID{
     private:
-        int ID;
+        int id;
         shared_ptr<EmployeeBySalary> ptr_salary_employee;
         shared_ptr<Company> ptr_my_company;
 

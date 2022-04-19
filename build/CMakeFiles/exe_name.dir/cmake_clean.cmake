@@ -1,4 +1,12 @@
 file(REMOVE_RECURSE
+  "CMakeFiles/exe_name.dir/company.cpp.obj"
+  "CMakeFiles/exe_name.dir/company.cpp.obj.d"
+  "CMakeFiles/exe_name.dir/employeeByID.cpp.obj"
+  "CMakeFiles/exe_name.dir/employeeByID.cpp.obj.d"
+  "CMakeFiles/exe_name.dir/employeeBySalary.cpp.obj"
+  "CMakeFiles/exe_name.dir/employeeBySalary.cpp.obj.d"
+  "CMakeFiles/exe_name.dir/system.cpp.obj"
+  "CMakeFiles/exe_name.dir/system.cpp.obj.d"
   "CMakeFiles/exe_name.dir/testStruct.cpp.obj"
   "CMakeFiles/exe_name.dir/testStruct.cpp.obj.d"
   "exe_name.exe"

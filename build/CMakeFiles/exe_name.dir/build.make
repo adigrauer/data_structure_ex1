@@ -82,19 +82,83 @@ CMakeFiles/exe_name.dir/testStruct.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/exe_name.dir/testStruct.cpp.s"
 	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\testStruct.cpp -o CMakeFiles\exe_name.dir\testStruct.cpp.s
 
+CMakeFiles/exe_name.dir/employeeBySalary.cpp.obj: CMakeFiles/exe_name.dir/flags.make
+CMakeFiles/exe_name.dir/employeeBySalary.cpp.obj: ../employeeBySalary.cpp
+CMakeFiles/exe_name.dir/employeeBySalary.cpp.obj: CMakeFiles/exe_name.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Building CXX object CMakeFiles/exe_name.dir/employeeBySalary.cpp.obj"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/exe_name.dir/employeeBySalary.cpp.obj -MF CMakeFiles\exe_name.dir\employeeBySalary.cpp.obj.d -o CMakeFiles\exe_name.dir\employeeBySalary.cpp.obj -c C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\employeeBySalary.cpp
+
+CMakeFiles/exe_name.dir/employeeBySalary.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/exe_name.dir/employeeBySalary.cpp.i"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\employeeBySalary.cpp > CMakeFiles\exe_name.dir\employeeBySalary.cpp.i
+
+CMakeFiles/exe_name.dir/employeeBySalary.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/exe_name.dir/employeeBySalary.cpp.s"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\employeeBySalary.cpp -o CMakeFiles\exe_name.dir\employeeBySalary.cpp.s
+
+CMakeFiles/exe_name.dir/employeeByID.cpp.obj: CMakeFiles/exe_name.dir/flags.make
+CMakeFiles/exe_name.dir/employeeByID.cpp.obj: ../employeeByID.cpp
+CMakeFiles/exe_name.dir/employeeByID.cpp.obj: CMakeFiles/exe_name.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_3) "Building CXX object CMakeFiles/exe_name.dir/employeeByID.cpp.obj"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/exe_name.dir/employeeByID.cpp.obj -MF CMakeFiles\exe_name.dir\employeeByID.cpp.obj.d -o CMakeFiles\exe_name.dir\employeeByID.cpp.obj -c C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\employeeByID.cpp
+
+CMakeFiles/exe_name.dir/employeeByID.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/exe_name.dir/employeeByID.cpp.i"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\employeeByID.cpp > CMakeFiles\exe_name.dir\employeeByID.cpp.i
+
+CMakeFiles/exe_name.dir/employeeByID.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/exe_name.dir/employeeByID.cpp.s"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\employeeByID.cpp -o CMakeFiles\exe_name.dir\employeeByID.cpp.s
+
+CMakeFiles/exe_name.dir/company.cpp.obj: CMakeFiles/exe_name.dir/flags.make
+CMakeFiles/exe_name.dir/company.cpp.obj: ../company.cpp
+CMakeFiles/exe_name.dir/company.cpp.obj: CMakeFiles/exe_name.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_4) "Building CXX object CMakeFiles/exe_name.dir/company.cpp.obj"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/exe_name.dir/company.cpp.obj -MF CMakeFiles\exe_name.dir\company.cpp.obj.d -o CMakeFiles\exe_name.dir\company.cpp.obj -c C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\company.cpp
+
+CMakeFiles/exe_name.dir/company.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/exe_name.dir/company.cpp.i"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\company.cpp > CMakeFiles\exe_name.dir\company.cpp.i
+
+CMakeFiles/exe_name.dir/company.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/exe_name.dir/company.cpp.s"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\company.cpp -o CMakeFiles\exe_name.dir\company.cpp.s
+
+CMakeFiles/exe_name.dir/system.cpp.obj: CMakeFiles/exe_name.dir/flags.make
+CMakeFiles/exe_name.dir/system.cpp.obj: ../system.cpp
+CMakeFiles/exe_name.dir/system.cpp.obj: CMakeFiles/exe_name.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_5) "Building CXX object CMakeFiles/exe_name.dir/system.cpp.obj"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/exe_name.dir/system.cpp.obj -MF CMakeFiles\exe_name.dir\system.cpp.obj.d -o CMakeFiles\exe_name.dir\system.cpp.obj -c C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\system.cpp
+
+CMakeFiles/exe_name.dir/system.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/exe_name.dir/system.cpp.i"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\system.cpp > CMakeFiles\exe_name.dir\system.cpp.i
+
+CMakeFiles/exe_name.dir/system.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/exe_name.dir/system.cpp.s"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\system.cpp -o CMakeFiles\exe_name.dir\system.cpp.s
+
 # Object files for target exe_name
 exe_name_OBJECTS = \
-"CMakeFiles/exe_name.dir/testStruct.cpp.obj"
+"CMakeFiles/exe_name.dir/testStruct.cpp.obj" \
+"CMakeFiles/exe_name.dir/employeeBySalary.cpp.obj" \
+"CMakeFiles/exe_name.dir/employeeByID.cpp.obj" \
+"CMakeFiles/exe_name.dir/company.cpp.obj" \
+"CMakeFiles/exe_name.dir/system.cpp.obj"
 
 # External object files for target exe_name
 exe_name_EXTERNAL_OBJECTS =
 
 exe_name.exe: CMakeFiles/exe_name.dir/testStruct.cpp.obj
+exe_name.exe: CMakeFiles/exe_name.dir/employeeBySalary.cpp.obj
+exe_name.exe: CMakeFiles/exe_name.dir/employeeByID.cpp.obj
+exe_name.exe: CMakeFiles/exe_name.dir/company.cpp.obj
+exe_name.exe: CMakeFiles/exe_name.dir/system.cpp.obj
 exe_name.exe: CMakeFiles/exe_name.dir/build.make
 exe_name.exe: CMakeFiles/exe_name.dir/linklibs.rsp
 exe_name.exe: CMakeFiles/exe_name.dir/objects1.rsp
 exe_name.exe: CMakeFiles/exe_name.dir/link.txt
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_2) "Linking CXX executable exe_name.exe"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --bold --progress-dir=C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Linking CXX executable exe_name.exe"
 	$(CMAKE_COMMAND) -E cmake_link_script CMakeFiles\exe_name.dir\link.txt --verbose=$(VERBOSE)
 
 # Rule to build all files generated by this target.

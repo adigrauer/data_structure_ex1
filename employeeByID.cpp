@@ -1,7 +1,7 @@
-#include "EmployeeByID.h"
+#include "employeeByID.h"
 
 EmployeeByID::EmployeeByID (int id):
-    ID(id),
+    id(id),
     ptr_salary_employee(nullptr),
     ptr_my_company(nullptr)
 {
@@ -9,7 +9,7 @@ EmployeeByID::EmployeeByID (int id):
 
 int EmployeeByID::getID()
 {
-    return this->ID;
+    return this->id;
 }
 
 shared_ptr<EmployeeBySalary> EmployeeByID::getSalaryPtr()
@@ -36,12 +36,12 @@ void EmployeeByID::setCompanyPtr(shared_ptr<Company> new_ptr)
 
 bool operator< (const EmployeeByID& employee_a, const EmployeeByID& employee_b)
 {
-    return employee_a.ID < employee_b.ID;
+    return employee_a.id < employee_b.id;
 }
 
 bool operator== (const EmployeeByID& employee_a, const EmployeeByID& employee_b)
 {
-    return employee_a.ID == employee_b.ID;
+    return employee_a.id == employee_b.id;
 }
 
 bool operator!= (const EmployeeByID& employee_a, const EmployeeByID& employee_b)
