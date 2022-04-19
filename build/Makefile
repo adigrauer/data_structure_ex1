@@ -152,6 +152,30 @@ company.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_name.dir\build.make CMakeFiles/exe_name.dir/company.cpp.s
 .PHONY : company.cpp.s
 
+companyEmployeeByID.obj: companyEmployeeByID.cpp.obj
+.PHONY : companyEmployeeByID.obj
+
+# target to build an object file
+companyEmployeeByID.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_name.dir\build.make CMakeFiles/exe_name.dir/companyEmployeeByID.cpp.obj
+.PHONY : companyEmployeeByID.cpp.obj
+
+companyEmployeeByID.i: companyEmployeeByID.cpp.i
+.PHONY : companyEmployeeByID.i
+
+# target to preprocess a source file
+companyEmployeeByID.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_name.dir\build.make CMakeFiles/exe_name.dir/companyEmployeeByID.cpp.i
+.PHONY : companyEmployeeByID.cpp.i
+
+companyEmployeeByID.s: companyEmployeeByID.cpp.s
+.PHONY : companyEmployeeByID.s
+
+# target to generate assembly for a file
+companyEmployeeByID.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_name.dir\build.make CMakeFiles/exe_name.dir/companyEmployeeByID.cpp.s
+.PHONY : companyEmployeeByID.cpp.s
+
 employeeByID.obj: employeeByID.cpp.obj
 .PHONY : employeeByID.obj
 
@@ -199,6 +223,30 @@ employeeBySalary.s: employeeBySalary.cpp.s
 employeeBySalary.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_name.dir\build.make CMakeFiles/exe_name.dir/employeeBySalary.cpp.s
 .PHONY : employeeBySalary.cpp.s
+
+nonEmptyCompany.obj: nonEmptyCompany.cpp.obj
+.PHONY : nonEmptyCompany.obj
+
+# target to build an object file
+nonEmptyCompany.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_name.dir\build.make CMakeFiles/exe_name.dir/nonEmptyCompany.cpp.obj
+.PHONY : nonEmptyCompany.cpp.obj
+
+nonEmptyCompany.i: nonEmptyCompany.cpp.i
+.PHONY : nonEmptyCompany.i
+
+# target to preprocess a source file
+nonEmptyCompany.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_name.dir\build.make CMakeFiles/exe_name.dir/nonEmptyCompany.cpp.i
+.PHONY : nonEmptyCompany.cpp.i
+
+nonEmptyCompany.s: nonEmptyCompany.cpp.s
+.PHONY : nonEmptyCompany.s
+
+# target to generate assembly for a file
+nonEmptyCompany.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_name.dir\build.make CMakeFiles/exe_name.dir/nonEmptyCompany.cpp.s
+.PHONY : nonEmptyCompany.cpp.s
 
 system.obj: system.cpp.obj
 .PHONY : system.obj
@@ -260,12 +308,18 @@ help:
 	@echo ... company.obj
 	@echo ... company.i
 	@echo ... company.s
+	@echo ... companyEmployeeByID.obj
+	@echo ... companyEmployeeByID.i
+	@echo ... companyEmployeeByID.s
 	@echo ... employeeByID.obj
 	@echo ... employeeByID.i
 	@echo ... employeeByID.s
 	@echo ... employeeBySalary.obj
 	@echo ... employeeBySalary.i
 	@echo ... employeeBySalary.s
+	@echo ... nonEmptyCompany.obj
+	@echo ... nonEmptyCompany.i
+	@echo ... nonEmptyCompany.s
 	@echo ... system.obj
 	@echo ... system.i
 	@echo ... system.s

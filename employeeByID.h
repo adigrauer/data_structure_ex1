@@ -2,30 +2,31 @@
 #define EMPLOYEE_BY_ID_H
 
 #include "employeeBySalary.h"
-#include "company.h"
+#include "nonEmptyCompany.h"
 #include <memory>
 
 using std::shared_ptr;
 
-class Company;
+class NonEmptyCompany;
 
 class EmployeeByID{
     private:
         int id;
+        int grade;
         shared_ptr<EmployeeBySalary> ptr_salary_employee;
-        shared_ptr<Company> ptr_my_company;
+        shared_ptr<NonEmptyCompany> ptr_my_company;
 
     public:
-        EmployeeByID(int id);
+        EmployeeByID(int id, int grade);
         EmployeeByID(const EmployeeByID& employee) = default;
         ~EmployeeByID () = default;
 
         int getID();
         shared_ptr<EmployeeBySalary> getSalaryPtr();
-        shared_ptr<Company> getCompanyPtr();
+        shared_ptr<NonEmptyCompany> getCompanyPtr();
 
         void setSalaryPtr(shared_ptr<EmployeeBySalary> new_ptr);
-        void setCompanyPtr(shared_ptr<Company> new_ptr);
+        void setCompanyPtr(shared_ptr<NonEmptyCompany> new_ptr);
 
         friend bool operator< (const EmployeeByID& employee_a, const EmployeeByID& employee_b);
         friend bool operator== (const EmployeeByID& employee_a, const EmployeeByID& employee_b);

@@ -1,6 +1,6 @@
-CMakeFiles/exe_name.dir/company.cpp.obj: \
- C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\company.cpp \
- C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\company.h \
+CMakeFiles/exe_name.dir/nonEmptyCompany.cpp.obj: \
+ C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\nonEmptyCompany.cpp \
+ C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\nonEmptyCompany.h \
  C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\employeeBySalary.h \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/memory \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/bits/stl_algobase.h \
@@ -109,7 +109,6 @@ CMakeFiles/exe_name.dir/company.cpp.obj: \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/backward/auto_ptr.h \
  C:/TDM-GCC-64/lib/gcc/x86_64-w64-mingw32/10.3.0/include/c++/cstdint \
  C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\employeeByID.h \
- C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\nonEmptyCompany.h \
  C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\companyEmployeeByID.h \
  C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\tree.h \
  C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\treeNode.h \

@@ -10,6 +10,7 @@ using std::endl;
 using std::cout;
 using std::iostream;
 
+
 template<class T>
 class Tree {
     private:
@@ -32,12 +33,12 @@ class Tree {
         
         void insert(shared_ptr<T> to_add);
         void remove(shared_ptr<T> to_remove);
-        void deleteTree ();
         
         void inOrder (shared_ptr<TreeNode<T>> root);
         void reverseInOrder (shared_ptr<TreeNode<T>> root);
         void inOrderToArray (shared_ptr<TreeNode<T>> root, shared_ptr<TreeNode<T>>* array, int* index);
-        
+        void inOrderDataToArray(shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index);
+
         int getSize();
         shared_ptr<TreeNode<T>> getRoot();
         void changeRoot(shared_ptr<TreeNode<T>> new_root);
@@ -79,7 +80,7 @@ void Tree<T>::destroyTree(shared_ptr<TreeNode<T>> root){
     destroyTree(root->getRight());
     root->clearNode();
 }
-    
+  
 template <class T>
 shared_ptr<TreeNode<T>> Tree<T>::getRoot(){
     return this->primary_root;
@@ -370,6 +371,7 @@ void Tree<T>::remove(shared_ptr<T> to_remove)
         createBalance(node_to_remove);
     }
 }
+
 template <class T>
 void Tree<T>::inOrderToArray (shared_ptr<TreeNode<T>> root, shared_ptr<TreeNode<T>>* array, int* index){
     if(root == nullptr){
@@ -383,6 +385,17 @@ void Tree<T>::inOrderToArray (shared_ptr<TreeNode<T>> root, shared_ptr<TreeNode<
     root->changeRight(nullptr);
     root->changeFather(nullptr);
     root->changeHeight(0);
+}
+
+template <class T>
+void Tree<T>::inOrderDataToArray (shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index){
+    if(root == nullptr){
+        return;
+    }
+    inOrderDataToArray(root->getLeft(), array, index);
+    array[*index] = root->getData();
+    (*index)++;
+    inOrderDataToArray(root->getRight(), array, index);
 }
 
 template<class T>

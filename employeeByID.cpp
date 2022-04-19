@@ -1,9 +1,8 @@
 #include "employeeByID.h"
 
-EmployeeByID::EmployeeByID (int id):
+EmployeeByID::EmployeeByID (int id, int grade):
     id(id),
-    ptr_salary_employee(nullptr),
-    ptr_my_company(nullptr)
+    grade(grade)
 {
 }
 
@@ -17,7 +16,7 @@ shared_ptr<EmployeeBySalary> EmployeeByID::getSalaryPtr()
     return this->ptr_salary_employee;
 }
 
-shared_ptr<Company> EmployeeByID::getCompanyPtr()
+shared_ptr<NonEmptyCompany> EmployeeByID::getCompanyPtr()
 {
     return this->ptr_my_company;
 }
@@ -28,7 +27,7 @@ void EmployeeByID::setSalaryPtr(shared_ptr<EmployeeBySalary> new_ptr)
     return;
 }
 
-void EmployeeByID::setCompanyPtr(shared_ptr<Company> new_ptr)
+void EmployeeByID::setCompanyPtr(shared_ptr<NonEmptyCompany> new_ptr)
 {
     ptr_my_company = new_ptr;
     return;

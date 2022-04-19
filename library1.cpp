@@ -17,7 +17,7 @@ StatusType AddEmployee(void *DS, int EmployeeID, int CompanyID, int Salary, int 
 StatusType RemoveCompany(void *DS, int CompanyID){
     return ((System*)DS)->removeCompany(CompanyID);
 }
-
+/*
 StatusType RemoveEmployee(void *DS, int EmployeeID){
     return ((System*)DS)->removeEmployee(EmployeeID);
 }
@@ -66,6 +66,8 @@ StatusType GetNumEmployeesMatching(void *DS, int CompanyID, int MinEmployeeID, i
 }
 
 void Quit(void** DS){
-    ((System*)DS)->quit();
-    delete (System*)DS;
+    ((System*)*DS)->quit();
+    delete (System*)*DS;
+    *DS = nullptr;
 }
+*/

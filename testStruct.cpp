@@ -22,14 +22,23 @@ int main(){
 void testSystem (){
     System system;
     cout << endl;
-    cout << "create system" << endl;
+    cout << "create system- done" << endl;
     cout << endl;
-    system.addCompany(10,10);
+    system.addCompany(1,10);
+    //shared_ptr<Tree<Company>> tree(system.getAllCompaniesTree());
     cout << endl;
-    cout << "add company" << endl;
+    cout << "add company- done" << endl;
+    cout << endl;
+    system.addEmployee(5, 1, 5, 5);
+    system.addEmployee(7, 2, 7, 7);
+    cout << endl;
+    cout << "add employee 5- done" << endl;
+    cout << endl;
+    system.addCompany(2,10);
+    system.systemDestroy();
     cout << endl;
 }
-
+/*
 void testEmployeeById () {
     EmployeeByID Lottem(1);
     EmployeeByID Adi(2);
@@ -51,7 +60,7 @@ void testEmployeeById () {
     }
     cout << "***test EmployeeByID completed***" << endl;
 }
-
+*/
 void testEmployeeBySalary (){
     EmployeeBySalary adi(10, 1);
     EmployeeBySalary gili(13, 2);

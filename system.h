@@ -12,8 +12,11 @@
 
 using std::shared_ptr;
 
+template <class T> class Tree;
 class Company;
 class EmployeeByID;
+class EmployeeBySalary;
+class NonEmptyCompany;
 
 class System{
         private:
@@ -30,8 +33,8 @@ class System{
         ~System() = default;
         StatusType addCompany(int CompanyID, int Value);
         StatusType addEmployee(int EmployeeID, int CompanyID, int Salary, int Grade);
-        /*
         StatusType removeCompany(int CompanyID);
+        /*
         StatusType removeEmployee(int EmployeeID);
         StatusType getCompanyInfo(int CompanyID, int *Value, int *NumEmployees);
         StatusType getEmployeeInfo(int EmployeeID, int *EmployerID, int *Salary, int *Grade);
@@ -46,7 +49,15 @@ class System{
                 int MinSalary, int MinGrade, int *TotalNumOfEmployees, int *NumOfEmployees);
         void quit();
         */
+
+        //helper functions
+        void updateHighestEarner(shared_ptr<EmployeeBySalary> employee);
+        shared_ptr<Tree<NonEmptyCompany>> getNonEmptyCompanyTree();
+        shared_ptr<Tree<Company>> getAllCompaniesTree();
+        shared_ptr<Tree<EmployeeBySalary>> getAllEmployeesBySalaryTree();
+        shared_ptr<Tree<EmployeeByID>> getAllEmployeesByIdTree();
+        void systemDestroy();
 };
 
-#endif    /* SYSTEM */
+#endif  /* SYSTEM */
 
