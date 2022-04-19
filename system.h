@@ -1,8 +1,10 @@
 #ifndef SYSTEM
 #define SYSTEM
 
-#include "main1.cpp"
-#include "EmployeeByID.cpp"
+#include "library1.h"
+#include "employeeByID.h"
+#include "employeeBySalary.h"
+#include "company.h"
 #include "tree.h"
 #include "treeNode.h"
 
@@ -13,6 +15,7 @@ class System{
                 int num_all_employees;
                 shared_ptr<Tree<EmployeeByID>> All_employees_by_id_tree;
                 shared_ptr<Tree<EmployeeBySalary>> all_employeesB_byS_salaryT_tree;
+                shared_ptr<Tree<Company>> all_companies;
         public:
 };
 

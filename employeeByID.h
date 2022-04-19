@@ -34,4 +34,4 @@ bool operator<= (const EmployeeByID& employee_a, const EmployeeByID& employee_b)
 bool operator>= (const EmployeeByID& employee_a, const EmployeeByID& employee_b);
 bool operator> (const EmployeeByID& employee_a, const EmployeeByID& employee_b);
 
-#endif /*EMPLOYEE_BY_ID_H*/
+#endif /* EMPLOYEE_BY_ID_H */
