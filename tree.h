@@ -64,7 +64,7 @@ Tree<T> mergeArrayToTree(shared_ptr<TreeNode<T>>* merge_array, int start, int en
 template <class T>
 shared_ptr<TreeNode<T>> mergeArrayToTreeAux(shared_ptr<TreeNode<T>>* merge_array,shared_ptr<TreeNode<T>> father, int start, int end);
 template <class T>
-shared_ptr<Tree<T>> mergeTrees(Tree<T> tree_a, Tree<T> tree_b);
+shared_ptr<Tree<T>> mergeTrees(shared_ptr<Tree<T>> tree_a, shared_ptr<Tree<T>> tree_b);
 
 
 template <class T>
@@ -504,21 +504,21 @@ shared_ptr<TreeNode<T>> mergeArrayToTreeAux(shared_ptr<TreeNode<T>>* merge_array
 }
 
 template<class T>
-shared_ptr<Tree<T>> mergeTrees(Tree<T> tree_a, Tree<T> tree_b){
+shared_ptr<Tree<T>> mergeTrees(shared_ptr<Tree<T>> tree_a, shared_ptr<Tree<T>> tree_b){
     //one of the trees is empty
-    if (tree_a.getRoot() == nullptr){
+    if (tree_a->getRoot() == nullptr){
         return tree_b;
     }
-    if (tree_b.getRoot() == nullptr){
+    if (tree_b->getRoot() == nullptr){
         return tree_a;
     }
-    shared_ptr<TreeNode<T>>* array_a = tree_a.TreeToArray();
+    shared_ptr<TreeNode<T>>* array_a = tree_a->TreeToArray();
     tree_a->destroyTree(tree_a->getRoot());
-    shared_ptr<TreeNode<T>>* array_b = tree_b.TreeToArray();
+    shared_ptr<TreeNode<T>>* array_b = tree_b->TreeToArray();
     tree_b->destroyTree(tree_b->getRoot());
     shared_ptr<TreeNode<T>>* merge_array = mergeArrays(array_a, array_b, tree_a.getSize(), tree_b.getSize());
     Tree<T> merge_tree = mergeArrayToTree(merge_array, 0, tree_a.getSize()+tree_b.getSize()-1);
-    merge_tree.changeSize(tree_a.getSize()+tree_b.getSize());
+    merge_tree.changeSize(tree_a->getSize()+tree_b->getSize());
     shared_ptr<Tree<T>> tree(new Tree<T>(merge_tree));
     return tree;
 }
