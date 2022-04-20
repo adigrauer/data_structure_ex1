@@ -56,9 +56,9 @@ void NonEmptyCompany::setHighestSalary(int new_salary)
     salary_of_highest_earner = new_salary;
 }
 
-void NonEmptyCompany::setValue(int new_value)
+void NonEmptyCompany::setValue(int to_add)
 {
-    value = new_value;
+    value = value + to_add;
 }
 
 void NonEmptyCompany::setNumEmployees(int to_change)
