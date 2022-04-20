@@ -389,7 +389,7 @@ StatusType System::getAllEmployeesBySalary(int CompanyID, int **Employees, int *
     int j = 0;
     for (int i = size-1 ; i>=0; i--)
     {
-        array[i] = tree_array[i]->getID();
+        array[j] = tree_array[i]->getID();
         j++;
     }
     delete[] tree_array;
@@ -434,6 +434,7 @@ StatusType System::getNumEmployeesMatching(int CompanyID, int MinEmployeeID, int
     {
         return INVALID_INPUT;  
     }
+    *NumOfEmployees = 0;
     shared_ptr<EmployeeByID> min_employee(new EmployeeByID(MinEmployeeID, 0));
     shared_ptr<EmployeeByID> max_employee(new EmployeeByID(MaxEmployeeId, 0));
     if (CompanyID < 0)
@@ -450,6 +451,7 @@ StatusType System::getNumEmployeesMatching(int CompanyID, int MinEmployeeID, int
                 (*NumOfEmployees)++;
             }
         }
+        delete [] data_array;
         return SUCCESS;
     }
 
@@ -472,6 +474,7 @@ StatusType System::getNumEmployeesMatching(int CompanyID, int MinEmployeeID, int
                 (*NumOfEmployees)++;
             }
         }
+        delete [] data_array;
         return SUCCESS;
 
     }
