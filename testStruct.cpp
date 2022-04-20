@@ -16,8 +16,8 @@ int main(){
     //testEmployeeById();
     //testCompany();
     //testEmployeeBySalary();
-    testSystemAdi ();
-    //testSystemLottem ();
+    //testSystemAdi ();
+    testSystemLottem ();
     return 0;
 }
 
@@ -26,13 +26,24 @@ void testSystemAdi (){
     cout << endl;
     cout << "create system- done" << endl;
     cout << endl;
-    system.addCompany(1,10);
-    system.addCompany(2,10);
-    system.addEmployee(5, 1, 5, 5);
-    system.addEmployee(7, 2, 7, 7);
+    system.addCompany(1,1);
+    system.addCompany(2,11);
+    system.addEmployee(5, 2, 5, 5);
+    system.addEmployee(7, 1, 7, 7);
+    system.acquireCompany(2,1,1);
     int company_id;
     int grade;
     int salary;
+    int value;
+    int num_employees;
+    system.getEmployeeInfo(7, &company_id, &salary, &grade);
+    system.getCompanyInfo(2, &value, &num_employees);
+    system.systemDestroy();
+    cout << "doneeeeeeeee" << endl;
+    cout << endl;
+    /*
+    system.increaseCompanyValue(1, 10);
+    system.increaseCompanyValue(2, 20);
     system.getEmployeeInfo(5, &company_id, &salary, &grade);
     cout << endl;
     cout << "get employee 5 info- done" << endl;
@@ -41,14 +52,18 @@ void testSystemAdi (){
     cout << "salary = " << salary << endl;
     cout << endl;
     cout << endl;
-    system.getEmployeeInfo(7, &company_id, &salary, &grade);
+    
     cout << "get employee 7 info- done" << endl;
     cout << "company id = " << company_id << endl;
     cout << "grade = " << grade << endl;
     cout << "salary = " << salary << endl;
     cout << endl;
+    system.removeEmployee(5);
+    system.removeEmployee(7);
+    cout << "remove 5,7 employees- done" << endl;
     system.systemDestroy();
     cout << endl;
+    */
 }
 
 void testSystemLottem (){
@@ -67,8 +82,6 @@ void testSystemLottem (){
     cout << "add employee 5- done" << endl;
     cout << endl;
     system.addCompany(2,10);
-
-    //test lottem added
     int value;
     int num_employees;
     system.getCompanyInfo(2, &value, &num_employees);
@@ -95,8 +108,49 @@ void testSystemLottem (){
     }
     cout << "getheighestEarner - done" << endl;
     cout << endl;
-    // lottem added until here
+    int x;
+    int* array = &x;
+    int employees;
+    system.getAllEmployeesBySalary(-1, &array, &employees);
+    if(array[0] != 5 || array[1] != 7)
+    {
+        free(array);
+        return;
+    }
+    free(array);
+    system.getAllEmployeesBySalary(2, &array, &employees);
+    if(array[0] != 7)
+    {
+        free(array);
+        return;
+    }
+    free(array);
+    cout << "getAllEmployeesBySalary - done" << endl;
+    cout << endl;
 
+    //test gethighestearnerincompanies
+    int y;
+    int* array2 = &y;
+    system.getHighestEarnerInEachCompany(2, &array2);
+    if (array2[0] != 5 || array2[1] != 7)
+    {
+        free(array2);
+        return;
+    }
+    free(array2);
+
+    cout << "getHighestEarnerInEachCompany - done" << endl;
+    cout << endl;
+    
+    int total;
+    int total_above_salary;
+    system.getNumEmployeesMatching(-1, 1, 10, 50, 0, &total, &total_above_salary);
+    if (total != 2 || total_above_salary != 1)
+    {
+        return;
+    }
+    cout << "getNumEmployeesMatching - done" << endl;
+    cout << endl;
     system.systemDestroy();
     cout << endl;
 }

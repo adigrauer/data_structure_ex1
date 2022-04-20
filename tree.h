@@ -449,10 +449,15 @@ void Tree<T>::minMaxInOrderDataToArray (shared_ptr<TreeNode<T>> root, shared_ptr
     if(root == nullptr){
         return;
     }
-    if(root->getData() < min)
+    if(*(root->getData()) > *max)
+    {
+         return;
+    }
+    if(*(root->getData()) < *min)
     { 
         return;
-    } if(root->getData()>max){ return;}
+    } 
+    
     minMaxInOrderDataToArray(root->getLeft(), array, index, min, max);
     array[*index] = root->getData();
     (*index)++;
@@ -472,7 +477,7 @@ shared_ptr<TreeNode<T>>* mergeArrays(shared_ptr<TreeNode<T>>* array_a, shared_pt
     shared_ptr<TreeNode<T>>* merge_array = new shared_ptr<TreeNode<T>>[size_a + size_b];
     int index_a = 0, index_b = 0, index_merge = 0;
     while(index_a < size_a && index_b < size_b){
-        if(*(array_a[index_a]->getData()) < *(array_b[index_b]->getData())){
+        if(array_a[index_a]->getData() < array_b[index_b]->getData()){
             merge_array[index_merge] = array_a[index_a];
             index_a++;
         }
@@ -530,9 +535,9 @@ shared_ptr<Tree<T>> mergeTrees(shared_ptr<Tree<T>> tree_a, shared_ptr<Tree<T>> t
         return tree_a;
     }
     shared_ptr<TreeNode<T>>* array_a = tree_a->TreeToArray();
-    tree_a->destroyTree(tree_a->getRoot());
+    //tree_a->destroyTree(tree_a->getRoot());
     shared_ptr<TreeNode<T>>* array_b = tree_b->TreeToArray();
-    tree_b->destroyTree(tree_b->getRoot());
+    //tree_b->destroyTree(tree_b->getRoot());
     shared_ptr<TreeNode<T>>* merge_array = mergeArrays(array_a, array_b, tree_a->getSize(), tree_b->getSize());
     Tree<T> merge_tree = mergeArrayToTree(merge_array, 0, tree_a->getSize()+tree_b->getSize()-1);
     merge_tree.changeSize(tree_a->getSize()+tree_b->getSize());
