@@ -48,6 +48,7 @@ class NonEmptyCompany{
 
         //helper functions
         void updateHighestEarner(shared_ptr<EmployeeBySalary> employee);
+        void changeHighestEarnerBedoreRemove(shared_ptr<EmployeeBySalary> employee);
 
         friend bool operator< (const NonEmptyCompany& company_a, const NonEmptyCompany& company_b);
         friend bool operator== (const NonEmptyCompany& company_a, const NonEmptyCompany& company_b);

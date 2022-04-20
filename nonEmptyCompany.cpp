@@ -113,9 +113,9 @@ void NonEmptyCompany::updateHighestEarner(shared_ptr<EmployeeBySalary> employee)
         id_highest_earner = employee->getID();
     }
 }
-/*
-void NonEmptyCompany::destroy(){
-    employees_by_salary->destroyTree(employees_by_salary->getRoot());
-    employees_by_id->destroyTree(employees_by_id->getRoot());
+
+void NonEmptyCompany::changeHighestEarnerBedoreRemove(shared_ptr<EmployeeBySalary> employee){
+    shared_ptr<EmployeeBySalary> next_highest_employee = employees_by_salary->find(employee)->getFather()->getData();
+    id_highest_earner = next_highest_employee->getID();
+    salary_of_highest_earner = next_highest_employee->getSalary();
 }
-*/
