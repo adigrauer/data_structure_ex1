@@ -319,6 +319,8 @@ void Tree<T>::remove(shared_ptr<T> to_remove)
         else 
         {
             primary_root = nullptr;
+            size--;
+            return;
         }
         
     }
