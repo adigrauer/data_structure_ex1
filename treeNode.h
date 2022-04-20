@@ -32,8 +32,9 @@ class TreeNode {
         void changeRight(shared_ptr<TreeNode<T>> new_right);
         void changeFather(shared_ptr<TreeNode<T>> new_father);
         void changeHeight(int new_height);
-        
+
         int max(int height_a, int height_b);
+
         void updateHeight();
         bool operator <(shared_ptr<T> to_compare);
         bool operator >(shared_ptr<T> to_compare);
@@ -108,6 +109,7 @@ template<class T>
 int TreeNode<T>::max(int hight_a, int hight_b){
     return hight_a > hight_b ? hight_a : hight_b;
 }
+
 
 template<class T>
 void TreeNode<T>::updateHeight(){

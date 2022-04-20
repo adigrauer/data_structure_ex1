@@ -35,6 +35,7 @@ class Tree {
         void remove(shared_ptr<T> to_remove);
         
         void inOrder (shared_ptr<TreeNode<T>> root);
+        //void inOrderUpdateData (shared_ptr<TreeNode<T>> root, shared_ptr<S> to_update);
         void reverseInOrder (shared_ptr<TreeNode<T>> root);
         void inOrderToArray (shared_ptr<TreeNode<T>> root, shared_ptr<TreeNode<T>>* array, int* index);
         void inOrderDataToArray(shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index);
@@ -287,14 +288,13 @@ int Tree<T>::checkBalance (shared_ptr<TreeNode<T>> node)
 
 template<class T>
 void Tree<T>::inOrder (shared_ptr<TreeNode<T>> root){
-    if(root == NULL){
+    if(root == nullptr){
         return;
     }
     inOrder(root->getLeft());
     cout<<*(root->getData());
     inOrder(root->getRight());
 }
-
 
 template<class T>
 void Tree<T>::remove(shared_ptr<T> to_remove)

@@ -300,14 +300,30 @@ StatusType System::acquireCompany(int AcquirerID, int TargetID, double Factor){
     int new_salary_of_highest_earner = max(acquirer_all_company_node->getData()->getNonEmptyCompany()->getHighestSalary(), target_all_company_node->getData()->getNonEmptyCompany()->getHighestSalary());
     int new_num_employees = acquirer_all_company_node->getData()->getNonEmptyCompany()->getNumEmployees() + target_all_company_node->getData()->getNonEmptyCompany()->getNumEmployees();
     
+    //create non empty new company
+    shared_ptr<NonEmptyCompany> new_non_empty_company(new NonEmptyCompany(AcquirerID, new_value, new_id_highest_earner, new_salary_of_highest_earner, new_num_employees));
+
+/*
+    //update all target employyes company ptr
+    int size = target_all_company_node->getData()->getNonEmptyCompany()->getNumEmployees();
+    int index = 0;
+    shared_ptr<TreeNode<EmployeeByID>>* merge_array = new shared_ptr<TreeNode<EmployeeByID>>[size];
+    target_all_company_node->getData()->getNonEmptyCompany()->getEmployeesByIDTree()->inOrderToArray (target_all_company_node->getData()->getNonEmptyCompany()->getEmployeesByIDTree()->getRoot(), merge_array, &index);
+    for(int i = 0; i < size; i++){
+        merge_array[i]->getData()->setCompanyPtr(new_non_empty_company);
+    }
+    Tree<EmployeeByID> 
+    mergeArrayToTree(shared_ptr<TreeNode<T>>* merge_array, int start, int end);
+*/
+
     //create new id and salary trees of the merge company
     shared_ptr<Tree<EmployeeByID>> id_merge_tree(new Tree<EmployeeByID>);
     id_merge_tree = mergeTrees(acquirer_all_company_node->getData()->getNonEmptyCompany()->getEmployeesByIDTree(), target_all_company_node->getData()->getNonEmptyCompany()->getEmployeesByIDTree());
     shared_ptr<Tree<EmployeeBySalary>> salary_merge_tree(new Tree<EmployeeBySalary>);
     salary_merge_tree = mergeTrees(acquirer_all_company_node->getData()->getNonEmptyCompany()->getEmployeesBySalaryTree(), target_all_company_node->getData()->getNonEmptyCompany()->getEmployeesBySalaryTree());
+
     
     //create new non_empty_company to add the non empty companise tree
-    shared_ptr<NonEmptyCompany> new_non_empty_company(new NonEmptyCompany(AcquirerID, new_value, new_id_highest_earner, new_salary_of_highest_earner, new_num_employees));
     new_non_empty_company->setEmployeesByIDTree(id_merge_tree);
     new_non_empty_company->setEmployeesBySalaryTree(salary_merge_tree);
     shared_ptr<NonEmptyCompany> acquirer_non_empty_company_to_remove(new NonEmptyCompany(AcquirerID, 0)); 
