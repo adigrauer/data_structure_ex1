@@ -516,8 +516,8 @@ shared_ptr<Tree<T>> mergeTrees(shared_ptr<Tree<T>> tree_a, shared_ptr<Tree<T>> t
     tree_a->destroyTree(tree_a->getRoot());
     shared_ptr<TreeNode<T>>* array_b = tree_b->TreeToArray();
     tree_b->destroyTree(tree_b->getRoot());
-    shared_ptr<TreeNode<T>>* merge_array = mergeArrays(array_a, array_b, tree_a.getSize(), tree_b.getSize());
-    Tree<T> merge_tree = mergeArrayToTree(merge_array, 0, tree_a.getSize()+tree_b.getSize()-1);
+    shared_ptr<TreeNode<T>>* merge_array = mergeArrays(array_a, array_b, tree_a->getSize(), tree_b->getSize());
+    Tree<T> merge_tree = mergeArrayToTree(merge_array, 0, tree_a->getSize()+tree_b->getSize()-1);
     merge_tree.changeSize(tree_a->getSize()+tree_b->getSize());
     shared_ptr<Tree<T>> tree(new Tree<T>(merge_tree));
     return tree;
