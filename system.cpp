@@ -160,7 +160,7 @@ StatusType System::promoteEmployee(int EmployeeID, int SalaryIncrease, int BumpG
     }
     return SUCCESS;
 }
-
+/*
 StatusType System::hireEmployee(int EmployeeID, int NewCompanyID){
     if(this == nullptr || EmployeeID <= 0 || NewCompanyID <= 0 )
     {
@@ -190,7 +190,7 @@ StatusType System::hireEmployee(int EmployeeID, int NewCompanyID){
     //is there a chance remove or add will fail? if so need to add
     return SUCCESS;
 }
-/*
+
 StatusType System::acquireCompany(int AcquirerID, int TargetID, double Factor){
 
 }
@@ -220,7 +220,51 @@ StatusType System::getHighestEarner(int CompanyID, int *EmployeeID){
 }
 
 StatusType System::getAllEmployeesBySalary(int CompanyID, int **Employees, int *NumOfEmployees){
-
+    if(this == nullptr || Employees == nullptr || NumOfEmployees == nullptr || CompanyID == 0)
+    {
+        return INVALID_INPUT;  
+    }
+    int size = 0;
+    shared_ptr<EmployeeBySalary>* tree_array;
+    if (CompanyID < 0)
+    {
+        if (num_all_employees == 0)
+        {
+            return FAILURE;
+        }
+        size = num_all_employees;
+        tree_array = new shared_ptr<EmployeeBySalary>[size];
+        int index = 0;
+        all_employees_by_salary_tree->inOrderDataToArray(all_employees_by_salary_tree->getRoot(), tree_array, &index);
+    }
+    else 
+    {
+        shared_ptr<NonEmptyCompany> company_to_find(new NonEmptyCompany(CompanyID, 0));
+        shared_ptr<TreeNode<NonEmptyCompany>>company = non_empty_companies->find(company_to_find);
+        if (company == nullptr)
+        {
+            return FAILURE;
+        }
+        size = company->getData()->getNumEmployees();
+        tree_array = new shared_ptr<EmployeeBySalary>[size];
+        int index = 0;
+        company->getData()->getEmployeesBySalaryTree()->inOrderDataToArray(company->getData()->getEmployeesBySalaryTree()->getRoot(), tree_array, &index);
+    }
+    int* array = (int*)malloc(size*sizeof(int));
+    if (array == NULL)
+    {
+        return ALLOCATION_ERROR;
+    }
+    int j = 0;
+    for (int i = size-1; i>=0; i--)
+    {
+        array[j] = tree_array[i]->getID();
+        j++;
+    }
+    delete[] tree_array;
+    *Employees = array;
+    *NumOfEmployees = size;
+    return SUCCESS;
 }
 /*
 StatusType System::getHighestEarnerInEachCompany(int NumOfCompanies, int **Employees){

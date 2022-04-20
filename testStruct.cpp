@@ -51,6 +51,18 @@ void testSystem (){
     cout << "getPromoteEmployee - done" << endl;
     cout << endl;
 
+    int heighst_earner;
+    system.getHighestEarner(-1, &heighst_earner);
+    if (heighst_earner != 5){
+        return;
+    }
+    system.addEmployee(7, 2, 7, 7);
+    system.getHighestEarner(2, &heighst_earner);
+    if (heighst_earner != 7){
+        return;
+    }
+    cout << "getheighestEarner - done" << endl;
+    cout << endl;
     // lottem added until here
 
     system.systemDestroy();
