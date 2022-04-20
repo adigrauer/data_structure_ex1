@@ -19,7 +19,7 @@ class Company{
         shared_ptr<NonEmptyCompany> non_empty_company;
     public:
         /* Company C'tor */
-        Company(int id, int value, int id_highest_earner=0, int salary_of_highest_earner=0, int num_employees=0);
+        Company(int id, int value);
         
         /* Company copy C'tor */
         Company(const Company& company) = default;

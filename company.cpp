@@ -1,6 +1,6 @@
 #include "company.h"
 
-Company::Company(int id, int value, int id_highest_earner, int salary_of_highest_earner, int num_employees):
+Company::Company(int id, int value):
     company_id(id),
     value(value)
 {
