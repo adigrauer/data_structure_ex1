@@ -230,7 +230,7 @@ shared_ptr<TreeNode<T>> Tree<T>::findMinimalNode (shared_ptr<TreeNode<T>> root)
     if(root == nullptr){
         return nullptr;
     }
-    while (root->getLeft() != NULL){
+    while (root->getLeft() != nullptr){
         root = root->getLeft();
     }
     return root;
