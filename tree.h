@@ -38,9 +38,10 @@ class Tree {
         void reverseInOrder (shared_ptr<TreeNode<T>> root);
         void inOrderToArray (shared_ptr<TreeNode<T>> root, shared_ptr<TreeNode<T>>* array, int* index);
         void inOrderDataToArray(shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index);
-        void reverseInOrderDataToArray(shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index);
+        //void reverseInOrderDataToArray(shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index);
         void LimitedinOrderDataToArray (shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index, int* limit);
-        
+        void minMaxInOrderDataToArray (shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index, shared_ptr<T> min, shared_ptr<T> max);
+
         int getSize();
         shared_ptr<TreeNode<T>> getRoot();
         void changeRoot(shared_ptr<TreeNode<T>> new_root);
@@ -404,7 +405,7 @@ void Tree<T>::inOrderDataToArray (shared_ptr<TreeNode<T>> root, shared_ptr<T>* a
     (*index)++;
     inOrderDataToArray(root->getRight(), array, index);
 }
-
+/*
 template<class T>
 void Tree<T>::reverseInOrderDataToArray(shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index)
 {
@@ -418,7 +419,7 @@ void Tree<T>::reverseInOrderDataToArray(shared_ptr<TreeNode<T>> root, shared_ptr
     }
     delete[] data_array;
 }
-
+*/
 template<class T>
 void Tree<T>::reverseInOrder (shared_ptr<TreeNode<T>> root){
     if(root == NULL){
@@ -440,6 +441,22 @@ void Tree<T>::LimitedinOrderDataToArray (shared_ptr<TreeNode<T>> root, shared_pt
     (*index)++;
     (*limit)--;
     LimitedinOrderDataToArray(root->getRight(), array, index, limit);
+}
+
+template <class T>
+void Tree<T>::minMaxInOrderDataToArray (shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index, shared_ptr<T> min, shared_ptr<T> max)
+{
+    if(root == nullptr){
+        return;
+    }
+    if(root->getData() < min)
+    { 
+        return;
+    } if(root->getData()>max){ return;}
+    minMaxInOrderDataToArray(root->getLeft(), array, index, min, max);
+    array[*index] = root->getData();
+    (*index)++;
+    minMaxInOrderDataToArray(root->getRight(), array, index, min, max);
 }
 
 template <class T>
