@@ -123,6 +123,9 @@ StatusType System::removeEmployee(int EmployeeID){
         non_empty_company_node->getEmployeesByIDTree()->remove(employee_id_to_remove);
         non_empty_company_node->setNumEmployees(-1);
         non_empty_companies->remove(non_empty_company_node);
+        shared_ptr<Company> company_to_update(new Company(non_empty_company_node->getID(), 0)); //temp value
+        shared_ptr<TreeNode<Company>> company_to_update_node(all_companies->find(company_to_update));
+        company_to_update_node->getData()->setNonEmptyCompany(nullptr);
     }
     //the company wonwt remain empty adter remove employee
     else{
