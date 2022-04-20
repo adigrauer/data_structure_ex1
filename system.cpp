@@ -72,7 +72,7 @@ StatusType System::addEmployee(int EmployeeID, int CompanyID, int Salary, int Gr
     company_salary_tree->insert(employee_salary_to_add);
     //update company fields
     non_empty_company_node->getData()->updateHighestEarner(employee_salary_to_add);
-    non_empty_company_node->getData()->setNumEmployees();
+    non_empty_company_node->getData()->setNumEmployees(1);
 
     //update system fields
     this->updateHighestEarner(employee_salary_to_add);
@@ -119,7 +119,7 @@ StatusType System::removeEmployee(int EmployeeID){
     //NEED TO CHECK IF BEST EARNEER
     non_empty_company_node->getEmployeesByIDTree()->remove(employee_id_to_remove);
     non_empty_company_node->getEmployeesBySalaryTree()->remove(employee_salary_to_remove);
-
+    non_empty_company_node->setNumEmployees(-1);
     return SUCCESS;
 }
 ////////////////////////////////////////////

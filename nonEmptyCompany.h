@@ -42,7 +42,7 @@ class NonEmptyCompany{
         void setHighestEarner(int new_id);
         void setHighestSalary(int new_salary);
         void setValue(int new_value);
-        void setNumEmployees();
+        void setNumEmployees(int to_change);
         void setEmployeesBySalaryTree(shared_ptr<Tree<EmployeeBySalary>> salary_tree);
         void setEmployeesByIDTree(shared_ptr<Tree<EmployeeByID>> id_tree);
 

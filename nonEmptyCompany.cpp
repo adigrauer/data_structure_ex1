@@ -61,9 +61,9 @@ void NonEmptyCompany::setValue(int new_value)
     value = new_value;
 }
 
-void NonEmptyCompany::setNumEmployees()
+void NonEmptyCompany::setNumEmployees(int to_change)
 {
-   num_employees = num_employees + 1;
+   num_employees = num_employees + to_change;
 }
 
 
