@@ -1,0 +1,37 @@
+[
+{
+  "directory": "C:/Users/adi/Desktop/Adi/Technion/Technion_semester_3/computer_structure/computer_structure_ex1/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe   -g -std=gnu++11 -o CMakeFiles\\exe_name.dir\\system.cpp.obj -c C:\\Users\\adi\\Desktop\\Adi\\Technion\\Technion_semester_3\\computer_structure\\computer_structure_ex1\\system.cpp",
+  "file": "C:/Users/adi/Desktop/Adi/Technion/Technion_semester_3/computer_structure/computer_structure_ex1/system.cpp"
+},
+{
+  "directory": "C:/Users/adi/Desktop/Adi/Technion/Technion_semester_3/computer_structure/computer_structure_ex1/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe   -g -std=gnu++11 -o CMakeFiles\\exe_name.dir\\testStruct.cpp.obj -c C:\\Users\\adi\\Desktop\\Adi\\Technion\\Technion_semester_3\\computer_structure\\computer_structure_ex1\\testStruct.cpp",
+  "file": "C:/Users/adi/Desktop/Adi/Technion/Technion_semester_3/computer_structure/computer_structure_ex1/testStruct.cpp"
+},
+{
+  "directory": "C:/Users/adi/Desktop/Adi/Technion/Technion_semester_3/computer_structure/computer_structure_ex1/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe   -g -std=gnu++11 -o CMakeFiles\\exe_name.dir\\employeeBySalary.cpp.obj -c C:\\Users\\adi\\Desktop\\Adi\\Technion\\Technion_semester_3\\computer_structure\\computer_structure_ex1\\employeeBySalary.cpp",
+  "file": "C:/Users/adi/Desktop/Adi/Technion/Technion_semester_3/computer_structure/computer_structure_ex1/employeeBySalary.cpp"
+},
+{
+  "directory": "C:/Users/adi/Desktop/Adi/Technion/Technion_semester_3/computer_structure/computer_structure_ex1/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe   -g -std=gnu++11 -o CMakeFiles\\exe_name.dir\\employeeByID.cpp.obj -c C:\\Users\\adi\\Desktop\\Adi\\Technion\\Technion_semester_3\\computer_structure\\computer_structure_ex1\\employeeByID.cpp",
+  "file": "C:/Users/adi/Desktop/Adi/Technion/Technion_semester_3/computer_structure/computer_structure_ex1/employeeByID.cpp"
+},
+{
+  "directory": "C:/Users/adi/Desktop/Adi/Technion/Technion_semester_3/computer_structure/computer_structure_ex1/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe   -g -std=gnu++11 -o CMakeFiles\\exe_name.dir\\company.cpp.obj -c C:\\Users\\adi\\Desktop\\Adi\\Technion\\Technion_semester_3\\computer_structure\\computer_structure_ex1\\company.cpp",
+  "file": "C:/Users/adi/Desktop/Adi/Technion/Technion_semester_3/computer_structure/computer_structure_ex1/company.cpp"
+},
+{
+  "directory": "C:/Users/adi/Desktop/Adi/Technion/Technion_semester_3/computer_structure/computer_structure_ex1/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe   -g -std=gnu++11 -o CMakeFiles\\exe_name.dir\\nonEmptyCompany.cpp.obj -c C:\\Users\\adi\\Desktop\\Adi\\Technion\\Technion_semester_3\\computer_structure\\computer_structure_ex1\\nonEmptyCompany.cpp",
+  "file": "C:/Users/adi/Desktop/Adi/Technion/Technion_semester_3/computer_structure/computer_structure_ex1/nonEmptyCompany.cpp"
+},
+{
+  "directory": "C:/Users/adi/Desktop/Adi/Technion/Technion_semester_3/computer_structure/computer_structure_ex1/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe   -g -std=gnu++11 -o CMakeFiles\\exe_name.dir\\companyEmployeeByID.cpp.obj -c C:\\Users\\adi\\Desktop\\Adi\\Technion\\Technion_semester_3\\computer_structure\\computer_structure_ex1\\companyEmployeeByID.cpp",
+  "file": "C:/Users/adi/Desktop/Adi/Technion/Technion_semester_3/computer_structure/computer_structure_ex1/companyEmployeeByID.cpp"
+}
+]

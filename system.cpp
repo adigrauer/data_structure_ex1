@@ -59,12 +59,13 @@ StatusType System::addEmployee(int EmployeeID, int CompanyID, int Salary, int Gr
     shared_ptr<EmployeeBySalary> employee_salary_to_add(new EmployeeBySalary(Salary,EmployeeID)); 
     all_employees_by_salary_tree->insert(employee_salary_to_add);
     employee_id_to_add->setSalaryPtr(employee_salary_to_add);
-    
+    employee_id_to_add->setCompanyPtr(non_empty_company_to_add);
+
     //add employee to company employees by id,salary tree 
     shared_ptr<TreeNode<NonEmptyCompany>> non_empty_company_node(non_empty_companies->find(non_empty_company_to_add));
     //add employee to company employee by id
-    shared_ptr<Tree<CompanyEmployeeByID>> company_id_tree = non_empty_company_node->getData()->getEmployeesByIDTree();
-    shared_ptr<CompanyEmployeeByID> company_employee_id_to_add(new CompanyEmployeeByID(Salary, EmployeeID));
+    shared_ptr<Tree<EmployeeByID>> company_id_tree = non_empty_company_node->getData()->getEmployeesByIDTree();
+    shared_ptr<EmployeeByID> company_employee_id_to_add(new EmployeeByID(Salary, EmployeeID));
     company_id_tree->insert(company_employee_id_to_add);
     //add to company employee by salary
     shared_ptr<Tree<EmployeeBySalary>> company_salary_tree = non_empty_company_node->getData()->getEmployeesBySalaryTree();
@@ -101,11 +102,29 @@ StatusType System::removeCompany(int CompanyID){
 }
 ////////////////////////////////////////////
 
-/*
+////////////////////////////////////////////
 StatusType System::removeEmployee(int EmployeeID){
+    //invalid arguments
+    if(this == nullptr || EmployeeID <= 0){
+        return INVALID_INPUT;
+    }
+    //cheack if employee exist
+    shared_ptr<EmployeeByID> employee_id_to_remove(new EmployeeByID(EmployeeID, 1)); //temp grade
+    shared_ptr<TreeNode<EmployeeByID>> all_employee_id_node(all_employees_by_id_tree->find(employee_id_to_remove));
+    if(all_employee_id_node == nullptr){
+        return FAILURE;
+    }
+    shared_ptr<NonEmptyCompany> non_empty_company_node(all_employee_id_node->getData()->getCompanyPtr());
+    shared_ptr<EmployeeBySalary> employee_salary_to_remove(new EmployeeBySalary(all_employee_id_node->getData()->getSalaryPtr()->getSalary() ,EmployeeID)); 
+    //NEED TO CHECK IF BEST EARNEER
+    non_empty_company_node->getEmployeesByIDTree()->remove(employee_id_to_remove);
+    non_empty_company_node->getEmployeesBySalaryTree()->remove(employee_salary_to_remove);
 
+    return SUCCESS;
 }
-*/
+////////////////////////////////////////////
+
+////////////////////////////////////////////
 StatusType System::getCompanyInfo(int CompanyID, int *Value, int *NumEmployees){
     if(this == nullptr || Value == nullptr || NumEmployees == nullptr || CompanyID <= 0){
         return INVALID_INPUT;
@@ -126,15 +145,35 @@ StatusType System::getCompanyInfo(int CompanyID, int *Value, int *NumEmployees){
     }
     return SUCCESS;
 }
-/*
+////////////////////////////////////////////
+
+////////////////////////////////////////////
 StatusType System::getEmployeeInfo(int EmployeeID, int *EmployerID, int *Salary, int *Grade){
-
+    //invalid arguments
+    if(this == nullptr || EmployerID == nullptr || Salary == nullptr || Grade == nullptr || EmployeeID <= 0){
+        return INVALID_INPUT;
+    }
+    //cheack if employee exist
+    shared_ptr<EmployeeByID> employee_id_to_find(new EmployeeByID(EmployeeID, 1)); //temp grade
+    shared_ptr<TreeNode<EmployeeByID>> all_employee_id_node(all_employees_by_id_tree->find(employee_id_to_find));
+    if(all_employee_id_node == nullptr){
+        return FAILURE;
+    }
+    //update pointers
+    *Grade = all_employee_id_node->getData()->getGrade();
+    *EmployerID = all_employee_id_node->getData()->getCompanyPtr()->getID();
+    *Salary = all_employee_id_node->getData()->getSalaryPtr()->getSalary();
+    return SUCCESS;
 }
+////////////////////////////////////////////
 
+/*
 StatusType System::increaseCompanyValue(int CompanyID, int ValueIncrease){
 
 }
 */
+
+////////////////////////////////////////////
 StatusType System::promoteEmployee(int EmployeeID, int SalaryIncrease, int BumpGrade){
     if(this == nullptr || EmployeeID <= 0 || SalaryIncrease <= 0 )
     {
@@ -160,6 +199,8 @@ StatusType System::promoteEmployee(int EmployeeID, int SalaryIncrease, int BumpG
     }
     return SUCCESS;
 }
+////////////////////////////////////////////
+
 /*
 StatusType System::hireEmployee(int EmployeeID, int NewCompanyID){
     if(this == nullptr || EmployeeID <= 0 || NewCompanyID <= 0 )

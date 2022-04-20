@@ -9,17 +9,49 @@ using std::endl;
 void testEmployeeById ();
 //void testCompany ();
 void testEmployeeBySalary ();
-void testSystem ();
+void testSystemAdi ();
+void testSystemLottem ();
 
 int main(){
     //testEmployeeById();
     //testCompany();
     //testEmployeeBySalary();
-    testSystem ();
+    testSystemAdi ();
+    //testSystemLottem ();
     return 0;
 }
 
-void testSystem (){
+void testSystemAdi (){
+    System system;
+    cout << endl;
+    cout << "create system- done" << endl;
+    cout << endl;
+    system.addCompany(1,10);
+    system.addCompany(2,10);
+    system.addEmployee(5, 1, 5, 5);
+    system.addEmployee(7, 2, 7, 7);
+    int company_id;
+    int grade;
+    int salary;
+    system.getEmployeeInfo(5, &company_id, &salary, &grade);
+    cout << endl;
+    cout << "get employee 5 info- done" << endl;
+    cout << "company id = " << company_id << endl;
+    cout << "grade = " << grade << endl;
+    cout << "salary = " << salary << endl;
+    cout << endl;
+    cout << endl;
+    system.getEmployeeInfo(7, &company_id, &salary, &grade);
+    cout << "get employee 7 info- done" << endl;
+    cout << "company id = " << company_id << endl;
+    cout << "grade = " << grade << endl;
+    cout << "salary = " << salary << endl;
+    cout << endl;
+    system.systemDestroy();
+    cout << endl;
+}
+
+void testSystemLottem (){
     System system;
     cout << endl;
     cout << "create system- done" << endl;
