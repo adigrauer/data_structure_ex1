@@ -3,7 +3,6 @@
 
 #include "employeeBySalary.h"
 #include "employeeByID.h"
-#include "companyEmployeeByID.h"
 #include "tree.h"
 #include "treeNode.h"
 #include <memory>
