@@ -38,7 +38,8 @@ class Tree {
         void reverseInOrder (shared_ptr<TreeNode<T>> root);
         void inOrderToArray (shared_ptr<TreeNode<T>> root, shared_ptr<TreeNode<T>>* array, int* index);
         void inOrderDataToArray(shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index);
-
+        void LimitedinOrderDataToArray (shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index, int* limit);
+        
         int getSize();
         shared_ptr<TreeNode<T>> getRoot();
         void changeRoot(shared_ptr<TreeNode<T>> new_root);
@@ -493,6 +494,19 @@ shared_ptr<Tree<T>> mergeTrees(Tree<T> tree_a, Tree<T> tree_b){
     merge_tree.changeSize(tree_a.getSize()+tree_b.getSize());
     shared_ptr<Tree<T>> tree(new Tree<T>(merge_tree));
     return tree;
+}
+
+
+template <class T>
+void Tree<T>::LimitedinOrderDataToArray (shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index, int* limit){
+    if(root == nullptr || *limit == 0){
+        return;
+    }
+    LimitedinOrderDataToArray(root->getLeft(), array, index, limit);
+    array[*index] = root->getData();
+    (*index)++;
+    (*limit)--;
+    LimitedinOrderDataToArray(root->getRight(), array, index, limit);
 }
 
 #define COUNT 10
