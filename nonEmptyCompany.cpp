@@ -108,6 +108,13 @@ bool operator> (const NonEmptyCompany& company_a, const NonEmptyCompany& company
 }
 
 void NonEmptyCompany::updateHighestEarner(shared_ptr<EmployeeBySalary> employee){
+    if(employee->getSalary() == salary_of_highest_earner)
+    {
+        if(employee->getID() < id_highest_earner)
+        {
+            id_highest_earner = employee->getID();
+        }
+    }
     if(employee->getSalary() > salary_of_highest_earner){
         salary_of_highest_earner = employee->getSalary();
         id_highest_earner = employee->getID();
