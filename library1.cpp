@@ -21,11 +21,11 @@ StatusType RemoveCompany(void *DS, int CompanyID){
 StatusType RemoveEmployee(void *DS, int EmployeeID){
     return ((System*)DS)->removeEmployee(EmployeeID);
 }
-
+*/
 StatusType GetCompanyInfo(void *DS, int CompanyID, int *Value, int *NumEmployees){
     return ((System*)DS)->getCompanyInfo(CompanyID, Value, NumEmployees);
 }
-
+/*
 StatusType GetEmployeeInfo(void *DS, int EmployeeID, int *EmployerID, int *Salary, int *Grade){
     return ((System*)DS)->getEmployeeInfo(EmployeeID, EmployerID, Salary, Grade);
 }
@@ -33,7 +33,7 @@ StatusType GetEmployeeInfo(void *DS, int EmployeeID, int *EmployerID, int *Salar
 StatusType IncreaseCompanyValue(void *DS, int CompanyID, int ValueIncrease){
     return ((System*)DS)->increaseCompanyValue(CompanyID, ValueIncrease);
 }
-
+*/
 StatusType PromoteEmployee(void *DS, int EmployeeID, int SalaryIncrease, int BumpGrade){
     return ((System*)DS)->promoteEmployee(EmployeeID, SalaryIncrease, BumpGrade);
 }
@@ -41,11 +41,11 @@ StatusType PromoteEmployee(void *DS, int EmployeeID, int SalaryIncrease, int Bum
 StatusType HireEmployee(void *DS, int EmployeeID, int NewCompanyID){
     return ((System*)DS)->hireEmployee(EmployeeID, NewCompanyID);
 }
-
+/*
 StatusType AcquireCompany(void *DS, int AcquirerID, int TargetID, double Factor){
     return ((System*)DS)->acquireCompany(AcquirerID, TargetID, Factor);
 }
-
+*/
 StatusType GetHighestEarner(void *DS, int CompanyID, int *EmployeeID){
     return ((System*)DS)->getHighestEarner(CompanyID, EmployeeID);
 }
@@ -53,7 +53,7 @@ StatusType GetHighestEarner(void *DS, int CompanyID, int *EmployeeID){
 StatusType GetAllEmployeesBySalary(void *DS, int CompanyID, int **Employees, int *NumOfEmployees){
     return ((System*)DS)->getAllEmployeesBySalary(CompanyID, Employees, NumOfEmployees);
 }
-
+/*
 StatusType GetHighestEarnerInEachCompany(void *DS, int NumOfCompanies, int **Employees){
     return ((System*)DS)->getHighestEarnerInEachCompany(NumOfCompanies, Employees);
 }

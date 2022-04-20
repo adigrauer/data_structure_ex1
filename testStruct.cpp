@@ -35,6 +35,24 @@ void testSystem (){
     cout << "add employee 5- done" << endl;
     cout << endl;
     system.addCompany(2,10);
+
+    //test lottem added
+    int value;
+    int num_employees;
+    system.getCompanyInfo(2, &value, &num_employees);
+    if (value != 10 || num_employees != 0){
+        return;
+    }
+    cout << "getCompanyInfo - done" << endl;
+    cout << endl;
+
+    system.promoteEmployee(5, 100, 10);
+    //checked with debuger
+    cout << "getPromoteEmployee - done" << endl;
+    cout << endl;
+
+    // lottem added until here
+
     system.systemDestroy();
     cout << endl;
 }

@@ -34,17 +34,18 @@ class System{
         StatusType addCompany(int CompanyID, int Value);
         StatusType addEmployee(int EmployeeID, int CompanyID, int Salary, int Grade);
         StatusType removeCompany(int CompanyID);
-        /*
         StatusType removeEmployee(int EmployeeID);
         StatusType getCompanyInfo(int CompanyID, int *Value, int *NumEmployees);
+       
         StatusType getEmployeeInfo(int EmployeeID, int *EmployerID, int *Salary, int *Grade);
-        StatusType increaseCompanyValue(int CompanyID, int ValueIncrease);
+         /*StatusType increaseCompanyValue(int CompanyID, int ValueIncrease);
+        */
         StatusType promoteEmployee(int EmployeeID, int SalaryIncrease, int BumpGrade);
         StatusType hireEmployee(int EmployeeID, int NewCompanyID);
-        StatusType acquireCompany(int AcquirerID, int TargetID, double Factor);
-        StatusType getHighestEarner(int CompanyID, int *EmployeeID);
+        /*StatusType acquireCompany(int AcquirerID, int TargetID, double Factor);
+        */StatusType getHighestEarner(int CompanyID, int *EmployeeID);
         StatusType getAllEmployeesBySalary(int CompanyID, int **Employees, int *NumOfEmployees);
-        StatusType getHighestEarnerInEachCompany(int NumOfCompanies, int **Employees);
+        /*StatusType getHighestEarnerInEachCompany(int NumOfCompanies, int **Employees);
         StatusType getNumEmployeesMatching(int CompanyID, int MinEmployeeID, int MaxEmployeeId,
                 int MinSalary, int MinGrade, int *TotalNumOfEmployees, int *NumOfEmployees);
         void quit();

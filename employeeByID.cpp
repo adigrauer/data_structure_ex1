@@ -11,6 +11,11 @@ int EmployeeByID::getID()
     return this->id;
 }
 
+int EmployeeByID::getGrade()
+{
+    return this->grade;
+}
+
 shared_ptr<EmployeeBySalary> EmployeeByID::getSalaryPtr()
 {
     return this->ptr_salary_employee;
@@ -21,6 +26,11 @@ shared_ptr<NonEmptyCompany> EmployeeByID::getCompanyPtr()
     return this->ptr_my_company;
 }
 
+void EmployeeByID::setGrade()
+{
+    grade++;
+    return;
+}
 void EmployeeByID::setSalaryPtr(shared_ptr<EmployeeBySalary> new_ptr)
 {
     ptr_salary_employee = new_ptr;

@@ -22,9 +22,11 @@ class EmployeeByID{
         ~EmployeeByID () = default;
 
         int getID();
+        int getGrade();
         shared_ptr<EmployeeBySalary> getSalaryPtr();
         shared_ptr<NonEmptyCompany> getCompanyPtr();
 
+        void setGrade();
         void setSalaryPtr(shared_ptr<EmployeeBySalary> new_ptr);
         void setCompanyPtr(shared_ptr<NonEmptyCompany> new_ptr);
 

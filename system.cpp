@@ -105,11 +105,28 @@ StatusType System::removeCompany(int CompanyID){
 StatusType System::removeEmployee(int EmployeeID){
 
 }
-
+*/
 StatusType System::getCompanyInfo(int CompanyID, int *Value, int *NumEmployees){
-
+    if(this == nullptr || Value == nullptr || NumEmployees == nullptr || CompanyID <= 0){
+        return INVALID_INPUT;
+    }
+    shared_ptr<Company> company_to_find(new Company(CompanyID, 0));
+    shared_ptr<TreeNode<Company>>company = all_companies->find(company_to_find);
+    if (company == nullptr) 
+    {
+        return FAILURE;
+    }
+    *Value = company->getData()->getValue();
+    shared_ptr<NonEmptyCompany> company_for_num_employees = company->getData()->getNonEmptyCompany();
+    if(company_for_num_employees == nullptr) {
+        *NumEmployees = 0;
+    }
+    else {
+        *NumEmployees = company_for_num_employees->getNumEmployees();
+    }
+    return SUCCESS;
 }
-
+/*
 StatusType System::getEmployeeInfo(int EmployeeID, int *EmployerID, int *Salary, int *Grade){
 
 }
@@ -117,27 +134,95 @@ StatusType System::getEmployeeInfo(int EmployeeID, int *EmployerID, int *Salary,
 StatusType System::increaseCompanyValue(int CompanyID, int ValueIncrease){
 
 }
-
+*/
 StatusType System::promoteEmployee(int EmployeeID, int SalaryIncrease, int BumpGrade){
-
+    if(this == nullptr || EmployeeID <= 0 || SalaryIncrease <= 0 )
+    {
+        return INVALID_INPUT;  
+    }
+    shared_ptr<EmployeeByID> employee_to_find(new EmployeeByID(EmployeeID, 0));
+    shared_ptr<TreeNode<EmployeeByID>>employee = all_employees_by_id_tree->find(employee_to_find);
+    if (employee == nullptr)
+    {
+        return FAILURE;
+    }
+    shared_ptr<EmployeeBySalary> salary_employee = employee->getData()->getSalaryPtr();
+    salary_employee->setSalary(salary_employee->getSalary() + SalaryIncrease);
+    if (BumpGrade>0)
+    {
+        employee->getData()->setGrade();
+    }
+    updateHighestEarner(salary_employee);
+    shared_ptr<NonEmptyCompany> my_company = employee->getData()->getCompanyPtr();
+    if (my_company != nullptr) 
+    {
+        my_company->updateHighestEarner(salary_employee);
+    }
+    return SUCCESS;
 }
 
 StatusType System::hireEmployee(int EmployeeID, int NewCompanyID){
-
+    if(this == nullptr || EmployeeID <= 0 || NewCompanyID <= 0 )
+    {
+        return INVALID_INPUT;  
+    }
+    shared_ptr<EmployeeByID> employee_to_find(new EmployeeByID(EmployeeID, 0));
+    shared_ptr<TreeNode<EmployeeByID>>employee = all_employees_by_id_tree->find(employee_to_find);
+    if (employee == nullptr)
+    {
+        return FAILURE;
+    }
+    shared_ptr<Company> company_to_find(new Company(NewCompanyID, 0));
+    shared_ptr<TreeNode<Company>>company = all_companies->find(company_to_find);
+    if (company == nullptr)
+    {
+        return FAILURE;
+    }
+    //temp variables to save detailes about employee
+    int employer_id, salary, grade;
+    getEmployeeInfo(EmployeeID, &employer_id, &salary, &grade);
+    if (employer_id == NewCompanyID)
+    {
+        return FAILURE;
+    }
+    removeEmployee(EmployeeID);
+    AddEmployee(this, EmployeeID, NewCompanyID, salary, grade);
+    //is there a chance remove or add will fail? if so need to add
+    return SUCCESS;
 }
-
+/*
 StatusType System::acquireCompany(int AcquirerID, int TargetID, double Factor){
 
 }
-
+*/
 StatusType System::getHighestEarner(int CompanyID, int *EmployeeID){
-
+    if(this == nullptr || EmployeeID == nullptr || CompanyID == 0 )
+    {
+        return INVALID_INPUT;  
+    }
+    if (CompanyID < 0)
+    {
+        if (num_all_employees == 0)
+        {
+            return FAILURE;
+        }
+        *EmployeeID = this->id_highest_earner;
+        return SUCCESS;
+    }
+    shared_ptr<NonEmptyCompany> company_to_find(new NonEmptyCompany(CompanyID, 0));
+    shared_ptr<TreeNode<NonEmptyCompany>>company = non_empty_companies->find(company_to_find);
+    if (company == nullptr)
+    {
+        return FAILURE;
+    }
+    *EmployeeID = company->getData()->getHighestEarner();
+    return SUCCESS;
 }
 
 StatusType System::getAllEmployeesBySalary(int CompanyID, int **Employees, int *NumOfEmployees){
 
 }
-
+/*
 StatusType System::getHighestEarnerInEachCompany(int NumOfCompanies, int **Employees){
 
 }
