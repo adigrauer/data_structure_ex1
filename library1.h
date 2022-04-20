@@ -38,7 +38,7 @@ extern "C" {
     StatusType AddEmployee(void *DS, int EmployeeID, int CompanyID, int Salary, int Grade);
 
     StatusType RemoveCompany(void *DS, int CompanyID);
-/*
+
     StatusType RemoveEmployee(void *DS, int EmployeeID);
 
     StatusType GetCompanyInfo(void *DS, int CompanyID, int *Value, int *NumEmployees);
@@ -63,7 +63,7 @@ extern "C" {
             int MinSalary, int MinGrade, int *TotalNumOfEmployees, int *NumOfEmployees);
 
     void Quit(void** DS);
-*/
+
 #ifdef __cplusplus
 }
 #endif

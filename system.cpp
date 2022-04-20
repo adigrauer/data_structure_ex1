@@ -65,8 +65,7 @@ StatusType System::addEmployee(int EmployeeID, int CompanyID, int Salary, int Gr
     shared_ptr<TreeNode<NonEmptyCompany>> non_empty_company_node(non_empty_companies->find(non_empty_company_to_add));
     //add employee to company employee by id
     shared_ptr<Tree<EmployeeByID>> company_id_tree = non_empty_company_node->getData()->getEmployeesByIDTree();
-    shared_ptr<EmployeeByID> company_employee_id_to_add(new EmployeeByID(Salary, EmployeeID));
-    company_id_tree->insert(company_employee_id_to_add);
+    company_id_tree->insert(employee_id_to_add);
     //add to company employee by salary
     shared_ptr<Tree<EmployeeBySalary>> company_salary_tree = non_empty_company_node->getData()->getEmployeesBySalaryTree();
     company_salary_tree->insert(employee_salary_to_add);
@@ -303,26 +302,21 @@ StatusType System::acquireCompany(int AcquirerID, int TargetID, double Factor){
     //create non empty new company
     shared_ptr<NonEmptyCompany> new_non_empty_company(new NonEmptyCompany(AcquirerID, new_value, new_id_highest_earner, new_salary_of_highest_earner, new_num_employees));
 
-/*
-    //update all target employyes company ptr
-    int size = target_all_company_node->getData()->getNonEmptyCompany()->getNumEmployees();
-    int index = 0;
-    shared_ptr<TreeNode<EmployeeByID>>* merge_array = new shared_ptr<TreeNode<EmployeeByID>>[size];
-    target_all_company_node->getData()->getNonEmptyCompany()->getEmployeesByIDTree()->inOrderToArray (target_all_company_node->getData()->getNonEmptyCompany()->getEmployeesByIDTree()->getRoot(), merge_array, &index);
-    for(int i = 0; i < size; i++){
-        merge_array[i]->getData()->setCompanyPtr(new_non_empty_company);
-    }
-    Tree<EmployeeByID> 
-    mergeArrayToTree(shared_ptr<TreeNode<T>>* merge_array, int start, int end);
-*/
-
     //create new id and salary trees of the merge company
     shared_ptr<Tree<EmployeeByID>> id_merge_tree(new Tree<EmployeeByID>);
     id_merge_tree = mergeTrees(acquirer_all_company_node->getData()->getNonEmptyCompany()->getEmployeesByIDTree(), target_all_company_node->getData()->getNonEmptyCompany()->getEmployeesByIDTree());
     shared_ptr<Tree<EmployeeBySalary>> salary_merge_tree(new Tree<EmployeeBySalary>);
     salary_merge_tree = mergeTrees(acquirer_all_company_node->getData()->getNonEmptyCompany()->getEmployeesBySalaryTree(), target_all_company_node->getData()->getNonEmptyCompany()->getEmployeesBySalaryTree());
 
-    
+    //updates employeey company ptr
+    int index = 0;
+    shared_ptr<EmployeeByID>* merge_array = new shared_ptr<EmployeeByID>[new_num_employees];
+    id_merge_tree->inOrderDataToArray (id_merge_tree->getRoot(), merge_array, &index);
+    for(int i = 0; i < new_num_employees ; i++){
+        merge_array[i]->setCompanyPtr(new_non_empty_company);
+    }
+    delete[] merge_array;
+
     //create new non_empty_company to add the non empty companise tree
     new_non_empty_company->setEmployeesByIDTree(id_merge_tree);
     new_non_empty_company->setEmployeesBySalaryTree(salary_merge_tree);
@@ -499,11 +493,11 @@ StatusType System::getNumEmployeesMatching(int CompanyID, int MinEmployeeID, int
 
 
 }
-/*
-void System::quit(){
 
+void System::quit(){
+    systemDestroy();
 }
-*/
+
 
 //helper functions
 void System::updateHighestEarner(shared_ptr<EmployeeBySalary> employee){

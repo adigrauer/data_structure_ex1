@@ -6,11 +6,6 @@
 },
 {
   "directory": "C:/Users/adi/Desktop/Adi/Technion/Technion_semester_3/computer_structure/computer_structure_ex1/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe   -g -std=gnu++11 -o CMakeFiles\\exe_name.dir\\testStruct.cpp.obj -c C:\\Users\\adi\\Desktop\\Adi\\Technion\\Technion_semester_3\\computer_structure\\computer_structure_ex1\\testStruct.cpp",
-  "file": "C:/Users/adi/Desktop/Adi/Technion/Technion_semester_3/computer_structure/computer_structure_ex1/testStruct.cpp"
-},
-{
-  "directory": "C:/Users/adi/Desktop/Adi/Technion/Technion_semester_3/computer_structure/computer_structure_ex1/build",
   "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe   -g -std=gnu++11 -o CMakeFiles\\exe_name.dir\\employeeBySalary.cpp.obj -c C:\\Users\\adi\\Desktop\\Adi\\Technion\\Technion_semester_3\\computer_structure\\computer_structure_ex1\\employeeBySalary.cpp",
   "file": "C:/Users/adi/Desktop/Adi/Technion/Technion_semester_3/computer_structure/computer_structure_ex1/employeeBySalary.cpp"
 },
@@ -31,7 +26,12 @@
 },
 {
   "directory": "C:/Users/adi/Desktop/Adi/Technion/Technion_semester_3/computer_structure/computer_structure_ex1/build",
-  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe   -g -std=gnu++11 -o CMakeFiles\\exe_name.dir\\companyEmployeeByID.cpp.obj -c C:\\Users\\adi\\Desktop\\Adi\\Technion\\Technion_semester_3\\computer_structure\\computer_structure_ex1\\companyEmployeeByID.cpp",
-  "file": "C:/Users/adi/Desktop/Adi/Technion/Technion_semester_3/computer_structure/computer_structure_ex1/companyEmployeeByID.cpp"
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe   -g -std=gnu++11 -o CMakeFiles\\exe_name.dir\\main1.cpp.obj -c C:\\Users\\adi\\Desktop\\Adi\\Technion\\Technion_semester_3\\computer_structure\\computer_structure_ex1\\main1.cpp",
+  "file": "C:/Users/adi/Desktop/Adi/Technion/Technion_semester_3/computer_structure/computer_structure_ex1/main1.cpp"
+},
+{
+  "directory": "C:/Users/adi/Desktop/Adi/Technion/Technion_semester_3/computer_structure/computer_structure_ex1/build",
+  "command": "C:\\TDM-GCC-64\\bin\\x86_64-w64-mingw32-g++.exe   -g -std=gnu++11 -o CMakeFiles\\exe_name.dir\\library1.cpp.obj -c C:\\Users\\adi\\Desktop\\Adi\\Technion\\Technion_semester_3\\computer_structure\\computer_structure_ex1\\library1.cpp",
+  "file": "C:/Users/adi/Desktop/Adi/Technion/Technion_semester_3/computer_structure/computer_structure_ex1/library1.cpp"
 }
 ]

@@ -152,30 +152,6 @@ company.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_name.dir\build.make CMakeFiles/exe_name.dir/company.cpp.s
 .PHONY : company.cpp.s
 
-companyEmployeeByID.obj: companyEmployeeByID.cpp.obj
-.PHONY : companyEmployeeByID.obj
-
-# target to build an object file
-companyEmployeeByID.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_name.dir\build.make CMakeFiles/exe_name.dir/companyEmployeeByID.cpp.obj
-.PHONY : companyEmployeeByID.cpp.obj
-
-companyEmployeeByID.i: companyEmployeeByID.cpp.i
-.PHONY : companyEmployeeByID.i
-
-# target to preprocess a source file
-companyEmployeeByID.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_name.dir\build.make CMakeFiles/exe_name.dir/companyEmployeeByID.cpp.i
-.PHONY : companyEmployeeByID.cpp.i
-
-companyEmployeeByID.s: companyEmployeeByID.cpp.s
-.PHONY : companyEmployeeByID.s
-
-# target to generate assembly for a file
-companyEmployeeByID.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_name.dir\build.make CMakeFiles/exe_name.dir/companyEmployeeByID.cpp.s
-.PHONY : companyEmployeeByID.cpp.s
-
 employeeByID.obj: employeeByID.cpp.obj
 .PHONY : employeeByID.obj
 
@@ -223,6 +199,54 @@ employeeBySalary.s: employeeBySalary.cpp.s
 employeeBySalary.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_name.dir\build.make CMakeFiles/exe_name.dir/employeeBySalary.cpp.s
 .PHONY : employeeBySalary.cpp.s
+
+library1.obj: library1.cpp.obj
+.PHONY : library1.obj
+
+# target to build an object file
+library1.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_name.dir\build.make CMakeFiles/exe_name.dir/library1.cpp.obj
+.PHONY : library1.cpp.obj
+
+library1.i: library1.cpp.i
+.PHONY : library1.i
+
+# target to preprocess a source file
+library1.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_name.dir\build.make CMakeFiles/exe_name.dir/library1.cpp.i
+.PHONY : library1.cpp.i
+
+library1.s: library1.cpp.s
+.PHONY : library1.s
+
+# target to generate assembly for a file
+library1.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_name.dir\build.make CMakeFiles/exe_name.dir/library1.cpp.s
+.PHONY : library1.cpp.s
+
+main1.obj: main1.cpp.obj
+.PHONY : main1.obj
+
+# target to build an object file
+main1.cpp.obj:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_name.dir\build.make CMakeFiles/exe_name.dir/main1.cpp.obj
+.PHONY : main1.cpp.obj
+
+main1.i: main1.cpp.i
+.PHONY : main1.i
+
+# target to preprocess a source file
+main1.cpp.i:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_name.dir\build.make CMakeFiles/exe_name.dir/main1.cpp.i
+.PHONY : main1.cpp.i
+
+main1.s: main1.cpp.s
+.PHONY : main1.s
+
+# target to generate assembly for a file
+main1.cpp.s:
+	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_name.dir\build.make CMakeFiles/exe_name.dir/main1.cpp.s
+.PHONY : main1.cpp.s
 
 nonEmptyCompany.obj: nonEmptyCompany.cpp.obj
 .PHONY : nonEmptyCompany.obj
@@ -272,30 +296,6 @@ system.cpp.s:
 	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_name.dir\build.make CMakeFiles/exe_name.dir/system.cpp.s
 .PHONY : system.cpp.s
 
-testStruct.obj: testStruct.cpp.obj
-.PHONY : testStruct.obj
-
-# target to build an object file
-testStruct.cpp.obj:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_name.dir\build.make CMakeFiles/exe_name.dir/testStruct.cpp.obj
-.PHONY : testStruct.cpp.obj
-
-testStruct.i: testStruct.cpp.i
-.PHONY : testStruct.i
-
-# target to preprocess a source file
-testStruct.cpp.i:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_name.dir\build.make CMakeFiles/exe_name.dir/testStruct.cpp.i
-.PHONY : testStruct.cpp.i
-
-testStruct.s: testStruct.cpp.s
-.PHONY : testStruct.s
-
-# target to generate assembly for a file
-testStruct.cpp.s:
-	$(MAKE) $(MAKESILENT) -f CMakeFiles\exe_name.dir\build.make CMakeFiles/exe_name.dir/testStruct.cpp.s
-.PHONY : testStruct.cpp.s
-
 # Help Target
 help:
 	@echo The following are some of the valid targets for this Makefile:
@@ -308,24 +308,24 @@ help:
 	@echo ... company.obj
 	@echo ... company.i
 	@echo ... company.s
-	@echo ... companyEmployeeByID.obj
-	@echo ... companyEmployeeByID.i
-	@echo ... companyEmployeeByID.s
 	@echo ... employeeByID.obj
 	@echo ... employeeByID.i
 	@echo ... employeeByID.s
 	@echo ... employeeBySalary.obj
 	@echo ... employeeBySalary.i
 	@echo ... employeeBySalary.s
+	@echo ... library1.obj
+	@echo ... library1.i
+	@echo ... library1.s
+	@echo ... main1.obj
+	@echo ... main1.i
+	@echo ... main1.s
 	@echo ... nonEmptyCompany.obj
 	@echo ... nonEmptyCompany.i
 	@echo ... nonEmptyCompany.s
 	@echo ... system.obj
 	@echo ... system.i
 	@echo ... system.s
-	@echo ... testStruct.obj
-	@echo ... testStruct.i
-	@echo ... testStruct.s
 .PHONY : help
 
 

@@ -46,8 +46,8 @@ class System{
         StatusType getHighestEarnerInEachCompany(int NumOfCompanies, int **Employees);
         StatusType getNumEmployeesMatching(int CompanyID, int MinEmployeeID, int MaxEmployeeId,
                 int MinSalary, int MinGrade, int *TotalNumOfEmployees, int *NumOfEmployees);
-        /*void quit();
-        */
+        void quit();
+        
 
         //helper functions
         void updateHighestEarner(shared_ptr<EmployeeBySalary> employee);

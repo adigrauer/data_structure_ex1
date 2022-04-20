@@ -17,7 +17,7 @@ int main(){
     //testCompany();
     //testEmployeeBySalary();
     //testSystemAdi ();
-    testSystemLottem ();
+    //testSystemLottem ();
     return 0;
 }
 
@@ -27,7 +27,7 @@ void testSystemAdi (){
     cout << "create system- done" << endl;
     cout << endl;
     system.addCompany(1,1);
-    system.addCompany(2,11);
+    system.addCompany(2,20);
     system.addEmployee(5, 2, 5, 5);
     system.addEmployee(7, 1, 7, 7);
     system.acquireCompany(2,1,1);
@@ -38,25 +38,25 @@ void testSystemAdi (){
     int num_employees;
     system.getEmployeeInfo(7, &company_id, &salary, &grade);
     system.getCompanyInfo(2, &value, &num_employees);
+    cout << "get employee 7 info- done" << endl;
+    cout << "company id = " << company_id << endl;
+    cout << "grade = " << grade << endl;
+    cout << "salary = " << salary << endl;
     system.systemDestroy();
-    cout << "doneeeeeeeee" << endl;
+    cout << "doneeeeeeeee!!!" << endl;
     cout << endl;
-    /*
-    system.increaseCompanyValue(1, 10);
-    system.increaseCompanyValue(2, 20);
-    system.getEmployeeInfo(5, &company_id, &salary, &grade);
+    
+    //system.increaseCompanyValue(1, 10);
+    //system.increaseCompanyValue(2, 20);
+    //system.getEmployeeInfo(5, &company_id, &salary, &grade);
     cout << endl;
-    cout << "get employee 5 info- done" << endl;
+    /*cout << "get employee 5 info- done" << endl;
     cout << "company id = " << company_id << endl;
     cout << "grade = " << grade << endl;
     cout << "salary = " << salary << endl;
     cout << endl;
     cout << endl;
     
-    cout << "get employee 7 info- done" << endl;
-    cout << "company id = " << company_id << endl;
-    cout << "grade = " << grade << endl;
-    cout << "salary = " << salary << endl;
     cout << endl;
     system.removeEmployee(5);
     system.removeEmployee(7);
