@@ -38,6 +38,7 @@ class Tree {
         void reverseInOrder (shared_ptr<TreeNode<T>> root);
         void inOrderToArray (shared_ptr<TreeNode<T>> root, shared_ptr<TreeNode<T>>* array, int* index);
         void inOrderDataToArray(shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index);
+        void reverseInOrderDataToArray(shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index);
         void LimitedinOrderDataToArray (shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index, int* limit);
         
         int getSize();
@@ -405,6 +406,20 @@ void Tree<T>::inOrderDataToArray (shared_ptr<TreeNode<T>> root, shared_ptr<T>* a
 }
 
 template<class T>
+void Tree<T>::reverseInOrderDataToArray(shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index)
+{
+    shared_ptr<T>* data_array = new shared_ptr<T>[this->getSize()];
+    inOrderDataToArray(root, data_array, index);
+    int j = 0;
+    for (int i = this->getSize()-1; i>=0; i--)
+    {
+        array[j] = data_array[i];
+        j++;
+    }
+    delete[] data_array;
+}
+
+template<class T>
 void Tree<T>::reverseInOrder (shared_ptr<TreeNode<T>> root){
     if(root == NULL){
         return;
@@ -414,6 +429,18 @@ void Tree<T>::reverseInOrder (shared_ptr<TreeNode<T>> root){
     reverseInOrder(root->getLeft());
 }
 
+
+template <class T>
+void Tree<T>::LimitedinOrderDataToArray (shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index, int* limit){
+    if(root == nullptr || *limit == 0){
+        return;
+    }
+    LimitedinOrderDataToArray(root->getLeft(), array, index, limit);
+    array[*index] = root->getData();
+    (*index)++;
+    (*limit)--;
+    LimitedinOrderDataToArray(root->getRight(), array, index, limit);
+}
 
 template <class T>
 shared_ptr<TreeNode<T>>* Tree<T>::TreeToArray(){
@@ -497,17 +524,6 @@ shared_ptr<Tree<T>> mergeTrees(Tree<T> tree_a, Tree<T> tree_b){
 }
 
 
-template <class T>
-void Tree<T>::LimitedinOrderDataToArray (shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index, int* limit){
-    if(root == nullptr || *limit == 0){
-        return;
-    }
-    LimitedinOrderDataToArray(root->getLeft(), array, index, limit);
-    array[*index] = root->getData();
-    (*index)++;
-    (*limit)--;
-    LimitedinOrderDataToArray(root->getRight(), array, index, limit);
-}
 
 #define COUNT 10
 template<class T>
