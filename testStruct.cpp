@@ -11,6 +11,7 @@ void testEmployeeById ();
 void testEmployeeBySalary ();
 void testSystemAdi ();
 void testSystemLottem ();
+void newtest();
 
 int main(){
     //testEmployeeById();
@@ -18,9 +19,41 @@ int main(){
     //testEmployeeBySalary();
     //testSystemAdi ();
     //testSystemLottem ();
+    newtest();
     return 0;
 }
-
+void newtest (){
+    System system;
+    system.addCompany(1,1);
+    system.addCompany(2,20);
+    system.addCompany(3,1);
+    system.addCompany(4,20);
+    system.addCompany(5,1);
+    system.addCompany(6,20);
+    system.addCompany(7,1);
+    system.addCompany(8,20);
+    system.addEmployee(1, 1, 5, 5);
+    system.addEmployee(2, 1, 5, 5);
+    system.addEmployee(3, 1, 5, 5);
+    system.addEmployee(4, 1, 5, 5);
+    system.addEmployee(5, 2, 5, 5);
+    system.addEmployee(6, 2, 1, 5);
+    system.addEmployee(7, 2, 2, 5);
+    system.addEmployee(8, 3, 3, 5);
+    system.addEmployee(9, 3, 10, 5);
+    system.addEmployee(10, 4, 100, 5);
+    system.addEmployee(11, 5, 200, 5);
+    int heighst_earner;
+    int* array2 = &heighst_earner;
+    system.getHighestEarnerInEachCompany(3, &array2);
+    if (array2[0] != 1 || array2[1] != 5 || array2[2] != 9)
+    {
+        free(array2);
+        return;
+    }
+    free(array2);
+    cout << "completeddd" <<endl;
+}
 void testSystemAdi (){
     System system;
     cout << endl;

@@ -437,9 +437,11 @@ void Tree<T>::LimitedinOrderDataToArray (shared_ptr<TreeNode<T>> root, shared_pt
         return;
     }
     LimitedinOrderDataToArray(root->getLeft(), array, index, limit);
+    if (*limit > 0) {
     array[*index] = root->getData();
     (*index)++;
     (*limit)--;
+    }
     LimitedinOrderDataToArray(root->getRight(), array, index, limit);
 }
 
