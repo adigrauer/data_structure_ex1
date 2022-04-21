@@ -47,11 +47,14 @@ StatusType System::addEmployee(int EmployeeID, int CompanyID, int Salary, int Gr
     }
 
     //cheack if the company is empty- need to add to nonEmptyCompanyTree
-    shared_ptr<NonEmptyCompany> non_empty_company_to_add(new NonEmptyCompany(CompanyID, all_company_node->getData()->getValue()));
     if(all_company_node->getData()->getNonEmptyCompany() == nullptr){ 
+        shared_ptr<NonEmptyCompany> non_empty_company_to_add(new NonEmptyCompany(CompanyID, all_company_node->getData()->getValue()));
         non_empty_companies->insert(non_empty_company_to_add);
         all_company_node->getData()->setNonEmptyCompany(non_empty_company_to_add);
+        
     }
+    shared_ptr<NonEmptyCompany> non_empty_company_to_add = all_company_node->getData()->getNonEmptyCompany();
+    employee_id_to_add->setCompanyPtr(non_empty_company_to_add);
     //add employee to all employees by id,salary tree 
     //add employee to all employee by id
     all_employees_by_id_tree->insert(employee_id_to_add);
@@ -59,7 +62,6 @@ StatusType System::addEmployee(int EmployeeID, int CompanyID, int Salary, int Gr
     shared_ptr<EmployeeBySalary> employee_salary_to_add(new EmployeeBySalary(Salary,EmployeeID)); 
     all_employees_by_salary_tree->insert(employee_salary_to_add);
     employee_id_to_add->setSalaryPtr(employee_salary_to_add);
-    employee_id_to_add->setCompanyPtr(non_empty_company_to_add);
 
     //add employee to company employees by id,salary tree 
     shared_ptr<TreeNode<NonEmptyCompany>> non_empty_company_node(non_empty_companies->find(non_empty_company_to_add));
