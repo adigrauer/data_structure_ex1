@@ -498,7 +498,7 @@ StatusType System::getNumEmployeesMatching(int CompanyID, int MinEmployeeID, int
         }
         shared_ptr<EmployeeByID>* data_array = new shared_ptr<EmployeeByID>[company->getData()->getNumEmployees()];
         int index = 0;
-        company->getData()->getEmployeesByIDTree()->minMaxInOrderDataToArray(all_employees_by_id_tree->getRoot(), data_array, &index, min_employee, max_employee);
+        company->getData()->getEmployeesByIDTree()->minMaxInOrderDataToArray(company->getData()->getEmployeesByIDTree()->getRoot(), data_array, &index, min_employee, max_employee);
         *TotalNumOfEmployees = index; 
         for (int i=0; i<index; i++)
         {
