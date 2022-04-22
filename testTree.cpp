@@ -6,16 +6,64 @@ void insert_test2();
 void insert_test3();
 void insert_test4();
 void merge_test5();
+void treeToArray();
 
 int main(){  
     //general_test1();
     //insert_test2();
     //insert_test3();
     //insert_test4();
-    merge_test5();
+    //merge_test5();
+    treeToArray();
     return 0;  
 }
 
+void treeToArray(){
+    Tree<int> tree1;
+    int x1 = 1;
+    shared_ptr<int> x1_tree(new int(x1));
+    tree1.insert(x1_tree);
+    int x2 = 2; 
+    shared_ptr<int>x2_tree(new int(x2));
+    tree1.insert(x2_tree);
+    int x3 = 3;
+    shared_ptr<int>x3_tree(new int(x3));
+    tree1.insert(x3_tree);
+    int x11 = 11;
+    shared_ptr<int>x11_tree(new int(x11));
+    tree1.insert(x11_tree);
+    int x32 = 32;
+    shared_ptr<int>x32_tree(new int(x32));
+    tree1.insert(x32_tree);
+    int x40 = 40;
+    shared_ptr<int>x40_tree(new int(x40));
+    tree1.insert(x40_tree);
+    int x45 = 45;
+    shared_ptr<int>x45_tree(new int(x45));
+    tree1.insert(x45_tree);
+    int x0 = 0;
+    shared_ptr<int>x0_tree(new int(x0));
+    tree1.insert(x0_tree);
+    int x8 = 8;
+    shared_ptr<int>x8_tree(new int(x8));
+    tree1.insert(x8_tree);
+    //shared_ptr<TreeNode<int>>* array1 = tree1.TreeToArray();
+    int size = tree1.getSize();
+    cout << "size need to be 9 output = " << size << endl;
+    tree1.remove(x1_tree);
+    size = tree1.getSize();
+    cout << "size need to be 8 output = " << size << endl;
+    /*
+    cout << "print array1- checking if inOrderToArray+TreeToArray works" << endl;
+    for (int i=0; i<3; i++){
+        cout << "array[" << i << "] = " <<  " data " << *(array1[i]->getData()) << " l= " << (array1[i]->getLeft()) << 
+        " r= " << (array1[i]->getRight()) <<  " f= " << (array1[i]->getFather())<< endl;
+    }
+    */
+    cout <<  "done"<< endl;
+    return;
+}
+/*
 void general_test1(){
     //create tree1//
     ///////////////
@@ -291,3 +339,4 @@ for (int i=0; i<6; i++){
 }
 cout << endl;
 */
+

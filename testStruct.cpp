@@ -11,7 +11,8 @@ void testEmployeeById ();
 void testEmployeeBySalary ();
 void testSystemAdi ();
 void testSystemLottem ();
-void newtest();
+void newtest1();
+void newtest2();
 
 int main(){
     //testEmployeeById();
@@ -19,19 +20,28 @@ int main(){
     //testEmployeeBySalary();
     //testSystemAdi ();
     //testSystemLottem ();
-    newtest();
+    //newtest1();
+    newtest2();
     return 0;
 }
+
+void newtest2(){
+    System system;
+    system.addCompany(1,1);
+    system.addCompany(2,2);
+    system.addCompany(3,1);
+}
+
 void newtest (){
     System system;
     system.addCompany(1,1);
     system.addCompany(2,20);
     system.addCompany(3,1);
-    system.addCompany(4,20);
+    system.addCompany(4,200);
     system.addCompany(5,1);
     system.addCompany(6,20);
     system.addCompany(7,1);
-    system.addCompany(8,20);
+    system.addCompany(8,100);
     system.addEmployee(1, 1, 5, 5);
     system.addEmployee(2, 1, 5, 5);
     system.addEmployee(3, 1, 5, 5);
@@ -53,6 +63,10 @@ void newtest (){
     }
     free(array2);
     cout << "completeddd" <<endl;
+    system.acquireCompany(8,1,2);
+    cout << "acquired 8->1 done" <<endl;
+    system.acquireCompany(2,7,1);
+    cout << "acquired 2->7 done" <<endl;
 }
 void testSystemAdi (){
     System system;
@@ -83,6 +97,7 @@ void testSystemAdi (){
     //system.increaseCompanyValue(2, 20);
     //system.getEmployeeInfo(5, &company_id, &salary, &grade);
     cout << endl;
+
     /*cout << "get employee 5 info- done" << endl;
     cout << "company id = " << company_id << endl;
     cout << "grade = " << grade << endl;
