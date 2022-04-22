@@ -42,7 +42,8 @@ class Tree {
         //void reverseInOrderDataToArray(shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index);
         void LimitedinOrderDataToArray (shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index, int* limit);
         void minMaxInOrderDataToArray (shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index, shared_ptr<T> min, shared_ptr<T> max);
-
+        shared_ptr<TreeNode<T>> findMinimumWithGivenValue (shared_ptr<TreeNode<T>> root, shared_ptr<T> min);
+        shared_ptr<TreeNode<T>> findMaxWithGivenValue (shared_ptr<TreeNode<T>> root, shared_ptr<T> max);
         int getSize();
         shared_ptr<TreeNode<T>> getRoot();
         void changeRoot(shared_ptr<TreeNode<T>> new_root);
@@ -132,13 +133,18 @@ void Tree<T>::insert(shared_ptr<T> to_add)
     //find the parent of new node and update his father
     while(temp != nullptr){
         temp_update = temp;
+        if (*temp->getData() == *to_add){
+            return;//added to check if has an influenceif (*temp->getData() < *to_add)
+        }
         if (*temp->getData() > *to_add){
             temp = temp->getLeft();
         }
-        else{
+        else if(*temp->getData() < *to_add){
             temp = temp->getRight();
-        }
+        } 
     }
+    //update tree size
+    size++;
     //update new node to be the sun of his father
     new_node->changeFather(temp_update);        //new node is the root
     if (temp_update == nullptr){
@@ -151,8 +157,7 @@ void Tree<T>::insert(shared_ptr<T> to_add)
     else{
         temp_update->changeRight(new_node);       //new node is right sun of his parent
     }
-    //update tree size
-    size++;
+    
     //touring from the new leaf to the root in order to balance the tree
     while(temp_update != nullptr){
         temp_update->updateHeight();
@@ -186,7 +191,6 @@ void Tree<T>::rrRotate (shared_ptr<TreeNode<T>> node)
     node->changeFather(temp);
     node->updateHeight();
     temp->updateHeight();
-    
 }
 
 template<class T>
@@ -327,7 +331,7 @@ void Tree<T>::remove(shared_ptr<T> to_remove)
         else 
         {
             primary_root = nullptr;
-            this->size--;
+            size--;
             return;
         }
         
@@ -340,6 +344,12 @@ void Tree<T>::remove(shared_ptr<T> to_remove)
         node_to_remove->changeData(temp->getData());
         node_to_remove->changeLeft(temp->getLeft());
         node_to_remove->changeRight(temp->getRight());
+        if(temp->getLeft() != nullptr){
+            temp->getLeft()->changeFather(node_to_remove);
+        }
+        if(temp->getRight() != nullptr){
+            temp->getRight()->changeFather(node_to_remove);
+        }
     }
     //if the node to delete has only one child on the left
     else if (node_to_remove->getRight() == nullptr)
@@ -348,6 +358,12 @@ void Tree<T>::remove(shared_ptr<T> to_remove)
         node_to_remove->changeData(temp->getData());
         node_to_remove->changeRight(temp->getRight());
         node_to_remove->changeLeft(temp->getLeft());
+        if(temp->getLeft() != nullptr){
+            temp->getLeft()->changeFather(node_to_remove);
+        }
+        if(temp->getRight() != nullptr){
+            temp->getRight()->changeFather(node_to_remove);
+        }
     }
     //if reached this point than the node has two children
     else 
@@ -357,28 +373,34 @@ void Tree<T>::remove(shared_ptr<T> to_remove)
         shared_ptr<T>copy_data = current_minimal->getData();
         if (*(current_minimal_father->getData()) == *(node_to_remove->getData()))
         {
-           node_to_remove->changeRight(current_minimal->getRight());
+            node_to_remove->changeRight(current_minimal->getRight());
+            if(current_minimal->getRight() != nullptr){
+                current_minimal->getRight()->changeFather(current_minimal->getFather());
+            }
         }
         else
         {
             current_minimal_father->changeLeft(current_minimal->getRight());
+            if(current_minimal->getRight() != nullptr){
+                current_minimal->getRight()->changeFather(current_minimal->getFather());
+            }
         }
         node_to_remove->changeData(copy_data);
 
     }
     //update tree size
-    this->size--;
+    size--;
     //touring from the deleated leaf to the root in order to balance the tree
+    if (father_node == nullptr)
+    {
+        node_to_remove->updateHeight();
+        createBalance(node_to_remove);
+    }
     while(father_node != nullptr)
     {
         father_node->updateHeight();
         createBalance(father_node);
         father_node = father_node->getFather();
-    }
-    if (*node_to_remove->getData() == *(primary_root->getData()))
-    {
-        node_to_remove->updateHeight();
-        createBalance(node_to_remove);
     }
 }
 
@@ -450,34 +472,48 @@ void Tree<T>::LimitedinOrderDataToArray (shared_ptr<TreeNode<T>> root, shared_pt
 template <class T>
 void Tree<T>::minMaxInOrderDataToArray (shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index, shared_ptr<T> min, shared_ptr<T> max)
 {
-    /*if(root == nullptr){
-        return;
-    }
-    if(*(root->getData()) > *min)
-    { 
-        minMaxInOrderDataToArray(root->getLeft(), array, index, min, max);
-    }
-    if(*(root->getData()) < *max)
-    {
-        array[*index] = root->getData();
-        (*index)++;
-    }
-    minMaxInOrderDataToArray(root->getRight(), array, index, min, max);
- */
-    if(root == nullptr){
+   if(root == nullptr){
             return;
     }
-    if(*(root->getData()) < *min)
+
+    if(*(root->getData()) >= *min)
     { 
-        minMaxInOrderDataToArray(root->getRight(), array, index, min, max);
-    }
-    if(*(root->getData()) > *max)
-    {
         minMaxInOrderDataToArray(root->getLeft(), array, index, min, max);
     }
-    array[*index] = root->getData();
-    (*index)++; 
+    if (*(root->getData()) >= *min && *(root->getData()) <= *max)
+    {
+        array[*index] = root->getData();
+        (*index)++; 
+    }
+    if(*(root->getData()) <= *max)
+    {
+        minMaxInOrderDataToArray(root->getRight(), array, index, min, max);
+    }
 }    
+
+template <class T>
+shared_ptr<TreeNode<T>> Tree<T>::findMinimumWithGivenValue (shared_ptr<TreeNode<T>> root, shared_ptr<T> min)
+{
+    shared_ptr<TreeNode<T>> temp = root; 
+    while(temp != nullptr){
+        if(*temp > *min){
+            temp = temp->getLeft();
+        }
+    }
+    return temp;
+}
+
+template <class T>
+shared_ptr<TreeNode<T>> Tree<T>::findMaxWithGivenValue (shared_ptr<TreeNode<T>> root, shared_ptr<T> max)
+{
+    shared_ptr<TreeNode<T>> temp = root; 
+    while(temp != nullptr){
+        if(*temp < *max){
+            temp = temp->getRight();
+        }
+    }
+    return temp;
+}
 
 template <class T>
 shared_ptr<TreeNode<T>>* Tree<T>::TreeToArray(){
@@ -555,6 +591,7 @@ shared_ptr<Tree<T>> mergeTrees(shared_ptr<Tree<T>> tree_a, shared_ptr<Tree<T>> t
     //tree_b->destroyTree(tree_b->getRoot());
     shared_ptr<TreeNode<T>>* merge_array = mergeArrays(array_a, array_b, tree_a->getSize(), tree_b->getSize());
     Tree<T> merge_tree = mergeArrayToTree(merge_array, 0, tree_a->getSize()+tree_b->getSize()-1);
+    //Tree<T> merge_tree = mergeArrayToTree(merge_array, 0, tree_a->getSize()+tree_b->getSize());
     merge_tree.changeSize(tree_a->getSize()+tree_b->getSize());
     shared_ptr<Tree<T>> tree(new Tree<T>(merge_tree));
     return tree;

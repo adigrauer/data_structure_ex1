@@ -25,7 +25,7 @@ bool operator< (const EmployeeBySalary& employee_a, const EmployeeBySalary& empl
 }
 
 bool operator== (const EmployeeBySalary& employee_a, const EmployeeBySalary& employee_b){
-    return (employee_a.salary == employee_b.salary) && (employee_a.id == employee_b.id);
+    return employee_a.id == employee_b.id;
 }
 
 bool operator!= (const EmployeeBySalary& employee_a, const EmployeeBySalary& employee_b){

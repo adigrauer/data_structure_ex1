@@ -326,8 +326,9 @@ StatusType System::acquireCompany(int AcquirerID, int TargetID, double Factor){
     shared_ptr<Tree<EmployeeByID>> temp_id = nullptr;
     shared_ptr<Tree<EmployeeBySalary>> temp_salary = nullptr;
     if(acquirer_all_company_node->getData()->getNonEmptyCompany() != nullptr){
-        id_merge_tree = mergeTrees(acquirer_all_company_node->getData()->getNonEmptyCompany()->getEmployeesByIDTree(), target_all_company_node->getData()->getNonEmptyCompany()->getEmployeesByIDTree());
         salary_merge_tree = mergeTrees(acquirer_all_company_node->getData()->getNonEmptyCompany()->getEmployeesBySalaryTree(), target_all_company_node->getData()->getNonEmptyCompany()->getEmployeesBySalaryTree());
+        id_merge_tree = mergeTrees(acquirer_all_company_node->getData()->getNonEmptyCompany()->getEmployeesByIDTree(), target_all_company_node->getData()->getNonEmptyCompany()->getEmployeesByIDTree());
+        
     }
     else{
         id_merge_tree = mergeTrees(temp_id, target_all_company_node->getData()->getNonEmptyCompany()->getEmployeesByIDTree());

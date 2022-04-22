@@ -170,7 +170,7 @@ int main(int argc, const char**argv) {
             getline(mFile, line);
             strcpy(buffer, line.c_str());
             fflush(stdout);
-            if(counter == 310){
+            if(counter == 366){
                 parser(buffer);
             }
             cout << "counter = " << counter << endl;
