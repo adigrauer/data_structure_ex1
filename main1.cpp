@@ -19,6 +19,7 @@
 #include <string.h>
 #include "library1.h"
 #include <iostream>
+#include <fstream>
 using namespace std;
 
 #ifdef __cplusplus
@@ -157,13 +158,59 @@ static OnFuncPtr OnCmdPtrs[] = {
 int main(int argc, const char**argv) {
     char buffer[MAX_STRING_INPUT_SIZE];
 
+    string line;
+    //, test_name;
+    //cin >> test_name;
+    ifstream mFile ("in0.txt");
+    if(mFile.is_open()) 
+    {
+        int counter = 0;
+        while(!mFile.eof())
+        {
+            getline(mFile, line);
+            strcpy(buffer, line.c_str());
+            fflush(stdout);
+            if(counter == 310){
+                parser(buffer);
+            }
+            cout << "counter = " << counter << endl;
+            if (parser(buffer) == error) {
+                mFile.close();
+                break;
+            }
+            
+            counter ++ ;
+            
+        }
+        mFile.close();
+    }
+    else
+        cout<<"Couldn't open the file\n";
+    return 0;
+    /*if (newfile.is_open()){ //checking whether the file is open
+        string tp;
+        while(getline(newfile, tp)){ //read data from file object and put it into string.
+            strcpy(buffer, tp.c_str());
+            fflush(stdout);
+            cout << tp << "\n";
+            //cout << buffer << "\n";
+            return 0;
+            if (parser(buffer) == error)
+                break;
+            //cout << tp << "\n"; //print the data of the string
+        }
+        newfile.close(); //close the file object.
+    }
+    return 0;*/
+
+    
     // Reading commands
-    while (fgets(buffer, MAX_STRING_INPUT_SIZE, stdin) != NULL) {
+    /*while (fgets(buffer, MAX_STRING_INPUT_SIZE, stdin) != NULL) {
         fflush(stdout);
         if (parser(buffer) == error)
             break;
     };
-    return 0;
+    return 0;*/
 }
 
 /***************************************************************************/
