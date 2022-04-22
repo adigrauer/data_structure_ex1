@@ -83,6 +83,7 @@ void Tree<T>::destroyTree(shared_ptr<TreeNode<T>> root){
     destroyTree(root->getLeft());
     destroyTree(root->getRight());
     root->clearNode();
+    size = 0;
 }
   
 template <class T>
@@ -138,7 +139,6 @@ void Tree<T>::insert(shared_ptr<T> to_add)
             temp = temp->getRight();
         }
     }
-    //adi
     //update new node to be the sun of his father
     new_node->changeFather(temp_update);        //new node is the root
     if (temp_update == nullptr){
@@ -309,7 +309,7 @@ void Tree<T>::remove(shared_ptr<T> to_remove)
     }
     shared_ptr<TreeNode<T>> father_node = node_to_remove->getFather();
 
-        //if the node to delete has no children
+    //if the node to delete has no children
     if (node_to_remove->getLeft() == nullptr && node_to_remove->getRight() == nullptr)
     {
         if(father_node != nullptr) {
@@ -325,7 +325,7 @@ void Tree<T>::remove(shared_ptr<T> to_remove)
         else 
         {
             primary_root = nullptr;
-            size--;
+            this->size--;
             return;
         }
         
@@ -365,7 +365,7 @@ void Tree<T>::remove(shared_ptr<T> to_remove)
 
     }
     //update tree size
-    size--;
+    this->size--;
     //touring from the deleated leaf to the root in order to balance the tree
     while(father_node != nullptr)
     {
@@ -438,9 +438,9 @@ void Tree<T>::LimitedinOrderDataToArray (shared_ptr<TreeNode<T>> root, shared_pt
     }
     LimitedinOrderDataToArray(root->getLeft(), array, index, limit);
     if (*limit > 0) {
-    array[*index] = root->getData();
-    (*index)++;
-    (*limit)--;
+        array[*index] = root->getData();
+        (*index)++;
+        (*limit)--;
     }
     LimitedinOrderDataToArray(root->getRight(), array, index, limit);
 }
@@ -530,11 +530,11 @@ shared_ptr<TreeNode<T>> mergeArrayToTreeAux(shared_ptr<TreeNode<T>>* merge_array
 template<class T>
 shared_ptr<Tree<T>> mergeTrees(shared_ptr<Tree<T>> tree_a, shared_ptr<Tree<T>> tree_b){
     //one of the trees is empty
-    if (tree_a->getRoot() == nullptr){
-        return tree_b;
-    }
-    if (tree_b->getRoot() == nullptr){
+    if(tree_b == nullptr || tree_b->getRoot() == nullptr){
         return tree_a;
+    }
+    if(tree_a == nullptr || tree_a->getRoot() == nullptr){
+        return tree_b;
     }
     shared_ptr<TreeNode<T>>* array_a = tree_a->TreeToArray();
     //tree_a->destroyTree(tree_a->getRoot());

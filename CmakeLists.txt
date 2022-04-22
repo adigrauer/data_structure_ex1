@@ -17,6 +17,6 @@ set(MTM_FLAGS_RELEASE "${MTM_FLAGS_DEBUG} -DNDEBUG")
 set(CMAKE_CPP_FLAGS ${MTM_FLAGS_DEBUG})
 
 # Add the names of your source files here
-set(CPP_FILES system.cpp employeeBySalary.cpp employeeByID.cpp company.cpp  nonEmptyCompany.cpp main1.cpp library1.cpp)
-
+set(CPP_FILES system.cpp employeeBySalary.cpp employeeByID.cpp company.cpp  nonEmptyCompany.cpp library1.cpp main1.cpp)
+# testTree.cpp
 add_executable(exe_name ${CPP_FILES})

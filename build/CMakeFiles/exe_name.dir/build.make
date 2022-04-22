@@ -138,24 +138,10 @@ CMakeFiles/exe_name.dir/nonEmptyCompany.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/exe_name.dir/nonEmptyCompany.cpp.s"
 	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\nonEmptyCompany.cpp -o CMakeFiles\exe_name.dir\nonEmptyCompany.cpp.s
 
-CMakeFiles/exe_name.dir/main1.cpp.obj: CMakeFiles/exe_name.dir/flags.make
-CMakeFiles/exe_name.dir/main1.cpp.obj: ../main1.cpp
-CMakeFiles/exe_name.dir/main1.cpp.obj: CMakeFiles/exe_name.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/exe_name.dir/main1.cpp.obj"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/exe_name.dir/main1.cpp.obj -MF CMakeFiles\exe_name.dir\main1.cpp.obj.d -o CMakeFiles\exe_name.dir\main1.cpp.obj -c C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\main1.cpp
-
-CMakeFiles/exe_name.dir/main1.cpp.i: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/exe_name.dir/main1.cpp.i"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\main1.cpp > CMakeFiles\exe_name.dir\main1.cpp.i
-
-CMakeFiles/exe_name.dir/main1.cpp.s: cmake_force
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/exe_name.dir/main1.cpp.s"
-	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\main1.cpp -o CMakeFiles\exe_name.dir\main1.cpp.s
-
 CMakeFiles/exe_name.dir/library1.cpp.obj: CMakeFiles/exe_name.dir/flags.make
 CMakeFiles/exe_name.dir/library1.cpp.obj: ../library1.cpp
 CMakeFiles/exe_name.dir/library1.cpp.obj: CMakeFiles/exe_name.dir/compiler_depend.ts
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/exe_name.dir/library1.cpp.obj"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_6) "Building CXX object CMakeFiles/exe_name.dir/library1.cpp.obj"
 	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/exe_name.dir/library1.cpp.obj -MF CMakeFiles\exe_name.dir\library1.cpp.obj.d -o CMakeFiles\exe_name.dir\library1.cpp.obj -c C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\library1.cpp
 
 CMakeFiles/exe_name.dir/library1.cpp.i: cmake_force
@@ -166,6 +152,20 @@ CMakeFiles/exe_name.dir/library1.cpp.s: cmake_force
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/exe_name.dir/library1.cpp.s"
 	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\library1.cpp -o CMakeFiles\exe_name.dir\library1.cpp.s
 
+CMakeFiles/exe_name.dir/main1.cpp.obj: CMakeFiles/exe_name.dir/flags.make
+CMakeFiles/exe_name.dir/main1.cpp.obj: ../main1.cpp
+CMakeFiles/exe_name.dir/main1.cpp.obj: CMakeFiles/exe_name.dir/compiler_depend.ts
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green --progress-dir=C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\build\CMakeFiles --progress-num=$(CMAKE_PROGRESS_7) "Building CXX object CMakeFiles/exe_name.dir/main1.cpp.obj"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -MD -MT CMakeFiles/exe_name.dir/main1.cpp.obj -MF CMakeFiles\exe_name.dir\main1.cpp.obj.d -o CMakeFiles\exe_name.dir\main1.cpp.obj -c C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\main1.cpp
+
+CMakeFiles/exe_name.dir/main1.cpp.i: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Preprocessing CXX source to CMakeFiles/exe_name.dir/main1.cpp.i"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -E C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\main1.cpp > CMakeFiles\exe_name.dir\main1.cpp.i
+
+CMakeFiles/exe_name.dir/main1.cpp.s: cmake_force
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --green "Compiling CXX source to assembly CMakeFiles/exe_name.dir/main1.cpp.s"
+	C:\TDM-GCC-64\bin\x86_64-w64-mingw32-g++.exe $(CXX_DEFINES) $(CXX_INCLUDES) $(CXX_FLAGS) -S C:\Users\adi\Desktop\Adi\Technion\Technion_semester_3\computer_structure\computer_structure_ex1\main1.cpp -o CMakeFiles\exe_name.dir\main1.cpp.s
+
 # Object files for target exe_name
 exe_name_OBJECTS = \
 "CMakeFiles/exe_name.dir/system.cpp.obj" \
@@ -173,8 +173,8 @@ exe_name_OBJECTS = \
 "CMakeFiles/exe_name.dir/employeeByID.cpp.obj" \
 "CMakeFiles/exe_name.dir/company.cpp.obj" \
 "CMakeFiles/exe_name.dir/nonEmptyCompany.cpp.obj" \
-"CMakeFiles/exe_name.dir/main1.cpp.obj" \
-"CMakeFiles/exe_name.dir/library1.cpp.obj"
+"CMakeFiles/exe_name.dir/library1.cpp.obj" \
+"CMakeFiles/exe_name.dir/main1.cpp.obj"
 
 # External object files for target exe_name
 exe_name_EXTERNAL_OBJECTS =
@@ -184,8 +184,8 @@ exe_name.exe: CMakeFiles/exe_name.dir/employeeBySalary.cpp.obj
 exe_name.exe: CMakeFiles/exe_name.dir/employeeByID.cpp.obj
 exe_name.exe: CMakeFiles/exe_name.dir/company.cpp.obj
 exe_name.exe: CMakeFiles/exe_name.dir/nonEmptyCompany.cpp.obj
-exe_name.exe: CMakeFiles/exe_name.dir/main1.cpp.obj
 exe_name.exe: CMakeFiles/exe_name.dir/library1.cpp.obj
+exe_name.exe: CMakeFiles/exe_name.dir/main1.cpp.obj
 exe_name.exe: CMakeFiles/exe_name.dir/build.make
 exe_name.exe: CMakeFiles/exe_name.dir/linklibs.rsp
 exe_name.exe: CMakeFiles/exe_name.dir/objects1.rsp
