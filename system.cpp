@@ -284,7 +284,7 @@ StatusType System::hireEmployee(int EmployeeID, int NewCompanyID){
 
 StatusType System::acquireCompany(int AcquirerID, int TargetID, double Factor){
     //invalid arguments
-    if(this == nullptr || AcquirerID <= 0 || TargetID <= 0 || TargetID == AcquirerID || Factor < 1){
+    if(this == nullptr || AcquirerID <= 0 || TargetID <= 0 || TargetID == AcquirerID || Factor < 1.00){
         return INVALID_INPUT;  
     }
     //cheack if companies exist and the condition to acquirer exist
@@ -295,21 +295,44 @@ StatusType System::acquireCompany(int AcquirerID, int TargetID, double Factor){
     if(acquirer_all_company_node == nullptr || target_all_company_node == nullptr || acquirer_all_company_node->getData()->getValue() < 10 * target_all_company_node->getData()->getValue()){
         return FAILURE;
     }
-    //calculate merge company fields
+    //calculate merge company fields 
     int new_value = Factor * (acquirer_all_company_node->getData()->getValue() + target_all_company_node->getData()->getValue());
-    int new_id_highest_earner = max(acquirer_all_company_node->getData()->getNonEmptyCompany()->getHighestEarner(), target_all_company_node->getData()->getNonEmptyCompany()->getHighestEarner());
-    int new_salary_of_highest_earner = max(acquirer_all_company_node->getData()->getNonEmptyCompany()->getHighestSalary(), target_all_company_node->getData()->getNonEmptyCompany()->getHighestSalary());
-    int new_num_employees = acquirer_all_company_node->getData()->getNonEmptyCompany()->getNumEmployees() + target_all_company_node->getData()->getNonEmptyCompany()->getNumEmployees();
-    
+    //if target company is empty
+    if(target_all_company_node->getData()->getNonEmptyCompany() == nullptr){
+        acquirer_all_company_node->getData()->setValue(new_value);
+        all_companies->remove(target_company_to_find);
+        return SUCCESS;
+    }
+    //if acquired comapny is empty
+    //if two companies are not empty
+    int new_id_highest_earner;
+    int new_salary_of_highest_earner;
+    int new_num_employees;
+    if(acquirer_all_company_node->getData()->getNonEmptyCompany() != nullptr){
+        new_id_highest_earner = max(acquirer_all_company_node->getData()->getNonEmptyCompany()->getHighestEarner(), target_all_company_node->getData()->getNonEmptyCompany()->getHighestEarner());
+        new_salary_of_highest_earner = max(acquirer_all_company_node->getData()->getNonEmptyCompany()->getHighestSalary(), target_all_company_node->getData()->getNonEmptyCompany()->getHighestSalary());
+        new_num_employees = acquirer_all_company_node->getData()->getNonEmptyCompany()->getNumEmployees() + target_all_company_node->getData()->getNonEmptyCompany()->getNumEmployees();
+    }
+    else{
+        new_id_highest_earner = target_all_company_node->getData()->getNonEmptyCompany()->getHighestEarner();
+        new_salary_of_highest_earner = target_all_company_node->getData()->getNonEmptyCompany()->getHighestSalary();
+        new_num_employees = target_all_company_node->getData()->getNonEmptyCompany()->getNumEmployees();
+    }
     //create non empty new company
     shared_ptr<NonEmptyCompany> new_non_empty_company(new NonEmptyCompany(AcquirerID, new_value, new_id_highest_earner, new_salary_of_highest_earner, new_num_employees));
-
     //create new id and salary trees of the merge company
     shared_ptr<Tree<EmployeeByID>> id_merge_tree(new Tree<EmployeeByID>);
-    id_merge_tree = mergeTrees(acquirer_all_company_node->getData()->getNonEmptyCompany()->getEmployeesByIDTree(), target_all_company_node->getData()->getNonEmptyCompany()->getEmployeesByIDTree());
     shared_ptr<Tree<EmployeeBySalary>> salary_merge_tree(new Tree<EmployeeBySalary>);
-    salary_merge_tree = mergeTrees(acquirer_all_company_node->getData()->getNonEmptyCompany()->getEmployeesBySalaryTree(), target_all_company_node->getData()->getNonEmptyCompany()->getEmployeesBySalaryTree());
-
+    shared_ptr<Tree<EmployeeByID>> temp_id = nullptr;
+    shared_ptr<Tree<EmployeeBySalary>> temp_salary = nullptr;
+    if(acquirer_all_company_node->getData()->getNonEmptyCompany() != nullptr){
+        id_merge_tree = mergeTrees(acquirer_all_company_node->getData()->getNonEmptyCompany()->getEmployeesByIDTree(), target_all_company_node->getData()->getNonEmptyCompany()->getEmployeesByIDTree());
+        salary_merge_tree = mergeTrees(acquirer_all_company_node->getData()->getNonEmptyCompany()->getEmployeesBySalaryTree(), target_all_company_node->getData()->getNonEmptyCompany()->getEmployeesBySalaryTree());
+    }
+    else{
+        id_merge_tree = mergeTrees(temp_id, target_all_company_node->getData()->getNonEmptyCompany()->getEmployeesByIDTree());
+        salary_merge_tree = mergeTrees(temp_salary, target_all_company_node->getData()->getNonEmptyCompany()->getEmployeesBySalaryTree());
+    }
     //updates employeey company ptr
     int index = 0;
     shared_ptr<EmployeeByID>* merge_array = new shared_ptr<EmployeeByID>[new_num_employees];
@@ -318,7 +341,6 @@ StatusType System::acquireCompany(int AcquirerID, int TargetID, double Factor){
         merge_array[i]->setCompanyPtr(new_non_empty_company);
     }
     delete[] merge_array;
-
     //create new non_empty_company to add the non empty companise tree
     new_non_empty_company->setEmployeesByIDTree(id_merge_tree);
     new_non_empty_company->setEmployeesBySalaryTree(salary_merge_tree);
@@ -327,7 +349,6 @@ StatusType System::acquireCompany(int AcquirerID, int TargetID, double Factor){
     non_empty_companies->remove(acquirer_non_empty_company_to_remove);
     non_empty_companies->remove(target_non_empty_company_to_remove);
     non_empty_companies->insert(new_non_empty_company);
-
     //create new company to add to all companie tree
     all_companies->remove(acquirer_company_to_find);
     all_companies->remove(target_company_to_find);
@@ -458,7 +479,7 @@ StatusType System::getNumEmployeesMatching(int CompanyID, int MinEmployeeID, int
         *TotalNumOfEmployees = index; 
         for (int i=0; i<index; i++)
         {
-            if(data_array[i]->getSalaryPtr()->getSalary() > MinSalary && data_array[i]->getGrade() > MinGrade)
+            if(data_array[i]->getSalaryPtr()->getSalary() >= MinSalary && data_array[i]->getGrade() >= MinGrade)
             {
                 (*NumOfEmployees)++;
             }
@@ -481,7 +502,7 @@ StatusType System::getNumEmployeesMatching(int CompanyID, int MinEmployeeID, int
         *TotalNumOfEmployees = index; 
         for (int i=0; i<index; i++)
         {
-            if(data_array[i]->getSalaryPtr()->getSalary() > MinSalary && data_array[i]->getGrade() > MinGrade)
+            if(data_array[i]->getSalaryPtr()->getSalary() >= MinSalary && data_array[i]->getGrade() >= MinGrade)
             {
                 (*NumOfEmployees)++;
             }
