@@ -117,7 +117,7 @@ StatusType System::removeEmployee(int EmployeeID){
     }
     //delete employee from company trees
     shared_ptr<NonEmptyCompany> non_empty_company_node(all_employee_id_node->getData()->getCompanyPtr());
-    shared_ptr<EmployeeBySalary> employee_salary_to_remove(new EmployeeBySalary(all_employee_id_node->getData()->getSalaryPtr()->getSalary() ,EmployeeID)); 
+    shared_ptr<EmployeeBySalary> employee_salary_to_remove = all_employee_id_node->getData()->getSalaryPtr(); 
     //employee to remove is the only one who hired in comapny and the company will became empty
     if(non_empty_company_node->getNumEmployees() == 1){
         non_empty_company_node->getEmployeesBySalaryTree()->remove(employee_salary_to_remove);

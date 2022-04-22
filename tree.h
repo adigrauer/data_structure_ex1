@@ -184,8 +184,9 @@ void Tree<T>::rrRotate (shared_ptr<TreeNode<T>> node)
     }
     temp->changeLeft(node);
     node->changeFather(temp);
-    temp->updateHeight();
     node->updateHeight();
+    temp->updateHeight();
+    
 }
 
 template<class T>
@@ -208,8 +209,9 @@ void Tree<T>::llRotate (shared_ptr<TreeNode<T>> node)
     }
     temp->changeRight(node);
     node->changeFather(temp);
-    temp->updateHeight();
+    
     node->updateHeight();
+    temp->updateHeight();
 }
 
 template<class T>
@@ -448,23 +450,34 @@ void Tree<T>::LimitedinOrderDataToArray (shared_ptr<TreeNode<T>> root, shared_pt
 template <class T>
 void Tree<T>::minMaxInOrderDataToArray (shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index, shared_ptr<T> min, shared_ptr<T> max)
 {
-    if(root == nullptr){
+    /*if(root == nullptr){
         return;
     }
-    if(*(root->getData()) > *max)
+    if(*(root->getData()) > *min)
+    { 
+        minMaxInOrderDataToArray(root->getLeft(), array, index, min, max);
+    }
+    if(*(root->getData()) < *max)
     {
-         return;
+        array[*index] = root->getData();
+        (*index)++;
+    }
+    minMaxInOrderDataToArray(root->getRight(), array, index, min, max);
+ */
+    if(root == nullptr){
+            return;
     }
     if(*(root->getData()) < *min)
     { 
-        return;
-    } 
-    
-    minMaxInOrderDataToArray(root->getLeft(), array, index, min, max);
+        minMaxInOrderDataToArray(root->getRight(), array, index, min, max);
+    }
+    if(*(root->getData()) > *max)
+    {
+        minMaxInOrderDataToArray(root->getLeft(), array, index, min, max);
+    }
     array[*index] = root->getData();
-    (*index)++;
-    minMaxInOrderDataToArray(root->getRight(), array, index, min, max);
-}
+    (*index)++; 
+}    
 
 template <class T>
 shared_ptr<TreeNode<T>>* Tree<T>::TreeToArray(){
