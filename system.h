@@ -9,6 +9,7 @@
 #include "tree.h"
 #include "treeNode.h"
 #include <memory>
+#include <cmath>
 
 using std::shared_ptr;
 
@@ -57,6 +58,7 @@ class System{
         shared_ptr<Tree<EmployeeBySalary>> getAllEmployeesBySalaryTree();
         shared_ptr<Tree<EmployeeByID>> getAllEmployeesByIdTree();
         int max(int a, int b);
+        int max_id(int salary_a, int salary_b, int id_a, int id_b);
         void systemDestroy();
 };
 

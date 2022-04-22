@@ -2,7 +2,7 @@
 
 NonEmptyCompany::NonEmptyCompany(int id, int value, int id_highest_earner, int salary_of_highest_earner, int num_employees):
     company_id(id),
-    value(value),
+    //value(value),
     id_highest_earner(id_highest_earner),
     salary_of_highest_earner(salary_of_highest_earner),
     num_employees(num_employees),
@@ -24,12 +24,12 @@ int NonEmptyCompany::getHighestSalary()
 {
     return this->salary_of_highest_earner;
 }
-
+/*
 int NonEmptyCompany::getValue()
 {
     return this->value;
 }
-
+*/
 int NonEmptyCompany::getNumEmployees()
 {
     return this->num_employees;
@@ -55,12 +55,12 @@ void NonEmptyCompany::setHighestSalary(int new_salary)
 {
     salary_of_highest_earner = new_salary;
 }
-
+/*
 void NonEmptyCompany::setValue(int to_add)
 {
     value = value + to_add;
 }
-
+*/
 void NonEmptyCompany::setNumEmployees(int to_change)
 {
    num_employees = num_employees + to_change;
@@ -124,9 +124,18 @@ void NonEmptyCompany::updateHighestEarner(shared_ptr<EmployeeBySalary> employee)
 void NonEmptyCompany::changeHighestEarnerBeforeRemove(shared_ptr<EmployeeBySalary> employee){
     if(num_employees > 1)
     {
-        shared_ptr<EmployeeBySalary> next_highest_employee = employees_by_salary->find(employee)->getFather()->getData();
-        id_highest_earner = next_highest_employee->getID();
-        salary_of_highest_earner = next_highest_employee->getSalary();
+        shared_ptr<TreeNode<EmployeeBySalary>> salary_employee = employees_by_salary->find(employee);
+        if(salary_employee->getLeft() != nullptr)
+        {
+            shared_ptr<EmployeeBySalary> next_highest_employee = salary_employee->getLeft()->getData();
+            id_highest_earner = next_highest_employee->getID();
+            salary_of_highest_earner = next_highest_employee->getSalary();
+        }
+        else {
+            shared_ptr<EmployeeBySalary> next_highest_employee = salary_employee->getFather()->getData();
+            id_highest_earner = next_highest_employee->getID();
+            salary_of_highest_earner = next_highest_employee->getSalary();
+        }
     }
     else {
         id_highest_earner = 0;

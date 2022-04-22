@@ -528,7 +528,7 @@ shared_ptr<TreeNode<T>>* mergeArrays(shared_ptr<TreeNode<T>>* array_a, shared_pt
     shared_ptr<TreeNode<T>>* merge_array = new shared_ptr<TreeNode<T>>[size_a + size_b];
     int index_a = 0, index_b = 0, index_merge = 0;
     while(index_a < size_a && index_b < size_b){
-        if(array_a[index_a]->getData() < array_b[index_b]->getData()){
+        if(*(array_a[index_a]->getData()) < *(array_b[index_b]->getData())){
             merge_array[index_merge] = array_a[index_a];
             index_a++;
         }

@@ -21,7 +21,12 @@ shared_ptr<NonEmptyCompany> Company::getNonEmptyCompany()
     return this->non_empty_company;
 }
 
-void Company::setValue(int to_add)
+void Company::setValue(int new_value)
+{
+    value = new_value;
+}
+
+void Company::addValue(int to_add)
 {
     value = value + to_add;
 }

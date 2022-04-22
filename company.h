@@ -31,7 +31,8 @@ class Company{
         int getValue();
         shared_ptr<NonEmptyCompany> getNonEmptyCompany();
 
-        void setValue(int to_add);
+        void setValue(int new_value);
+        void addValue(int to_add);
         void setNonEmptyCompany(shared_ptr<NonEmptyCompany> non_empty);
         
         friend bool operator< (const Company& company_a, const Company& company_b);

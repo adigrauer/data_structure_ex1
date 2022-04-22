@@ -14,7 +14,7 @@ class EmployeeByID;
 class NonEmptyCompany{
     private:
         int company_id;
-        int value;
+        //int value;
         int id_highest_earner;
         int salary_of_highest_earner;
         int num_employees;
@@ -33,14 +33,14 @@ class NonEmptyCompany{
         int getID();
         int getHighestEarner();
         int getHighestSalary();
-        int getValue();
+        //int getValue();
         int getNumEmployees();
         shared_ptr<Tree<EmployeeBySalary>> getEmployeesBySalaryTree();
         shared_ptr<Tree<EmployeeByID>> getEmployeesByIDTree();
 
         void setHighestEarner(int new_id);
         void setHighestSalary(int new_salary);
-        void setValue(int to_add);
+        //void setValue(int to_add);
         void setNumEmployees(int to_change);
         void setEmployeesBySalaryTree(shared_ptr<Tree<EmployeeBySalary>> salary_tree);
         void setEmployeesByIDTree(shared_ptr<Tree<EmployeeByID>> id_tree);

@@ -51,8 +51,8 @@ StatusType System::addEmployee(int EmployeeID, int CompanyID, int Salary, int Gr
         shared_ptr<NonEmptyCompany> non_empty_company_to_add(new NonEmptyCompany(CompanyID, all_company_node->getData()->getValue()));
         non_empty_companies->insert(non_empty_company_to_add);
         all_company_node->getData()->setNonEmptyCompany(non_empty_company_to_add);
-        
     }
+
     shared_ptr<NonEmptyCompany> non_empty_company_to_add = all_company_node->getData()->getNonEmptyCompany();
     employee_id_to_add->setCompanyPtr(non_empty_company_to_add);
     //add employee to all employees by id,salary tree 
@@ -99,6 +99,7 @@ StatusType System::removeCompany(int CompanyID){
     }
     //remove empty company
     all_companies->remove(company_to_find);
+    
     return SUCCESS;
 }
 ////////////////////////////////////////////
@@ -128,7 +129,7 @@ StatusType System::removeEmployee(int EmployeeID){
         shared_ptr<TreeNode<Company>> company_to_update_node(all_companies->find(company_to_update));
         company_to_update_node->getData()->setNonEmptyCompany(nullptr);
     }
-    //the company wonwt remain empty adter remove employee
+    //the company wont remain empty after remove employee
     else{
         if(non_empty_company_node->getHighestEarner() == employee_salary_to_remove->getID()){
             non_empty_company_node->changeHighestEarnerBeforeRemove(employee_salary_to_remove);
@@ -213,11 +214,11 @@ StatusType System::increaseCompanyValue(int CompanyID, int ValueIncrease){
         return FAILURE;
     }
     //update value in all companies tree
-    all_company_node->getData()->setValue(ValueIncrease);
+    all_company_node->getData()->addValue(ValueIncrease);
     //update value in non empty companies tree
-    if(all_company_node->getData()->getNonEmptyCompany() != nullptr){
-        all_company_node->getData()->getNonEmptyCompany()->setValue(ValueIncrease);
-    }
+    /*if(all_company_node->getData()->getNonEmptyCompany() != nullptr){
+        all_company_node->getData()->getNonEmptyCompany()->addValue(ValueIncrease);
+    }*/
     return SUCCESS; 
 }
 
@@ -296,7 +297,7 @@ StatusType System::acquireCompany(int AcquirerID, int TargetID, double Factor){
         return FAILURE;
     }
     //calculate merge company fields 
-    int new_value = Factor * (acquirer_all_company_node->getData()->getValue() + target_all_company_node->getData()->getValue());
+    int new_value = floor(Factor * (acquirer_all_company_node->getData()->getValue() + target_all_company_node->getData()->getValue()));
     //if target company is empty
     if(target_all_company_node->getData()->getNonEmptyCompany() == nullptr){
         acquirer_all_company_node->getData()->setValue(new_value);
@@ -309,7 +310,8 @@ StatusType System::acquireCompany(int AcquirerID, int TargetID, double Factor){
     int new_salary_of_highest_earner;
     int new_num_employees;
     if(acquirer_all_company_node->getData()->getNonEmptyCompany() != nullptr){
-        new_id_highest_earner = max(acquirer_all_company_node->getData()->getNonEmptyCompany()->getHighestEarner(), target_all_company_node->getData()->getNonEmptyCompany()->getHighestEarner());
+        new_id_highest_earner = max_id(acquirer_all_company_node->getData()->getNonEmptyCompany()->getHighestSalary(), target_all_company_node->getData()->getNonEmptyCompany()->getHighestSalary(),
+            acquirer_all_company_node->getData()->getNonEmptyCompany()->getHighestEarner(), target_all_company_node->getData()->getNonEmptyCompany()->getHighestEarner());
         new_salary_of_highest_earner = max(acquirer_all_company_node->getData()->getNonEmptyCompany()->getHighestSalary(), target_all_company_node->getData()->getNonEmptyCompany()->getHighestSalary());
         new_num_employees = acquirer_all_company_node->getData()->getNonEmptyCompany()->getNumEmployees() + target_all_company_node->getData()->getNonEmptyCompany()->getNumEmployees();
     }
@@ -541,9 +543,18 @@ void System::updateHighestEarner(shared_ptr<EmployeeBySalary> employee){
 void System::changeHighestEarnerBeforeRemove(shared_ptr<EmployeeBySalary> employee){
     if(num_all_employees > 1)
     {
-        shared_ptr<EmployeeBySalary> next_highest_employee = all_employees_by_salary_tree->find(employee)->getFather()->getData();
-        id_highest_earner = next_highest_employee->getID();
-        salary_of_highest_earner = next_highest_employee->getSalary();
+        shared_ptr<TreeNode<EmployeeBySalary>> salary_employee = all_employees_by_salary_tree->find(employee);
+        if(salary_employee->getLeft() != nullptr)
+        {
+            shared_ptr<EmployeeBySalary> next_highest_employee = salary_employee->getLeft()->getData();
+            id_highest_earner = next_highest_employee->getID();
+            salary_of_highest_earner = next_highest_employee->getSalary();
+        }
+        else {
+            shared_ptr<EmployeeBySalary> next_highest_employee = salary_employee->getFather()->getData();
+            id_highest_earner = next_highest_employee->getID();
+            salary_of_highest_earner = next_highest_employee->getSalary();
+        }
     }
     else {
         id_highest_earner = 0;
@@ -570,6 +581,23 @@ shared_ptr<Tree<EmployeeByID>> System::getAllEmployeesByIdTree(){
 int System::max(int a, int b){
     return a > b ? a : b;
 }
+
+int System::max_id(int salary_a, int salary_b, int id_a, int id_b){
+    if(salary_a == salary_b)
+    {
+        if(id_a < id_b)
+        {
+            return id_a;
+        }
+        return id_b;
+    }
+    if(salary_a < salary_b)
+    {
+        return id_b;
+    }
+    return id_a;
+}
+
 
 void System::systemDestroy(){
     shared_ptr<NonEmptyCompany>* nodes = new shared_ptr<NonEmptyCompany>[this->non_empty_companies->getSize()];

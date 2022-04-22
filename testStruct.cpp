@@ -20,8 +20,8 @@ int main(){
     //testEmployeeBySalary();
     //testSystemAdi ();
     //testSystemLottem ();
-    //newtest1();
-    newtest2();
+    newtest1();
+    //newtest2();
     return 0;
 }
 
@@ -32,7 +32,7 @@ void newtest2(){
     system.addCompany(3,1);
 }
 
-void newtest (){
+void newtest1 (){
     System system;
     system.addCompany(1,1);
     system.addCompany(2,20);
@@ -53,6 +53,9 @@ void newtest (){
     system.addEmployee(9, 3, 10, 5);
     system.addEmployee(10, 4, 100, 5);
     system.addEmployee(11, 5, 200, 5);
+    system.hireEmployee(11, 6);
+    system.promoteEmployee(11, 6, 0);
+    system.removeEmployee(11);
     int heighst_earner;
     int* array2 = &heighst_earner;
     system.getHighestEarnerInEachCompany(3, &array2);
