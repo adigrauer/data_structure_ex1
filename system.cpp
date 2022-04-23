@@ -42,6 +42,10 @@ StatusType System::addEmployee(int EmployeeID, int CompanyID, int Salary, int Gr
     if(this == nullptr || EmployeeID <= 0 || CompanyID <= 0 || Salary <= 0 || Grade < 0){
         return INVALID_INPUT;
     }
+    if(EmployeeID == 1580 || EmployeeID == 194)
+    {
+        int x =1;
+    }
     try {
         //company not exist in allCompanyTree || employee already exist
         shared_ptr<Company> company_to_find(new Company(CompanyID, 0)); 
@@ -599,14 +603,17 @@ void System::changeHighestEarnerBeforeRemove(shared_ptr<EmployeeBySalary> employ
         shared_ptr<TreeNode<EmployeeBySalary>> salary_employee = all_employees_by_salary_tree->find(employee);
         if(salary_employee->getLeft() != nullptr)
         {
-            shared_ptr<EmployeeBySalary> next_highest_employee = salary_employee->getLeft()->getData();
-            id_highest_earner = next_highest_employee->getID();
-            salary_of_highest_earner = next_highest_employee->getSalary();
-        }
-        else {
-            shared_ptr<EmployeeBySalary> next_highest_employee = salary_employee->getFather()->getData();
-            id_highest_earner = next_highest_employee->getID();
-            salary_of_highest_earner = next_highest_employee->getSalary();
+            if(salary_employee->getLeft()->getRight() != nullptr)
+            {
+                shared_ptr<EmployeeBySalary> next_highest_employee = salary_employee->getLeft()->getRight()->getData();
+                id_highest_earner = next_highest_employee->getID();
+                salary_of_highest_earner = next_highest_employee->getSalary();
+            }
+            else{
+                shared_ptr<EmployeeBySalary> next_highest_employee = salary_employee->getLeft()->getData();
+                id_highest_earner = next_highest_employee->getID();
+                salary_of_highest_earner = next_highest_employee->getSalary();
+            }
         }
     }
     else {

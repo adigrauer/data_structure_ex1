@@ -10,7 +10,7 @@
 #include "treeNode.h"
 #include <memory>
 #include <cmath>
-
+#include <exception>
 using std::shared_ptr;
 
 template <class T> class Tree;
