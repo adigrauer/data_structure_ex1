@@ -39,11 +39,8 @@ class Tree {
         void reverseInOrder (shared_ptr<TreeNode<T>> root);
         void inOrderToArray (shared_ptr<TreeNode<T>> root, shared_ptr<TreeNode<T>>* array, int* index);
         void inOrderDataToArray(shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index);
-        //void reverseInOrderDataToArray(shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index);
         void LimitedinOrderDataToArray (shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index, int* limit);
         void minMaxInOrderDataToArray (shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index, shared_ptr<T> min, shared_ptr<T> max);
-        shared_ptr<TreeNode<T>> findMinimumWithGivenValue (shared_ptr<TreeNode<T>> root, shared_ptr<T> min);
-        shared_ptr<TreeNode<T>> findMaxWithGivenValue (shared_ptr<TreeNode<T>> root, shared_ptr<T> max);
         int getSize();
         shared_ptr<TreeNode<T>> getRoot();
         void changeRoot(shared_ptr<TreeNode<T>> new_root);
@@ -429,21 +426,7 @@ void Tree<T>::inOrderDataToArray (shared_ptr<TreeNode<T>> root, shared_ptr<T>* a
     (*index)++;
     inOrderDataToArray(root->getRight(), array, index);
 }
-/*
-template<class T>
-void Tree<T>::reverseInOrderDataToArray(shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index)
-{
-    shared_ptr<T>* data_array = new shared_ptr<T>[this->getSize()];
-    inOrderDataToArray(root, data_array, index);
-    int j = 0;
-    for (int i = this->getSize()-1; i>=0; i--)
-    {
-        array[j] = data_array[i];
-        j++;
-    }
-    delete[] data_array;
-}
-*/
+
 template<class T>
 void Tree<T>::reverseInOrder (shared_ptr<TreeNode<T>> root){
     if(root == NULL){
@@ -491,29 +474,6 @@ void Tree<T>::minMaxInOrderDataToArray (shared_ptr<TreeNode<T>> root, shared_ptr
     }
 }    
 
-template <class T>
-shared_ptr<TreeNode<T>> Tree<T>::findMinimumWithGivenValue (shared_ptr<TreeNode<T>> root, shared_ptr<T> min)
-{
-    shared_ptr<TreeNode<T>> temp = root; 
-    while(temp != nullptr){
-        if(*temp > *min){
-            temp = temp->getLeft();
-        }
-    }
-    return temp;
-}
-
-template <class T>
-shared_ptr<TreeNode<T>> Tree<T>::findMaxWithGivenValue (shared_ptr<TreeNode<T>> root, shared_ptr<T> max)
-{
-    shared_ptr<TreeNode<T>> temp = root; 
-    while(temp != nullptr){
-        if(*temp < *max){
-            temp = temp->getRight();
-        }
-    }
-    return temp;
-}
 
 template <class T>
 shared_ptr<TreeNode<T>>* Tree<T>::TreeToArray(){
