@@ -1,6 +1,28 @@
 #include "tree.h"
 #include "treeNode.h"
 
+//print tree function
+/*
+#define COUNT 10
+template<class T>
+void Tree<T>::print2DUtil(shared_ptr<TreeNode<T>> root, int space){
+    if (root == NULL)
+        return;
+    space += COUNT;
+    print2DUtil(root->getRight(), space);
+    cout<<endl;
+    for (int i = COUNT; i < space; i++)
+        cout<<" ";
+    cout<<*(root->getData()) <<"\n";
+    print2DUtil(root->getLeft(), space);
+}
+ 
+template <class T>
+void Tree<T>::print2D(shared_ptr<TreeNode<T>> root){
+    print2DUtil(root, 0);
+}
+*/ 
+
 void general_test1();
 void insert_test2();
 void insert_test3();

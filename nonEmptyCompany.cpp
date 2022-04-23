@@ -2,7 +2,6 @@
 
 NonEmptyCompany::NonEmptyCompany(int id, int value, int id_highest_earner, int salary_of_highest_earner, int num_employees):
     company_id(id),
-    //value(value),
     id_highest_earner(id_highest_earner),
     salary_of_highest_earner(salary_of_highest_earner),
     num_employees(num_employees),
@@ -15,6 +14,7 @@ int NonEmptyCompany::getID()
 {
     return this->company_id;
 }
+
 int NonEmptyCompany::getHighestEarner()
 {
     return this->id_highest_earner;
@@ -24,17 +24,11 @@ int NonEmptyCompany::getHighestSalary()
 {
     return this->salary_of_highest_earner;
 }
-/*
-int NonEmptyCompany::getValue()
-{
-    return this->value;
-}
-*/
+
 int NonEmptyCompany::getNumEmployees()
 {
     return this->num_employees;
 }
-
 
 shared_ptr<Tree<EmployeeBySalary>> NonEmptyCompany::getEmployeesBySalaryTree()
 {
@@ -55,17 +49,11 @@ void NonEmptyCompany::setHighestSalary(int new_salary)
 {
     salary_of_highest_earner = new_salary;
 }
-/*
-void NonEmptyCompany::setValue(int to_add)
-{
-    value = value + to_add;
-}
-*/
+
 void NonEmptyCompany::setNumEmployees(int to_change)
 {
    num_employees = num_employees + to_change;
 }
-
 
 void NonEmptyCompany::setEmployeesBySalaryTree(shared_ptr<Tree<EmployeeBySalary>> salary_tree)
 {

@@ -27,7 +27,6 @@ class Tree {
         void lrRotate (shared_ptr<TreeNode<T>> node);
         void rlRotate (shared_ptr<TreeNode<T>> node);
 
-        //int height (shared_ptr<TreeNode<T>> node);
         int checkBalance (shared_ptr<TreeNode<T>> node);
         bool createBalance (shared_ptr<TreeNode<T>> node);
         
@@ -35,20 +34,17 @@ class Tree {
         void remove(shared_ptr<T> to_remove);
         
         void inOrder (shared_ptr<TreeNode<T>> root);
-        //void inOrderUpdateData (shared_ptr<TreeNode<T>> root, shared_ptr<S> to_update);
         void reverseInOrder (shared_ptr<TreeNode<T>> root);
         void inOrderToArray (shared_ptr<TreeNode<T>> root, shared_ptr<TreeNode<T>>* array, int* index);
         void inOrderDataToArray(shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index);
         void LimitedinOrderDataToArray (shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index, int* limit);
         void minMaxInOrderDataToArray (shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index, shared_ptr<T> min, shared_ptr<T> max);
+        
         int getSize();
         shared_ptr<TreeNode<T>> getRoot();
         void changeRoot(shared_ptr<TreeNode<T>> new_root);
         void changeSize(int new_size);
-        //////////////////////////////////////////
-        //////////////////////////////////////////
-        //////////////////////////////////////////
-
+    
         shared_ptr<Tree<T>> merge(shared_ptr<Tree<T>> root_a, shared_ptr<Tree<T>> root_b);
         shared_ptr<TreeNode<T>> find (shared_ptr<T> to_find);
         shared_ptr<TreeNode<T>> findMinimalNode (shared_ptr<TreeNode<T>> root);
@@ -147,14 +143,12 @@ void Tree<T>::insert(shared_ptr<T> to_add)
     if (temp_update == nullptr){
         this->primary_root = new_node;
     }
-    //NOTE- NEED TO CHANGE THE COMPARE TO GENERIC!!!!!
     else if(*temp_update->getData() > *to_add){    //new node is left sun of his parent
         temp_update->changeLeft(new_node);
     }
     else{
         temp_update->changeRight(new_node);       //new node is right sun of his parent
     }
-    
     //touring from the new leaf to the root in order to balance the tree
     while(temp_update != nullptr){
         temp_update->updateHeight();
@@ -285,20 +279,6 @@ int Tree<T>::checkBalance (shared_ptr<TreeNode<T>> node)
     return left_height - right_height;
 }
 
-//////////////////////////////////////////////////////
-//////////////////////////////////////////////////////
-//////////////////////////////////////////////////////
-
-template<class T>
-void Tree<T>::inOrder (shared_ptr<TreeNode<T>> root){
-    if(root == nullptr){
-        return;
-    }
-    inOrder(root->getLeft());
-    cout<<*(root->getData());
-    inOrder(root->getRight());
-}
-
 template<class T>
 void Tree<T>::remove(shared_ptr<T> to_remove)
 {
@@ -311,7 +291,6 @@ void Tree<T>::remove(shared_ptr<T> to_remove)
         return;
     }
     shared_ptr<TreeNode<T>> father_node = node_to_remove->getFather();
-
     //if the node to delete has no children
     if (node_to_remove->getLeft() == nullptr && node_to_remove->getRight() == nullptr)
     {
@@ -331,7 +310,6 @@ void Tree<T>::remove(shared_ptr<T> to_remove)
             size--;
             return;
         }
-        
     }
 
     //if the node to delete has only one child on the right
@@ -437,7 +415,6 @@ void Tree<T>::reverseInOrder (shared_ptr<TreeNode<T>> root){
     reverseInOrder(root->getLeft());
 }
 
-
 template <class T>
 void Tree<T>::LimitedinOrderDataToArray (shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index, int* limit){
     if(root == nullptr || *limit == 0){
@@ -474,42 +451,54 @@ void Tree<T>::minMaxInOrderDataToArray (shared_ptr<TreeNode<T>> root, shared_ptr
     }
 }    
 
-
 template <class T>
 shared_ptr<TreeNode<T>>* Tree<T>::TreeToArray(){
     shared_ptr<TreeNode<T>>* tree_array = new shared_ptr<TreeNode<T>>[this->getSize()];
-    int index = 0;
-    inOrderToArray (this->getRoot(), tree_array, &index);
+    try{
+        int index = 0;
+        inOrderToArray (this->getRoot(), tree_array, &index);
+    }
+    catch(const std::bad_alloc& ba){
+        delete[] tree_array;
+        throw ba;
+    }
     return tree_array;
 }
 
 template<class T>
 shared_ptr<TreeNode<T>>* mergeArrays(shared_ptr<TreeNode<T>>* array_a, shared_ptr<TreeNode<T>>* array_b, int size_a, int size_b){
     shared_ptr<TreeNode<T>>* merge_array = new shared_ptr<TreeNode<T>>[size_a + size_b];
-    int index_a = 0, index_b = 0, index_merge = 0;
-    while(index_a < size_a && index_b < size_b){
-        if(*(array_a[index_a]->getData()) < *(array_b[index_b]->getData())){
+    try{
+        int index_a = 0, index_b = 0, index_merge = 0;
+        while(index_a < size_a && index_b < size_b){
+            if(*(array_a[index_a]->getData()) < *(array_b[index_b]->getData())){
+                merge_array[index_merge] = array_a[index_a];
+                index_a++;
+            }
+            else{
+                merge_array[index_merge] = array_b[index_b];
+                index_b++; 
+            }
+            index_merge++;
+        }
+        while(index_a < size_a){
             merge_array[index_merge] = array_a[index_a];
             index_a++;
+            index_merge++;
         }
-        else{
+        while(index_b < size_b){
             merge_array[index_merge] = array_b[index_b];
-            index_b++; 
+            index_b++;
+            index_merge++;
         }
-        index_merge++;
+        delete[] array_a;
+        delete[] array_b;
     }
-    while(index_a < size_a){
-        merge_array[index_merge] = array_a[index_a];
-        index_a++;
-        index_merge++;
+    catch(const std::bad_alloc& ba){
+        delete[] array_a;
+        delete[] array_b; 
+        throw ba;
     }
-    while(index_b < size_b){
-        merge_array[index_merge] = array_b[index_b];
-        index_b++;
-        index_merge++;
-    }
-    delete[] array_a;
-    delete[] array_b;
     return merge_array;
 }
 
@@ -546,37 +535,14 @@ shared_ptr<Tree<T>> mergeTrees(shared_ptr<Tree<T>> tree_a, shared_ptr<Tree<T>> t
         return tree_b;
     }
     shared_ptr<TreeNode<T>>* array_a = tree_a->TreeToArray();
-    //tree_a->destroyTree(tree_a->getRoot());
     shared_ptr<TreeNode<T>>* array_b = tree_b->TreeToArray();
-    //tree_b->destroyTree(tree_b->getRoot());
     shared_ptr<TreeNode<T>>* merge_array = mergeArrays(array_a, array_b, tree_a->getSize(), tree_b->getSize());
     Tree<T> merge_tree = mergeArrayToTree(merge_array, 0, tree_a->getSize()+tree_b->getSize()-1);
-    //Tree<T> merge_tree = mergeArrayToTree(merge_array, 0, tree_a->getSize()+tree_b->getSize());
     merge_tree.changeSize(tree_a->getSize()+tree_b->getSize());
     shared_ptr<Tree<T>> tree(new Tree<T>(merge_tree));
     return tree;
 }
 
-
-
-#define COUNT 10
-template<class T>
-void Tree<T>::print2DUtil(shared_ptr<TreeNode<T>> root, int space){
-    if (root == NULL)
-        return;
-    space += COUNT;
-    print2DUtil(root->getRight(), space);
-    cout<<endl;
-    for (int i = COUNT; i < space; i++)
-        cout<<" ";
-    cout<<*(root->getData()) <<"\n";
-    print2DUtil(root->getLeft(), space);
-}
- 
-template <class T>
-void Tree<T>::print2D(shared_ptr<TreeNode<T>> root){
-    print2DUtil(root, 0);
-}
 #endif /*TREE_H*/
 
 

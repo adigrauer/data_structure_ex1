@@ -20,13 +20,8 @@ class NonEmptyCompany{
         shared_ptr<Tree<EmployeeByID>> employees_by_id;
         shared_ptr<Tree<EmployeeBySalary>> employees_by_salary;
     public:
-        /* Company C'tor */
         NonEmptyCompany(int id, int value, int id_highest_earner=0, int salary_of_highest_earner=0, int num_employees=0);
-        
-        /* Company copy C'tor */
         NonEmptyCompany(const NonEmptyCompany& company) = default;
-        
-        /* Company D'tor */
         ~NonEmptyCompany () = default;
 
         int getID();
@@ -42,20 +37,16 @@ class NonEmptyCompany{
         void setEmployeesBySalaryTree(shared_ptr<Tree<EmployeeBySalary>> salary_tree);
         void setEmployeesByIDTree(shared_ptr<Tree<EmployeeByID>> id_tree);
 
-        //helper functions
         void updateHighestEarner(shared_ptr<EmployeeBySalary> employee);
         void changeHighestEarnerBeforeRemove(shared_ptr<EmployeeBySalary> employee);
 
         friend bool operator< (const NonEmptyCompany& company_a, const NonEmptyCompany& company_b);
         friend bool operator== (const NonEmptyCompany& company_a, const NonEmptyCompany& company_b);
-
 };
 
 bool operator!= (const NonEmptyCompany& company_a, const NonEmptyCompany& company_b);
 bool operator<= (const NonEmptyCompany& company_a, const NonEmptyCompany& company_b);
 bool operator>= (const NonEmptyCompany& company_a, const NonEmptyCompany& company_b);
 bool operator> (const NonEmptyCompany& company_a, const NonEmptyCompany& company_b);
-
-
 
 #endif    /* NON_EMPTY_COMPANY */
