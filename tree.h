@@ -33,8 +33,6 @@ class Tree {
         void insert(shared_ptr<T> to_add);
         void remove(shared_ptr<T> to_remove);
         
-        void inOrder (shared_ptr<TreeNode<T>> root);
-        void reverseInOrder (shared_ptr<TreeNode<T>> root);
         void inOrderToArray (shared_ptr<TreeNode<T>> root, shared_ptr<TreeNode<T>>* array, int* index);
         void inOrderDataToArray(shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index);
         void LimitedinOrderDataToArray (shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index, int* limit);
@@ -49,9 +47,7 @@ class Tree {
         shared_ptr<TreeNode<T>> find (shared_ptr<T> to_find);
         shared_ptr<TreeNode<T>> findMinimalNode (shared_ptr<TreeNode<T>> root);
        
-        shared_ptr<TreeNode<T>>* TreeToArray();
-        void print2DUtil(shared_ptr<TreeNode<T>> root, int space);
-        void print2D(shared_ptr<TreeNode<T>> root);     
+        shared_ptr<TreeNode<T>>* TreeToArray();   
 };
 template <class T>
 shared_ptr<TreeNode<T>>* mergeArrays(shared_ptr<TreeNode<T>>* array_a, shared_ptr<TreeNode<T>>* array_b, int size_a, int size_b);
@@ -138,22 +134,21 @@ void Tree<T>::insert(shared_ptr<T> to_add)
     }
     //update tree size
     size++;
-    //update new node to be the sun of his father
+    //update new node to be the son of his father
     new_node->changeFather(temp_update);        //new node is the root
     if (temp_update == nullptr){
         this->primary_root = new_node;
     }
-    else if(*temp_update->getData() > *to_add){    //new node is left sun of his parent
+    else if(*temp_update->getData() > *to_add){    //new node is left son of his parent
         temp_update->changeLeft(new_node);
     }
     else{
-        temp_update->changeRight(new_node);       //new node is right sun of his parent
+        temp_update->changeRight(new_node);       //new node is right son of his parent
     }
     //touring from the new leaf to the root in order to balance the tree
     while(temp_update != nullptr){
         temp_update->updateHeight();
         if(createBalance(temp_update)){ 
-        //balance for temp_update or temp_update father???????????
             return;
         }
         temp_update = temp_update->getFather();
@@ -297,7 +292,6 @@ void Tree<T>::remove(shared_ptr<T> to_remove)
         if(father_node != nullptr) {
             if (*(father_node->getData()) > *to_remove){
                 father_node->changeLeft(nullptr);
-                //node_to_remove->clearNode();
             }
             else
             {
@@ -403,16 +397,6 @@ void Tree<T>::inOrderDataToArray (shared_ptr<TreeNode<T>> root, shared_ptr<T>* a
     array[*index] = root->getData();
     (*index)++;
     inOrderDataToArray(root->getRight(), array, index);
-}
-
-template<class T>
-void Tree<T>::reverseInOrder (shared_ptr<TreeNode<T>> root){
-    if(root == NULL){
-        return;
-    }
-    reverseInOrder(root->getRight());
-    cout<<*(root->getData());
-    reverseInOrder(root->getLeft());
 }
 
 template <class T>
