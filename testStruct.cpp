@@ -6,8 +6,17 @@
 using std::cout;
 using std::endl;
 
+/*
+//heper function
+void printBalance ();
+void printBalance (){
+    int balance = 0;
+    all_employees_by_id_tree->inorderCheckHieght(all_employees_by_id_tree->getRoot() ,&balance);
+    cout << "balance = " << balance << endl;
+}
+*/
+
 void testEmployeeById ();
-//void testCompany ();
 void testEmployeeBySalary ();
 void testSystemAdi ();
 void testSystemLottem ();

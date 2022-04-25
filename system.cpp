@@ -38,9 +38,8 @@ StatusType System::addCompany(int CompanyID, int Value){
 StatusType System::addEmployee(int EmployeeID, int CompanyID, int Salary, int Grade){
     //invalid arguments
     if(this == nullptr || EmployeeID <= 0 || CompanyID <= 0 || Salary <= 0 || Grade < 0){
-        return INVALID_INPUT;
+       return INVALID_INPUT;
     }
-    printBalance ();
     try {
         //company not exist in allCompanyTree || employee already exist
         shared_ptr<Company> company_to_find(new Company(CompanyID, 0)); 
@@ -116,7 +115,6 @@ StatusType System::removeEmployee(int EmployeeID){
     if(this == nullptr || EmployeeID <= 0){
         return INVALID_INPUT;
     }
-    printBalance ();
     try{
         //check if employee exist
         shared_ptr<EmployeeByID> employee_id_to_remove(new EmployeeByID(EmployeeID, 1)); //temp grade
@@ -253,14 +251,13 @@ StatusType System::promoteEmployee(int EmployeeID, int SalaryIncrease, int BumpG
         shared_ptr<TreeNode<EmployeeByID>>employee = all_employees_by_id_tree->find(employee_to_find);
         if (employee == nullptr)
         {
-            return FAILURE;
+           return FAILURE;
         }
         //temp variables to save detailes about employee
         int employer_id, salary, grade;
         getEmployeeInfo(EmployeeID, &employer_id, &salary, &grade);
         removeEmployee(EmployeeID);
         addEmployee(EmployeeID, employer_id, salary+SalaryIncrease, grade);
-
         shared_ptr<TreeNode<EmployeeByID>>changed_employee = all_employees_by_id_tree->find(employee_to_find);
         if (BumpGrade>0)
         {
@@ -598,6 +595,7 @@ void System::changeHighestEarnerBeforeRemove(shared_ptr<EmployeeBySalary> employ
         shared_ptr<TreeNode<EmployeeBySalary>> salary_employee = all_employees_by_salary_tree->find(employee);
         if(salary_employee->getLeft() != nullptr)
         {
+            /*
             if(salary_employee->getLeft()->getRight() != nullptr)
             {
                 shared_ptr<EmployeeBySalary> next_highest_employee = salary_employee->getLeft()->getRight()->getData();
@@ -605,10 +603,10 @@ void System::changeHighestEarnerBeforeRemove(shared_ptr<EmployeeBySalary> employ
                 salary_of_highest_earner = next_highest_employee->getSalary();
             }
             else{
-                shared_ptr<EmployeeBySalary> next_highest_employee = salary_employee->getLeft()->getData();
-                id_highest_earner = next_highest_employee->getID();
-                salary_of_highest_earner = next_highest_employee->getSalary();
-            }
+            */
+            shared_ptr<EmployeeBySalary> next_highest_employee = salary_employee->getLeft()->getData();
+            id_highest_earner = next_highest_employee->getID();
+            salary_of_highest_earner = next_highest_employee->getSalary();
         }
         else {
             shared_ptr<EmployeeBySalary> next_highest_employee = salary_employee->getFather()->getData();
@@ -680,8 +678,3 @@ void System::systemDestroy(){
     this->non_empty_companies->destroyTree(this->non_empty_companies->getRoot());
 }
 
-void System::printBalance (){
-    int balance = 0;
-    all_employees_by_salary_tree->inorderCheckHieght(all_employees_by_salary_tree->getRoot() ,&balance);
-    cout << "balance = " << balance << endl;
-}

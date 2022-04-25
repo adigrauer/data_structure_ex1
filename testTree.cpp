@@ -23,6 +23,30 @@ void Tree<T>::print2D(shared_ptr<TreeNode<T>> root){
 }
 */ 
 
+/*
+void inorderCheckHieght(shared_ptr<TreeNode<T>> root, int* balance);
+template<class T>
+void Tree<T>::inorderCheckHieght(shared_ptr<TreeNode<T>> root, int* balance){
+    if(root == nullptr){
+        return;
+    }
+    inorderCheckHieght(root->getLeft(), balance);
+    int right_height = -1;
+    int left_height= -1;
+    if(root->getLeft() != nullptr){
+        left_height = root->getLeft()->getHeight();
+    }
+    if(root->getRight() != nullptr){
+        right_height = root->getRight()->getHeight();
+    }
+    if(abs(left_height - right_height) > *balance){
+        *balance = abs(left_height-right_height);
+    }
+    inorderCheckHieght(root->getRight(), balance);
+}
+*/
+
+/*
 void general_test1();
 void insert_test2();
 void insert_test3();
@@ -36,10 +60,12 @@ int main(){
     //insert_test3();
     //insert_test4();
     //merge_test5();
-    treeToArray();
+    //treeToArray();
     return 0;  
 }
+*/
 
+/*
 void treeToArray(){
     Tree<int> tree1;
     int x1 = 1;
@@ -75,16 +101,15 @@ void treeToArray(){
     tree1.remove(x1_tree);
     size = tree1.getSize();
     cout << "size need to be 8 output = " << size << endl;
-    /*
     cout << "print array1- checking if inOrderToArray+TreeToArray works" << endl;
     for (int i=0; i<3; i++){
         cout << "array[" << i << "] = " <<  " data " << *(array1[i]->getData()) << " l= " << (array1[i]->getLeft()) << 
         " r= " << (array1[i]->getRight()) <<  " f= " << (array1[i]->getFather())<< endl;
     }
-    */
     cout <<  "done"<< endl;
     return;
 }
+*/
 /*
 void general_test1(){
     //create tree1//
