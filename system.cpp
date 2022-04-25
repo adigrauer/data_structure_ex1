@@ -40,6 +40,7 @@ StatusType System::addEmployee(int EmployeeID, int CompanyID, int Salary, int Gr
     if(this == nullptr || EmployeeID <= 0 || CompanyID <= 0 || Salary <= 0 || Grade < 0){
         return INVALID_INPUT;
     }
+    printBalance ();
     try {
         //company not exist in allCompanyTree || employee already exist
         shared_ptr<Company> company_to_find(new Company(CompanyID, 0)); 
@@ -115,6 +116,7 @@ StatusType System::removeEmployee(int EmployeeID){
     if(this == nullptr || EmployeeID <= 0){
         return INVALID_INPUT;
     }
+    printBalance ();
     try{
         //check if employee exist
         shared_ptr<EmployeeByID> employee_id_to_remove(new EmployeeByID(EmployeeID, 1)); //temp grade
@@ -676,4 +678,10 @@ void System::systemDestroy(){
     this->all_employees_by_id_tree->destroyTree(this->all_employees_by_id_tree->getRoot());
     this->all_employees_by_salary_tree->destroyTree(this->all_employees_by_salary_tree->getRoot());
     this->non_empty_companies->destroyTree(this->non_empty_companies->getRoot());
+}
+
+void System::printBalance (){
+    int balance = 0;
+    all_employees_by_salary_tree->inorderCheckHieght(all_employees_by_salary_tree->getRoot() ,&balance);
+    cout << "balance = " << balance << endl;
 }

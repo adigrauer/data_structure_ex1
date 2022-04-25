@@ -4,6 +4,7 @@
 #include "treeNode.h"
 #include <iostream>
 #include <memory>
+#include <cmath>
 
 using std::shared_ptr;
 using std::endl;
@@ -38,6 +39,10 @@ class Tree {
         void LimitedinOrderDataToArray (shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index, int* limit);
         void minMaxInOrderDataToArray (shared_ptr<TreeNode<T>> root, shared_ptr<T>* array, int* index, shared_ptr<T> min, shared_ptr<T> max);
         
+        //////////
+        void inorderCheckHieght(shared_ptr<TreeNode<T>> root, int* balance);
+        //////////
+
         int getSize();
         shared_ptr<TreeNode<T>> getRoot();
         void changeRoot(shared_ptr<TreeNode<T>> new_root);
@@ -353,6 +358,7 @@ void Tree<T>::remove(shared_ptr<T> to_remove)
             if(current_minimal->getRight() != nullptr){
                 current_minimal->getRight()->changeFather(current_minimal->getFather());
             }
+            current_minimal_father->updateHeight();
         }
         node_to_remove->changeData(copy_data);
 
@@ -360,9 +366,9 @@ void Tree<T>::remove(shared_ptr<T> to_remove)
     //update tree size
     size--;
     //touring from the deleated leaf to the root in order to balance the tree
+    node_to_remove->updateHeight();
     if (father_node == nullptr)
     {
-        node_to_remove->updateHeight();
         createBalance(node_to_remove);
     }
     while(father_node != nullptr)
@@ -526,6 +532,27 @@ shared_ptr<Tree<T>> mergeTrees(shared_ptr<Tree<T>> tree_a, shared_ptr<Tree<T>> t
     shared_ptr<Tree<T>> tree(new Tree<T>(merge_tree));
     return tree;
 }
+
+template<class T>
+void Tree<T>::inorderCheckHieght(shared_ptr<TreeNode<T>> root, int* balance){
+    if(root == nullptr){
+        return;
+    }
+    inorderCheckHieght(root->getLeft(), balance);
+    int right_height = -1;
+    int left_height= -1;
+    if(root->getLeft() != nullptr){
+        left_height = root->getLeft()->getHeight();
+    }
+    if(root->getRight() != nullptr){
+        right_height = root->getRight()->getHeight();
+    }
+    if(abs(left_height - right_height) > *balance){
+        *balance = abs(left_height-right_height);
+    }
+    inorderCheckHieght(root->getRight(), balance);
+}
+
 
 #endif /*TREE_H*/
 
