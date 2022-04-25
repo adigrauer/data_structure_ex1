@@ -115,17 +115,9 @@ void NonEmptyCompany::changeHighestEarnerBeforeRemove(shared_ptr<EmployeeBySalar
         shared_ptr<TreeNode<EmployeeBySalary>> salary_employee = employees_by_salary->find(employee);
         if(salary_employee->getLeft() != nullptr)
         {
-            if(salary_employee->getLeft()->getRight() != nullptr)
-            {
-                shared_ptr<EmployeeBySalary> next_highest_employee = salary_employee->getLeft()->getRight()->getData();
-                id_highest_earner = next_highest_employee->getID();
-                salary_of_highest_earner = next_highest_employee->getSalary();
-            }
-            else{
-                shared_ptr<EmployeeBySalary> next_highest_employee = salary_employee->getLeft()->getData();
-                id_highest_earner = next_highest_employee->getID();
-                salary_of_highest_earner = next_highest_employee->getSalary();
-            }
+            shared_ptr<EmployeeBySalary> next_highest_employee = salary_employee->getLeft()->getData();
+            id_highest_earner = next_highest_employee->getID();
+            salary_of_highest_earner = next_highest_employee->getSalary();
         }
         else {
             shared_ptr<EmployeeBySalary> next_highest_employee = salary_employee->getFather()->getData();
