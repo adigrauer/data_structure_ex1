@@ -240,7 +240,7 @@ StatusType System::increaseCompanyValue(int CompanyID, int ValueIncrease){
     return SUCCESS; 
 }
 
-
+/*
 StatusType System::promoteEmployee(int EmployeeID, int SalaryIncrease, int BumpGrade){
     if(this == nullptr || EmployeeID <= 0 || SalaryIncrease <= 0 )
     {
@@ -262,6 +262,50 @@ StatusType System::promoteEmployee(int EmployeeID, int SalaryIncrease, int BumpG
         if (BumpGrade>0)
         {
             changed_employee->getData()->setGrade();
+        }
+    }
+    catch(const std::bad_alloc& ba){
+        return ALLOCATION_ERROR;
+    }
+    return SUCCESS;
+}
+
+*/
+
+StatusType System::promoteEmployee(int EmployeeID, int SalaryIncrease, int BumpGrade){
+    if(this == nullptr || EmployeeID <= 0 || SalaryIncrease <= 0 )
+    {
+        return INVALID_INPUT;  
+    }
+    try{
+        shared_ptr<EmployeeByID> employee_to_find(new EmployeeByID(EmployeeID, 0));
+        shared_ptr<TreeNode<EmployeeByID>>employee = all_employees_by_id_tree->find(employee_to_find);
+        if (employee == nullptr)
+        {
+           return FAILURE;
+        }
+        //temp variables to save detailes about employee
+        int employer_id, salary, grade;
+        getEmployeeInfo(EmployeeID, &employer_id, &salary, &grade);
+        shared_ptr<NonEmptyCompany> employee_company = employee->getData()->getCompanyPtr();
+        shared_ptr<EmployeeBySalary> employee_by_salary = employee->getData()->getSalaryPtr();
+
+        //remove employee from salary trees to update his salary
+        all_employees_by_salary_tree->remove(employee_by_salary);
+        employee_company->getEmployeesBySalaryTree()->remove(employee_by_salary);
+        
+        //create updated employee
+        shared_ptr<EmployeeBySalary> new_employee_by_salary(new EmployeeBySalary(salary+SalaryIncrease, EmployeeID));
+        employee->getData()->setSalaryPtr(new_employee_by_salary);
+        
+        //insert updated employee to salary trees and chack if is heighst earner
+        all_employees_by_salary_tree->insert(new_employee_by_salary);
+        updateHighestEarner(new_employee_by_salary);
+        employee_company->getEmployeesBySalaryTree()->insert(new_employee_by_salary);
+        employee_company->updateHighestEarner(new_employee_by_salary);
+        if (BumpGrade>0)
+        {
+            employee->getData()->setGrade();
         }
     }
     catch(const std::bad_alloc& ba){
