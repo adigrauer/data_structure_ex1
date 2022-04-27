@@ -240,37 +240,6 @@ StatusType System::increaseCompanyValue(int CompanyID, int ValueIncrease){
     return SUCCESS; 
 }
 
-/*
-StatusType System::promoteEmployee(int EmployeeID, int SalaryIncrease, int BumpGrade){
-    if(this == nullptr || EmployeeID <= 0 || SalaryIncrease <= 0 )
-    {
-        return INVALID_INPUT;  
-    }
-    try{
-        shared_ptr<EmployeeByID> employee_to_find(new EmployeeByID(EmployeeID, 0));
-        shared_ptr<TreeNode<EmployeeByID>>employee = all_employees_by_id_tree->find(employee_to_find);
-        if (employee == nullptr)
-        {
-           return FAILURE;
-        }
-        //temp variables to save detailes about employee
-        int employer_id, salary, grade;
-        getEmployeeInfo(EmployeeID, &employer_id, &salary, &grade);
-        removeEmployee(EmployeeID);
-        addEmployee(EmployeeID, employer_id, salary+SalaryIncrease, grade);
-        shared_ptr<TreeNode<EmployeeByID>>changed_employee = all_employees_by_id_tree->find(employee_to_find);
-        if (BumpGrade>0)
-        {
-            changed_employee->getData()->setGrade();
-        }
-    }
-    catch(const std::bad_alloc& ba){
-        return ALLOCATION_ERROR;
-    }
-    return SUCCESS;
-}
-
-*/
 
 StatusType System::promoteEmployee(int EmployeeID, int SalaryIncrease, int BumpGrade){
     if(this == nullptr || EmployeeID <= 0 || SalaryIncrease <= 0 )

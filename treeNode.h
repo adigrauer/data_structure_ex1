@@ -124,7 +124,7 @@ void TreeNode<T>::updateHeight(){
     this->changeHeight(new_height);
 }
 
-//adi
+
 template<class T>
 bool TreeNode<T>::operator <(shared_ptr<T> to_compare){
     return *(this->data) < (*to_compare);
